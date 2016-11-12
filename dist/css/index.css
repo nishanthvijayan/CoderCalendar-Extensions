@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 200px;
+  min-width: 400px;
+  background-color: #ffffff;
+}
+
+header {
+  z-index: 3;
+  background-color: #1565c0;
+  height: 50px;
+  color: #ffffff;
+  position: fixed;
+  width: 100%;
+  top: 0%;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+#scroll-info {
+  display: none;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+  color: #92AD40;
+  z-index: 4;
+  bottom: 0px;
+  position: fixed;
+  padding: 1% 2% 1%;
+  right: 0px;
+  margin-bottom: 1%;
+  margin-right: 1%;
+  font-size: 90%;
+  font-weight: bolder;
+}
+
+.fa-refresh, .fa-gear, .fa-code, .fa-android {
+  position: fixed;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.fa-refresh {
+  left: 90%;
+}
+
+.fa-gear {
+  left: 80%;
+}
+
+.fa-code {
+  left: 5%;
+}
+
+.fa-android {
+  left: 15%;
+}
+
+.title {
+  text-align: center;
+  padding: 10px;
+  background-color: #1e88e5;
+  color: #ffffff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+ 
+.unread-bg {
+  position: relative;
+}
+
+.unread {
+   float: left;
+   position: absolute;
+   left: 3px;
+   top: 5px;
+   z-index: 2;
+   background-color: #E65444;
+   padding: 5px;
+   color: #FFFFFF;
+   font-weight: bold;
+   border-radius: 25px 5px 5px 25px;
+   padding: 0 5px 3px 10px;
+   box-shadow: 3px 3px 3px -1px rgba(0,0,0,0.5);
+}
+
+li {
+  list-style-type: none;
+  padding: 15px;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+a li:hover {
+  background-color: #e0ebfd;
+  font-weight: bold;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  color: #e0ebfd;
+  background-color: #e0ebfd;
+}
+
+h3,
+h4,
+h5 {
+  font-weight: normal;
+}
+
+header > h3 {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
+}
+
+li > img {
+  display: inline-block;
+  float: right;
+  margin: 5px;
+}
+
+#ongoing {
+  margin-top: 50px;
+}
+
+.contest-title:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
