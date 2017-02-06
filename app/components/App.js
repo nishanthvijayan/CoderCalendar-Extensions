@@ -18,7 +18,7 @@ var App = React.createClass({
     },
     filterContestsBySettings: function(contests){
         var filteredContests = contests.filter(function(contest){
-            return !!(localStorage.getItem(contest.Platform));
+            return (localStorage.getItem(contest.Platform) == 'true');
         });
         return filteredContests;
     },
