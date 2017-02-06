@@ -1,5 +1,6 @@
 var React = require('react');
-var CalendarLink = require('./CalendarLink');
+var AddToCalendarButton = require('./AddToCalendarButton');
+var HideContestButton = require('./HideContestButton');
 
 var ContestOptionBar = React.createClass({
       propTypes: {
@@ -11,7 +12,8 @@ var ContestOptionBar = React.createClass({
         if (this.props.visible){
             return(
                 <div>
-                  <CalendarLink type={this.props.type} details={this.props.details}/>
+                  <AddToCalendarButton type={this.props.type} details={this.props.details}/>
+                  <HideContestButton type={this.props.type} details={this.props.details}/>
                 </div>
             )
         }else{

@@ -1,8 +1,8 @@
 var React = require('react');
 var UtilHelpers = require('../../util');
 
-var CalendarLink = React.createClass({
-    constructGoogleCalendarLink: function(contest){
+var AddToCalendarButton = React.createClass({
+    constructGoogleAddToCalendarButton: function(contest){
         var curTime  = new Date();
         var startTime = Date.parse(contest.StartTime);
         var endTime = Date.parse(contest.EndTime);
@@ -12,20 +12,20 @@ var CalendarLink = React.createClass({
         return "https://www.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(contest.Name)+
                    "&dates="+calendarTime+"&location="+contest.url+"&pli=1&uid=&sf=true&output=xml#eventpage_6";
     },
-    onClickCalendarLink: function(){
+    onClickAddToCalendarButton: function(){
         chrome.tabs.create({url: this.state.url});
     },
     componentDidMount: function(){
         if (this.props.type == 'upcoming'){
             this.setState({
-                url: this.constructGoogleCalendarLink(this.props.details)
+                url: this.constructGoogleAddToCalendarButton(this.props.details)
             });
         }
     },
     render: function(){
         if (this.props.type == 'upcoming'){
             return(
-                <i className="fa fa-calendar fa-lg" style={{"color": "#4caf50", "cursor": "pointer"}} onClick={this.onClickCalendarLink} />
+                <i className="fa fa-calendar fa-lg option-icon" style={{"color": "#4caf50", "cursor": "pointer"}} onClick={this.onClickAddToCalendarButton} title="Add to Google Calendar" />
             )
         }else{
             return null
@@ -33,9 +33,9 @@ var CalendarLink = React.createClass({
     }
 });
 
-CalendarLink.propTypes = {
+AddToCalendarButton.propTypes = {
   type: React.PropTypes.string,
   details: React.PropTypes.object
 }
 
-module.exports = CalendarLink;
+module.exports = AddToCalendarButton;

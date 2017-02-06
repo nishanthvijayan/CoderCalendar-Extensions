@@ -98,7 +98,6 @@ a {
 
 a li:hover {
   background-color: #e0ebfd;
-  font-weight: bold;
 }
 
 hr {
@@ -119,6 +118,11 @@ header > h3 {
   text-align: center;
   font-weight: bold;
   display: inline-block;
+}
+
+.option-icon {
+  cursor: pointer;
+  margin-right: 20px;
 }
 
 li > img {
