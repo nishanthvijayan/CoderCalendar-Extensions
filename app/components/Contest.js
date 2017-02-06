@@ -18,18 +18,15 @@ var Contest = React.createClass({
     onClickContestTitle: function(){
          chrome.tabs.create({url: this.props.details.url});
     },
-    toggleSelection: function(){
+    toggleOptionBarVisibility: function(){
         this.setState({
             isSelected: !(this.state.isSelected)
         });
     },
-    onClickContest: function(){
-        this.toggleSelection();
-    },
     render: function(){
         return(
             <a>
-                <li onClick={this.onClickContest}>
+                <li onMouseEnter={this.toggleOptionBarVisibility} onMouseLeave={this.toggleOptionBarVisibility}>
                     <br/>
                     <h3 className="contest-title"  onClick={this.onClickContestTitle}>{this.props.details.Name}</h3>
                     <ContestImage platform={this.props.details.Platform} /> <br/>
