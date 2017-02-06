@@ -37,7 +37,7 @@ header {
   font-weight: bolder;
 }
 
-.fa-refresh, .fa-gear, .fa-code, .fa-android {
+.fa-refresh, .fa-gear, .fa-shopping-cart, .fa-eye {
   position: fixed;
   margin-top: 15px;
   cursor: pointer;
@@ -51,11 +51,11 @@ header {
   left: 80%;
 }
 
-.fa-code {
+.fa-shopping-cart {
   left: 5%;
 }
 
-.fa-android {
+.fa-eye {
   left: 15%;
 }
 

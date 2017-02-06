@@ -5,11 +5,11 @@ var Header = React.createClass({
     onClickRefresh:      React.PropTypes.func,
     isLoading:   React.PropTypes.bool
     },
-    onClickGitHub: function(){
-        chrome.tabs.create({ url: "https://bit.ly/1LUziPN" });
+    onClickBuy: function(){
+        // pass
     },
-    onClickAndroid: function(){
-        chrome.tabs.create({ url: "https://bit.ly/1KqFi3U" });
+    onClickShowHidden: function(){
+        // pass
     },
     onClickSettings: function(){
         chrome.tabs.create({ url: "options.html" });
@@ -25,8 +25,8 @@ var Header = React.createClass({
     render: function(){
         return(
             <header>
-                <i className="fa fa-code fa-2x gh-btn" onClick={this.onClickGitHub} />
-                <i className="fa fa-android fa-2x"  onClick={this.onClickAndroid} />
+                <i className="fa fa-shopping-cart fa-2x" onClick={this.onClickBuy} />
+                <i className="fa fa-eye fa-2x"  onClick={this.onClickShowHidden} />
                 <h3>Coder Calendar</h3>
                 <i className="fa fa-gear fa-2x" onClick={this.onClickSettings} />
                 <i className={this.refreshButtonSpinState()}  onClick={this.props.onClickRefresh} />
