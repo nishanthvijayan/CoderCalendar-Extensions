@@ -88,7 +88,7 @@ header {
 
 li {
   list-style-type: none;
-  padding: 15px;
+  padding: 10px;
   display: block;
 }
 
@@ -127,8 +127,14 @@ header > h3 {
 
 li > img {
   display: inline-block;
-  float: right;
-  margin: 5px;
+  float: left;
+  margin-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+.details-container{
+  margin-left: 100px;
 }
 
 #ongoing {

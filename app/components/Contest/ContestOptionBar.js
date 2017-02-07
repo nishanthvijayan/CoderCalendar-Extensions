@@ -17,7 +17,7 @@ var ContestOptionBar = React.createClass({
                 </div>
             )
         }else{
-            return null
+            return <br/>
         }
       }
 });

@@ -27,12 +27,14 @@ var Contest = React.createClass({
         return(
             <a>
                 <li onMouseEnter={this.toggleOptionBarVisibility} onMouseLeave={this.toggleOptionBarVisibility}>
-                    <br/>
-                    <h3 className="contest-title"  onClick={this.onClickContestTitle}>{this.props.details.Name}</h3>
-                    <ContestImage platform={this.props.details.Platform} /> <br/>
-                    <ContestTime type={this.props.type} details={this.props.details} /> <br/>
-                    <ContestDuration type={this.props.type} details={this.props.details} /> <br/>
-                    <ContestOptionBar visible={this.state.isSelected} type={this.props.type} details={this.props.details}/>
+                    <ContestImage platform={this.props.details.Platform} />
+                    <div className='details-container'>
+                        <h3 className="contest-title"  onClick={this.onClickContestTitle}>{this.props.details.Name}</h3>
+
+                        <ContestTime type={this.props.type} details={this.props.details} /> <br/>
+                        <ContestDuration type={this.props.type} details={this.props.details} /> <br/>
+                        <ContestOptionBar visible={this.state.isSelected} type={this.props.type} details={this.props.details}/>
+                    </div>
                 </li>
                 <hr/>
             </a>
