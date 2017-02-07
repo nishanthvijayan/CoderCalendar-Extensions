@@ -9,9 +9,20 @@ var Header = React.createClass({
         // pass
     },
     onClickShowHidden: function(){
-        // pass
+        // if not premium user
+        var opt = {
+          type: "basic",
+          title: "View Archived Contests - Premium Feature",
+          message: "Upgrade Coder's Calendar to Premium version to use this feature",
+          iconUrl: "../img/notification.png",
+          buttons: [{"title": "Upgrade"}]
+        }
+        chrome.notifications.create(opt);
     },
     onClickSettings: function(){
+        chrome.tabs.create({ url: "options.html" });
+    },
+    onClickExapnd: function(){
         chrome.tabs.create({ url: "options.html" });
     },
     refreshButtonSpinState: function(){
@@ -27,6 +38,7 @@ var Header = React.createClass({
             <header>
                 <i className="fa fa-shopping-cart fa-2x" onClick={this.onClickBuy} />
                 <i className="fa fa-eye fa-2x"  onClick={this.onClickShowHidden} />
+                <i className="fa fa-expand fa-2x"  onClick={this.onClickExpand} />
                 <h3>Coder Calendar</h3>
                 <i className="fa fa-gear fa-2x" onClick={this.onClickSettings} />
                 <i className={this.refreshButtonSpinState()}  onClick={this.props.onClickRefresh} />

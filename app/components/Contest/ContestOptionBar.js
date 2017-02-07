@@ -1,6 +1,7 @@
 var React = require('react');
 var AddToCalendarButton = require('./AddToCalendarButton');
 var HideContestButton = require('./HideContestButton');
+var AlertButton = require('./AlertButton');
 
 var ContestOptionBar = React.createClass({
       propTypes: {
@@ -14,6 +15,7 @@ var ContestOptionBar = React.createClass({
                 <div>
                   <AddToCalendarButton type={this.props.type} details={this.props.details}/>
                   <HideContestButton type={this.props.type} details={this.props.details}/>
+                  <AlertButton type={this.props.type} details={this.props.details}/>
                 </div>
             )
         }else{
