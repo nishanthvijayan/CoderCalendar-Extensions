@@ -21,7 +21,7 @@ header {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.08);
 }
 
-.fa-refresh, .fa-gear, .fa-shopping-cart, .fa-eye, .fa-expand {
+.fa-refresh, .fa-gear, .fa-shopping-cart, .fa-eye, .fa-home {
   position: fixed;
   margin-top: 15px;
   cursor: pointer;
@@ -35,7 +35,7 @@ header {
   left: 80%;
 }
 
-.fa-expand {
+.fa-home {
   left: 5%;
 }
 .fa-shopping-cart {

@@ -15,7 +15,8 @@ var Contest = React.createClass({
     getInitialState: function(){
         return{
             isSelected: false,
-            visible: true
+            visible: true,
+            archived: Hide.isHidden(this.props.details) 
         }
     },
     onClickContestTitle: function(){
@@ -31,10 +32,10 @@ var Contest = React.createClass({
             isSelected: false
         });
     },
-    hide: function(){
+    archive: function(){
         if(Settings.isPaid()){
             Hide.hideContest(this.props.details);
-            this.setState({visible: false});
+            this.setState({visible: false, archived: true});
         }
         else{
             var opt = {
@@ -45,6 +46,29 @@ var Contest = React.createClass({
                 buttons: [{"title": "Upgrade"}]
             }
             chrome.notifications.create(opt);
+        }
+    },
+    unArchive: function(){
+        if(Settings.isPaid()){
+            Hide.showContest(this.props.details);
+            this.setState({visible: false, archived: false});
+        }
+        else{
+            var opt = {
+                type: "basic",
+                title: "Archive/Hide Contests - Premium Feature",
+                message: "Upgrade Coder's Calendar to Premium version to use this feature",
+                iconUrl: "../img/notification.png",
+                buttons: [{"title": "Upgrade"}]
+            }
+            chrome.notifications.create(opt);
+        }
+    },
+    hide: function(){
+        if(this.state.archived){
+            this.unArchive();
+        }else{
+            this.archive();
         }
     },
     render: function(){

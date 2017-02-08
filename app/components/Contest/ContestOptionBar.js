@@ -16,7 +16,6 @@ var ContestOptionBar = React.createClass({
                 <div>
                   <AddToCalendarButton type={this.props.type} details={this.props.details}/>
                   <HideContestButton
-                    type={this.props.type}
                     details={this.props.details}
                     hideHandler={this.props.hideHandler}
                   />

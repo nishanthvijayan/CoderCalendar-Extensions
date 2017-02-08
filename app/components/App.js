@@ -1,59 +1,17 @@
 var React = require('react');
-var MainContainer = require('./MainContainer');
+
+var Router = require('./Router');
 var Header = require('./Header');
 var Cache = require('../appCache');
-var Settings = require('../settings')
-var Hide = require('../hide')
+var Settings = require('../settings');
+var Hide = require('../hide');
 
 var App = React.createClass({
     getInitialState: function(){
         return{
             isLoading: false,
-            contests: this.processContestList(Cache.fetch().data)
+            route: 'main'
         }
-    },
-    filterContestsBySettings: function(contests){
-        var filteredContests = contests.filter(function(contest){
-            return Settings.subscription(contest.Platform);
-        }).filter(function(contest){
-            return !Hide.isHidden(contest);
-        });
-        return filteredContests;
-    },
-    filterContestsByTime: function(allContests){
-        var currentTime  = new Date().getTime();
-        var filteredContests = {}
-
-        // Remove contests that are already over from ongoing contests list
-        filteredContests.ongoing = allContests.ongoing.filter(function(contest){
-            var endTime   = Date.parse(contest.EndTime);
-            return (endTime > currentTime);
-        });
-
-        // Move contests that have started, to ongoing events list
-        $.each(allContests.upcoming, function(i, contest){
-            var startTime = Date.parse(contest.StartTime);
-            var endTime   = Date.parse(contest.EndTime);
-            if(startTime < currentTime && endTime > currentTime){
-                filteredContests.ongoing.push(contest)
-            }
-        });
-
-        //  Remove contests that have started/ended from upcoming contests list
-        filteredContests.upcoming = allContests.upcoming.filter(function(contest){
-            var startTime = Date.parse(contest.StartTime);
-            var endTime   = Date.parse(contest.EndTime);
-            return (startTime > currentTime && endTime > currentTime);
-        });
-
-        return filteredContests;
-    },
-    processContestList: function(contests){
-        var contestsFilteredBySettings =  {
-            ongoing: this.filterContestsBySettings(contests.ongoing),
-            upcoming: this.filterContestsBySettings(contests.upcoming)
-        };
-        return this.filterContestsByTime(contestsFilteredBySettings);
     },
     getContestList: function(){
         this.setState({
@@ -68,16 +26,25 @@ var App = React.createClass({
             Cache.store(contests);
 
             component.setState({
-                contests: component.processContestList(contests),
                 isLoading: false
             });
         }, function(data, textStatus, jqXHR){
-
             component.setState({
                 isLoading: false
             });
         });
     },
+
+    onClickSettingsHandler: function(){
+        this.setState({route: 'settings'});
+    },
+    onClickArchiveHandler: function(){
+        this.setState({route: 'archive'});
+    },
+    onClickMainHandler: function(){
+        this.setState({route: 'main'});
+    },
+
     componentDidMount: function(){
         Settings.initialize();
         if (Cache.empty() || Cache.dataOlderThan(5)) {
@@ -89,9 +56,12 @@ var App = React.createClass({
             <div>
                 <Header
                     onClickRefresh = {this.getContestList}
+                    onClickSettings = {this.onClickSettingsHandler}
+                    onClickArchive = {this.onClickArchiveHandler}
+                    onClickMain = {this.onClickMainHandler}
                     isLoading = {this.state.isLoading}
                 />
-                <MainContainer contests = {this.state.contests}/>
+                <Router route={this.state.route} />
             </div>
         )
     }
