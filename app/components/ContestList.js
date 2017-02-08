@@ -11,7 +11,13 @@ var ContestList = React.createClass({
         return(
             <div className = 'contest-list'>
                 {this.props.contests.map(function(contest) {
-                    return <Contest details={contest} type={component.props.type} />
+                    return (
+                        <Contest
+                            details={contest}
+                            type={component.props.type}
+                            key={contest.Name + contest.EndTime}
+                        />
+                    )
                 })}
             </div>
         )

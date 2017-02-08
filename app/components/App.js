@@ -2,6 +2,8 @@ var React = require('react');
 var MainContainer = require('./MainContainer');
 var Header = require('./Header');
 var Cache = require('../appCache');
+var Settings = require('../settings')
+var Hide = require('../hide')
 
 var App = React.createClass({
     getInitialState: function(){
@@ -10,15 +12,11 @@ var App = React.createClass({
             contests: this.processContestList(Cache.fetch().data)
         }
     },
-    initializeSettings: function(){
-        var supportedPlatforms = ['HACKEREARTH', 'HACKERRANK', 'CODECHEF', 'CODEFORCES', 'TOPCODER', 'GOOGLE', 'OTHER'];
-        $.each(supportedPlatforms,function(i, platform){
-            if(!localStorage.getItem(platform)) localStorage.setItem(platform,'true');
-        });
-    },
     filterContestsBySettings: function(contests){
         var filteredContests = contests.filter(function(contest){
-            return (localStorage.getItem(contest.Platform) == 'true');
+            return Settings.subscription(contest.Platform);
+        }).filter(function(contest){
+            return !Hide.isHidden(contest);
         });
         return filteredContests;
     },
@@ -81,7 +79,7 @@ var App = React.createClass({
         });
     },
     componentDidMount: function(){
-        this.initializeSettings();
+        Settings.initialize();
         if (Cache.empty() || Cache.dataOlderThan(5)) {
             this.getContestList();
         }
@@ -90,7 +88,7 @@ var App = React.createClass({
         return (
             <div>
                 <Header
-                    onClickRefresh = {this.getContestList.bind(this)}
+                    onClickRefresh = {this.getContestList}
                     isLoading = {this.state.isLoading}
                 />
                 <MainContainer contests = {this.state.contests}/>
