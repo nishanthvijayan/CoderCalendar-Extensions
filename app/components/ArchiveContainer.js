@@ -13,7 +13,7 @@ var Archive = React.createClass({
 
         return(
             <div className = 'archive-container'>
-                <div id='ongoing'>
+                <div id='ongoing' className="top-title">
                     <ContestTypeHeader type="Hidden Live" />
                     <ContestList contests={hiddenContests.ongoing} type='live' />
                 </div>

@@ -44,6 +44,9 @@ var App = React.createClass({
     onClickMainHandler: function(){
         this.setState({route: 'main'});
     },
+    onClickHelpHandler: function(){
+        this.setState({route: 'help'});
+    },
 
     componentDidMount: function(){
         Settings.initialize();
@@ -59,6 +62,7 @@ var App = React.createClass({
                     onClickSettings = {this.onClickSettingsHandler}
                     onClickArchive = {this.onClickArchiveHandler}
                     onClickMain = {this.onClickMainHandler}
+                    onClickHelp = {this.onClickHelpHandler}
                     isLoading = {this.state.isLoading}
                 />
                 <Router route={this.state.route} />

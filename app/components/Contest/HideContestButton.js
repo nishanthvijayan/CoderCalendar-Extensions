@@ -10,7 +10,7 @@ var HideContestButton = React.createClass({
       }
       else{
         style = {"color": "#FF0000", "cursor": "pointer", "float": "right"};
-        icon = "fa-times";
+        icon = "fa-trash";
         action = "Hide";
       }
 

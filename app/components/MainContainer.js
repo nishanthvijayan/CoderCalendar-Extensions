@@ -53,7 +53,7 @@ var Main = React.createClass({
         contests = this.processContestList(Cache.fetch().data);
         return(
             <div className = 'main-container'>
-                <div id='ongoing'>
+                <div id='ongoing' className="top-title">
                     <ContestTypeHeader type="Live" />
                     <ContestList contests={contests.ongoing} type='live' />
                 </div>

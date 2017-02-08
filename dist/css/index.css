@@ -5,7 +5,7 @@
 
 body {
   min-height: 200px;
-  min-width: 400px;
+  min-width: 450px;
   background-color: #ffffff;
 }
 
@@ -25,7 +25,7 @@ header {
   cursor: pointer;
 }
 
-.fa-refresh, .fa-gear, .fa-shopping-cart, .archive-icon, .fa-home {
+.fa-refresh, .fa-gear, .fa-shopping-cart, .archive-icon, .fa-home, .fa-question {
   position: fixed;
   margin-top: 15px;
 }
@@ -35,17 +35,20 @@ header {
 }
 
 .fa-gear {
-  left: 80%;
+  left: 25%;
 }
 
 .fa-home {
   left: 5%;
 }
 .fa-shopping-cart {
-  left: 25%;
+  left: 80%;
 }
-.fa-eye {
+.fa-trash {
   left: 15%;
+}
+.fa-question{
+  left: 35%;
 }
 
 .title {
@@ -77,11 +80,14 @@ hr {
   background-color: #e0ebfd;
 }
 
+h2,
 h3,
 h4,
 h5 {
   font-weight: normal;
 }
+
+h2{font-size: 16px;}
 
 header > h3 {
   margin-top: 15px;
@@ -108,20 +114,12 @@ header > h3 {
   margin-left: 80px;
 }
 
-#ongoing {
-  margin-top: 50px;
-}
-
 .contest-title:hover{
   text-decoration: underline;
   cursor: pointer;
 }
 
 /* Settings panel */
-
-#subscribe {
-  margin-top: 50px;
-}
 
 .subscribeContent > li {
   width: 100%;
@@ -150,9 +148,14 @@ header > h3 {
 .green-text {
   color: #4caf50;
 }
+/*****************************************************/
 
 .circular-border{
   border: 1px solid #cccccc;
   border-radius: 50%;
   padding: 5px;
+}
+
+.top-title{
+  margin-top: 50px;
 }

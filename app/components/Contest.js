@@ -82,7 +82,7 @@ var Contest = React.createClass({
                 <li onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
                     <ContestImage platform={this.props.details.Platform} />
                     <div className='details-container'>
-                        <h3 className="contest-title"  onClick={this.onClickContestTitle}>{this.props.details.Name}</h3>
+                        <h2 className="contest-title"  onClick={this.onClickContestTitle}>{this.props.details.Name}</h2>
                         <HideContestButton visible={this.state.isSelected} details={this.props.details} hideHandler={this.hide} />
                         <ContestTime type={this.props.type} details={this.props.details} /> <br/>
                         <ContestDuration type={this.props.type} details={this.props.details} /> <br/>

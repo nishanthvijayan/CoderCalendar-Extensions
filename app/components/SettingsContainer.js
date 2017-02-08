@@ -11,7 +11,7 @@ var Settings = React.createClass({
 
         return(
             <div className= 'settings-container'>
-                <div id="subscribe">
+                <div id="subscribe" className="top-title">
                     <div className='title'><h3>Subscribe</h3></div>
                     <div className="subscribeContent">
                         {supportedPlatforms.map(function(platform){

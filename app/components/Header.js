@@ -7,6 +7,7 @@ var Header = React.createClass({
     onClickMain:      React.PropTypes.func,
     onClickArchive:      React.PropTypes.func,
     onClickSettings:      React.PropTypes.func,
+    onClickHelp:      React.PropTypes.func,
     isLoading:   React.PropTypes.bool
     },
     onClickBuy: function(){
@@ -27,9 +28,6 @@ var Header = React.createClass({
             chrome.notifications.create(opt);
         }
     },
-    onClickExapnd: function(){
-        chrome.tabs.create({ url: "options.html" });
-    },
     refreshButtonSpinState: function(){
         if (this.props.isLoading){
             return 'fa fa-refresh fa-2x fa-spin'
@@ -43,8 +41,8 @@ var Header = React.createClass({
             <header>
                 <i className="fa fa-home fa-2x"  onClick={this.props.onClickMain} />
                 <i className="fa fa-shopping-cart fa-2x" onClick={this.onClickBuy} />
-                <i className="fa fa-eye archive-icon fa-2x"  onClick={this.onClickArchive} />
-                <h3>Coder Calendar</h3>
+                <i className="fa fa-trash archive-icon fa-2x"  onClick={this.onClickArchive} />
+                <i className="fa fa-question fa-2x" onClick={this.props.onClickHelp} />
                 <i className="fa fa-gear fa-2x" onClick={this.props.onClickSettings} />
                 <i className={this.refreshButtonSpinState()}  onClick={this.props.onClickRefresh} />
             </header>
