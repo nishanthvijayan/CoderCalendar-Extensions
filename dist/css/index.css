@@ -21,10 +21,13 @@ header {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.08);
 }
 
+.fa{
+  cursor: pointer;
+}
+
 .fa-refresh, .fa-gear, .fa-shopping-cart, .fa-eye, .fa-home {
   position: fixed;
   margin-top: 15px;
-  cursor: pointer;
 }
 
 .fa-refresh {
@@ -92,7 +95,7 @@ header > h3 {
   margin-right: 20px;
 }
 
-li > img {
+.contest-image {
   display: inline-block;
   float: left;
   margin-left: 20px;
@@ -111,4 +114,36 @@ li > img {
 .contest-title:hover{
   text-decoration: underline;
   cursor: pointer;
+}
+
+/* Settings panel */
+
+#subscribe {
+  margin-top: 50px;
+}
+
+.subscribeContent > li {
+  width: 100%;
+  list-style: none;
+  display: block;
+}
+
+.platform-setting > img{
+  margin-left: 30px;
+}
+
+.platform-setting > i {
+  border: 1px solid #cccccc;
+  border-radius: 20%;
+  padding: 2px;
+  float: right;
+  margin-right: 30px;
+}
+
+.red-text {
+  color: #f44336;
+}
+
+.green-text {
+  color: #4caf50;
 }

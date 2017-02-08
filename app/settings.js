@@ -7,6 +7,14 @@ var subscription = function (platform){
     return false;
 }
 
+var toggleSubscription = function(platform){
+    if(subscription(platform)){
+        localStorage.setItem(platform, 'false');
+    }else{
+        localStorage.setItem(platform, 'true');
+    }
+}
+
 var initialize = function(){
     var supportedPlatforms = ['HACKEREARTH', 'HACKERRANK', 'CODECHEF', 'CODEFORCES', 'TOPCODER', 'GOOGLE', 'OTHER'];
     $.each(supportedPlatforms,function(i, platform){
@@ -29,5 +37,6 @@ var alertBefore = function(){
 module.exports = {
     subscription: subscription,
     initialize: initialize,
-    isPaid: isPaid
+    isPaid: isPaid,
+    toggleSubscription: toggleSubscription
 };
