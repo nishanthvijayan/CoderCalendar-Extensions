@@ -98,13 +98,14 @@ header > h3 {
 .contest-image {
   display: inline-block;
   float: left;
-  margin-left: 20px;
-  padding-right: 20px;
+  margin-left: 15px;
   padding-top: 10px;
+  max-height: 40px;
+  max-width: 40px;
 }
 
 .details-container{
-  margin-left: 100px;
+  margin-left: 80px;
 }
 
 #ongoing {
@@ -130,6 +131,8 @@ header > h3 {
 
 .platform-setting > img{
   margin-left: 30px;
+  max-height: 40px;
+  max-width: 40px;
 }
 
 .platform-setting > i {
@@ -146,4 +149,10 @@ header > h3 {
 
 .green-text {
   color: #4caf50;
+}
+
+.circular-border{
+  border: 1px solid #cccccc;
+  border-radius: 50%;
+  padding: 5px;
 }

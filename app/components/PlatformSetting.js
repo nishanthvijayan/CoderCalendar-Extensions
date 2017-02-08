@@ -16,19 +16,19 @@ var PlatformSettings = React.createClass({
         var icon_path = function (platform){
             switch (platform){
                 case "CODECHEF":
-                    return "img/cc32.jpg";
+                    return "img/codechef.jpg";
                 case "HACKEREARTH":
-                    return "img/he32.png";
+                    return "img/hackerearth.png";
                 case "CODEFORCES":
-                    return "img/cf32.png";
+                    return "img/codeforces.png";
                 case "TOPCODER":
-                    return "img/tc32.gif";
+                    return "img/topcoder.gif";
                 case "HACKERRANK":
-                    return "img/hr36.png";
+                    return "img/hackerrank.png";
                 case "GOOGLE":
-                    return "img/google32.png";
+                    return "img/google.png";
                 default:
-                    return "img/other32.png";
+                    return "img/other.png";
             }
         }
 
