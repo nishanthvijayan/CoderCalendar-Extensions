@@ -25,7 +25,7 @@ header {
   cursor: pointer;
 }
 
-.fa-refresh, .fa-gear, .fa-shopping-cart, .fa-eye, .fa-home {
+.fa-refresh, .fa-gear, .fa-shopping-cart, .archive-icon, .fa-home {
   position: fixed;
   margin-top: 15px;
 }

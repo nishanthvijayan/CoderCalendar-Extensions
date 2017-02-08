@@ -43,7 +43,7 @@ var Header = React.createClass({
             <header>
                 <i className="fa fa-home fa-2x"  onClick={this.props.onClickMain} />
                 <i className="fa fa-shopping-cart fa-2x" onClick={this.onClickBuy} />
-                <i className="fa fa-eye fa-2x"  onClick={this.onClickArchive} />
+                <i className="fa fa-eye archive-icon fa-2x"  onClick={this.onClickArchive} />
                 <h3>Coder Calendar</h3>
                 <i className="fa fa-gear fa-2x" onClick={this.props.onClickSettings} />
                 <i className={this.refreshButtonSpinState()}  onClick={this.props.onClickRefresh} />
