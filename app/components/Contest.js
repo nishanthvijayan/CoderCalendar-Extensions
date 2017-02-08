@@ -3,6 +3,7 @@ var UtilHelpers = require('../util');
 var ContestTime = require('./Contest/ContestTime');
 var ContestImage = require('./Contest/ContestImage');
 var ContestDuration = require('./Contest/ContestDuration');
+var HideContestButton = require('./Contest/HideContestButton');
 var ContestOptionBar = require('./Contest/ContestOptionBar');
 var Settings = require('../settings');
 var Hide = require('../hide');
@@ -82,14 +83,13 @@ var Contest = React.createClass({
                     <ContestImage platform={this.props.details.Platform} />
                     <div className='details-container'>
                         <h3 className="contest-title"  onClick={this.onClickContestTitle}>{this.props.details.Name}</h3>
-
+                        <HideContestButton visible={this.state.isSelected} details={this.props.details} hideHandler={this.hide} />
                         <ContestTime type={this.props.type} details={this.props.details} /> <br/>
                         <ContestDuration type={this.props.type} details={this.props.details} /> <br/>
                         <ContestOptionBar
                             visible={this.state.isSelected}
                             type={this.props.type}
                             details={this.props.details}
-                            hideHandler={this.hide.bind(this)}
                         />
                     </div>
                 </li>

@@ -8,17 +8,12 @@ var ContestOptionBar = React.createClass({
         visible: React.PropTypes.bool,
         details: React.PropTypes.object,
         type: React.PropTypes.string,
-        hideHandler: React.PropTypes.func
       },
        render: function(){
-        if (this.props.visible){
+        if (this.props.visible && this.props.type == 'upcoming'){
             return(
                 <div>
                   <AddToCalendarButton type={this.props.type} details={this.props.details}/>
-                  <HideContestButton
-                    details={this.props.details}
-                    hideHandler={this.props.hideHandler}
-                  />
                   <AlertButton type={this.props.type} details={this.props.details}/>
                 </div>
             )
