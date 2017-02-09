@@ -26,16 +26,6 @@ var Help = React.createClass({
 	                	<br/>
 	                </h3></li></a>
 	            </div>
-	            <div>
-	                <div className = 'title'>
-	                    <h3>Available on Android</h3>
-	                </div>
-	                <img 
-	                	height="80px" width="180px" alt="Get it on Google Play" 
-	                	src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
-	                	onClick={this.onClickAndroid}
-	                />
-	            </div>
             </div>
         )
     }

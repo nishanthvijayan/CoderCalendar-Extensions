@@ -3,6 +3,7 @@ var MainContainer = require('./MainContainer');
 var ArchiveContainer = require('./ArchiveContainer');
 var SettingsContainer = require('./SettingsContainer');
 var HelpContainer = require('./HelpContainer');
+var MobileContainer = require('./MobileContainer');
 
 var Router = React.createClass({
     propTypes: {
@@ -17,6 +18,8 @@ var Router = React.createClass({
             return (<SettingsContainer />)
         }else if(this.props.route == 'help'){
             return (<HelpContainer />)
+        }else if(this.props.route == 'mobile'){
+            return (<MobileContainer />)
         }
     }
 });

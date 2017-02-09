@@ -25,7 +25,7 @@ header {
   cursor: pointer;
 }
 
-.fa-refresh, .fa-gear, .fa-shopping-cart, .archive-icon, .fa-home, .fa-question {
+.fa-refresh, .fa-gear, .fa-shopping-cart, .archive-icon, .fa-home, .fa-question, .fa-mobile {
   position: fixed;
   margin-top: 15px;
 }
@@ -49,6 +49,9 @@ header {
 }
 .fa-question{
   left: 35%;
+}
+.fa-mobile{
+  left: 45%;
 }
 
 .title {
