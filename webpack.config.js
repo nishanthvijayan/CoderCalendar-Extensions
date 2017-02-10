@@ -1,10 +1,12 @@
 module.exports = {
-	entry: [
-		'./app/index.js'
-	],
+	entry: {
+		"index" : "./app/index.js",
+		"notifier_service": "./app/notifier_service.js"
+
+	},
 	output:{
 		path: __dirname + '/dist/js', 
-		filename: 'index.js'
+		filename: '[name].js'
 	},
 	module: {
 		loaders: [

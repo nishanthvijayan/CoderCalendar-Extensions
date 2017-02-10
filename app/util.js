@@ -23,7 +23,28 @@ var checkIfFirstRun = function (){
     }
 }
 
+var icon_path = function (platform){
+    switch (platform){
+        case "CODECHEF":
+            return "img/codechef.jpg";
+        case "HACKEREARTH":
+            return "img/hackerearth.png";
+        case "CODEFORCES":
+            return "img/codeforces.png";
+        case "TOPCODER":
+            return "img/topcoder.gif";
+        case "HACKERRANK":
+            return "img/hackerrank.png";
+        case "GOOGLE":
+            return "img/google.png";
+        default:
+            return "img/other.png";
+    }
+}
+
+
 module.exports = {
     convertToBrowzerTimezone: convertToBrowzerTimezone,
-    checkIfFirstRun: checkIfFirstRun
+    checkIfFirstRun: checkIfFirstRun,
+    icon_path: icon_path
 };

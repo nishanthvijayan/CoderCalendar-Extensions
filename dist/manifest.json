@@ -19,8 +19,8 @@
   "browser_action": {
     "default_icon": "img/icon32.png",
     "default_popup": "index.html"
+  },
+  "background": {
+    "scripts": ["js/notifier_service.js"]
   }
-  // "background": {
-  //   "scripts": ["js/bg.js"]
-  // }
 }

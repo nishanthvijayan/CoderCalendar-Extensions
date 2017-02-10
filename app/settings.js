@@ -21,7 +21,12 @@ var initialize = function(){
         if(!localStorage.getItem(platform)) localStorage.setItem(platform,'true');
     });
     // Initialize Hidden Contest List
-    if(!localStorage.getItem('HIDDEN_LIST')) localStorage.setItem('HIDDEN_LIST', "{}");
+    if(!localStorage.getItem('HIDDEN_LIST'))
+        localStorage.setItem('HIDDEN_LIST', "{}");
+
+    // Initialize NotificationQueue
+    if(!localStorage.getItem('NOTIFICATIONQueue'))
+        localStorage.setItem('NOTIFICATIONQueue', JSON.stringify({"notifications": []}));
 }
 
 var isPaid = function(){
@@ -31,12 +36,19 @@ var isPaid = function(){
     return true;
 }
 
-var alertBefore = function(){
-    localStorage.getItem('alertBefore');
+var getAlertBeforeTime = function(){
+    return 30 * 60 * 1000;
 }
+
+var getSnoozeTime = function(){
+    return 5 * 60 * 1000;
+}
+
 module.exports = {
     subscription: subscription,
     initialize: initialize,
     isPaid: isPaid,
-    toggleSubscription: toggleSubscription
+    toggleSubscription: toggleSubscription,
+    getAlertBeforeTime: getAlertBeforeTime,
+    getSnoozeTime: getSnoozeTime
 };

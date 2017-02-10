@@ -1,8 +1,8 @@
 var React = require('react');
-var ContestTypeHeader = require('./ContestTypeHeader');
-var ContestList = require('./ContestList');
-var Cache = require('../appCache');
-var Hide = require('../hide')
+var ContestTypeHeader = require('./../ContestTypeHeader');
+var ContestList = require('./../ContestList');
+var Cache = require('../../appCache');
+var Hide = require('../../hide')
 
 var Archive = React.createClass({
     render: function(){

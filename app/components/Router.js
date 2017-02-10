@@ -1,9 +1,9 @@
 var React = require('react');
-var MainContainer = require('./MainContainer');
-var ArchiveContainer = require('./ArchiveContainer');
-var SettingsContainer = require('./SettingsContainer');
-var HelpContainer = require('./HelpContainer');
-var MobileContainer = require('./MobileContainer');
+var MainContainer = require('./Containers/MainContainer');
+var ArchiveContainer = require('./Containers/ArchiveContainer');
+var SettingsContainer = require('./Containers/SettingsContainer');
+var HelpContainer = require('./Containers/HelpContainer');
+var MobileContainer = require('./Containers/MobileContainer');
 
 var Router = React.createClass({
     propTypes: {

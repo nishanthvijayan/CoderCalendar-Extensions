@@ -6,7 +6,7 @@
   "scripts": {
     "production": "webpack -p",
     "start": "./node_modules/.bin/webpack-dev-server --content-base dist --inline --hot",
-    "compile": "webpack"
+    "compile": "webpack --optimize-minimize"
   },
   "author": "Nishanth Vijayan",
   "license": "ISC",

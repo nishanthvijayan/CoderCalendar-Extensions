@@ -1,9 +1,9 @@
 var React = require('react');
-var ContestTypeHeader = require('./ContestTypeHeader');
-var ContestList = require('./ContestList');
-var PlatformSetting = require('./PlatformSetting');
-var Cache = require('../appCache');
-var Hide = require('../hide')
+var ContestTypeHeader = require('../ContestTypeHeader');
+var ContestList = require('../ContestList');
+var PlatformSetting = require('../PlatformSetting');
+var Cache = require('../../appCache');
+var Hide = require('../../hide')
 
 var Settings = React.createClass({
     render: function(){

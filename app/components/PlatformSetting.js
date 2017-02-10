@@ -1,5 +1,6 @@
 var React = require('react');
 var Settings = require('../settings');
+var Util = require('../util');
 
 var PlatformSettings = React.createClass({
     getInitialState: function(){
@@ -13,25 +14,6 @@ var PlatformSettings = React.createClass({
 
     },
     render: function(){
-        var icon_path = function (platform){
-            switch (platform){
-                case "CODECHEF":
-                    return "img/codechef.jpg";
-                case "HACKEREARTH":
-                    return "img/hackerearth.png";
-                case "CODEFORCES":
-                    return "img/codeforces.png";
-                case "TOPCODER":
-                    return "img/topcoder.gif";
-                case "HACKERRANK":
-                    return "img/hackerrank.png";
-                case "GOOGLE":
-                    return "img/google.png";
-                default:
-                    return "img/other.png";
-            }
-        }
-
         var icon_and_color = function(platform){
             if(Settings.subscription(platform))
                 return "fa-check green-text"
@@ -40,7 +22,7 @@ var PlatformSettings = React.createClass({
         }
         return(
             <li className="platform-setting">
-                <img  src={icon_path(this.props.platform)}/>
+                <img  src={Util.icon_path(this.props.platform)}/>
                 <i
                     className={"fa fa-2x "+ icon_and_color(this.props.platform)}
                     id={this.props.platform}

@@ -1,9 +1,9 @@
 var React = require('react');
-var ContestTypeHeader = require('./ContestTypeHeader');
-var ContestList = require('./ContestList');
-var Cache = require('../appCache');
-var Settings = require('../settings');
-var Hide = require('../hide');
+var ContestTypeHeader = require('../ContestTypeHeader');
+var ContestList = require('../ContestList');
+var Cache = require('../../appCache');
+var Settings = require('../../settings');
+var Hide = require('../../hide');
 
 var Main = React.createClass({
     filterContestsBySettings: function(contests){
