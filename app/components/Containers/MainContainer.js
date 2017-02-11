@@ -42,12 +42,33 @@ var Main = React.createClass({
 
         return filteredContests;
     },
+    sortByStartTime: function(a, b){
+        var keyA = Date.parse(a.EndTime),
+            keyB = Date.parse(b.EndTime);
+
+        if(keyA < keyB) return -1;
+        if(keyA > keyB) return 1;
+        return 0;
+    },
+    sortByEndTime: function(a, b){
+        var keyA = Date.parse(a.StartTime),
+            keyB = Date.parse(b.StartTime);
+
+        if(keyA < keyB) return -1;
+        if(keyA > keyB) return 1;
+        return 0;
+    },
     processContestList: function(contests){
         var contestsFilteredBySettings =  {
             ongoing: this.filterContestsBySettings(contests.ongoing),
             upcoming: this.filterContestsBySettings(contests.upcoming)
         };
-        return this.filterContestsByTime(contestsFilteredBySettings);
+        contestsFilteredBySettings = this.filterContestsByTime(contestsFilteredBySettings);
+
+        return {
+            ongoing: contestsFilteredBySettings.ongoing.sort(this.sortByEndTime),
+            upcoming: contestsFilteredBySettings.upcoming.sort(this.sortByStartTime)
+        }
     },
     render: function(){
         contests = this.processContestList(Cache.fetch().data);
