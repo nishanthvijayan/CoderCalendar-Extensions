@@ -16,7 +16,7 @@ var appCache = {
         }
     },
 
-    dataOlderThan: function(minutes = 5){
+    dataOlderThan: function(minutes){
         var now = (new Date()).getTime()/1000;
         return !!((now-(minutes*60)) > localStorage.CACHED_TIME);
     },
