@@ -25,8 +25,11 @@ var initialize = function(){
         localStorage.setItem('HIDDEN_LIST', "{}");
 
     // Initialize NotificationQueue
-    if(!localStorage.getItem('NOTIFICATIONQueue'))
-        localStorage.setItem('NOTIFICATIONQueue', JSON.stringify({"notifications": []}));
+    chrome.storage.local.getBytesInUse("NOTIFICATIONQueue", function(bytes){
+        if(bytes == 0){
+            chrome.storage.local.set({"NOTIFICATIONQueue": []}, function(){});
+        }
+    });
 }
 
 var isPaid = function(){
