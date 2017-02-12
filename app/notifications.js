@@ -26,10 +26,6 @@ var isServisable = function(notification){
     var curTime = getCurTime();
     var alertTime = parseInt(notification.alertTime);
 
-    // console.log("Current Time: " + curTime);
-    // console.log("Alert Time: " + alertTime);
-    // console.log("curTime - AlertTime: " + (curTime-alertTime));
-
     if((curTime - alertTime) > 60000)
         return "ignore"
     else if(Math.abs(alertTime - curTime) <= 60000)
@@ -82,19 +78,21 @@ var serviceQueue = function (){
                   title: contest.Name,
                   message: "will begin in about " + beginInTime,
                   iconUrl: Util.icon_path(contest.Platform),
-                  buttons: [{"title": "Snooze"}, {"title": "Dismiss"}]
+                  buttons: [{"title": "Snooze"}, {"title": "Dismiss"}],
                 }
-                var currentNotificationId;
-                chrome.notifications.create(opt, function(id){currentNotificationId = id;});
-                chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex){
-                  if(notificationId == currentNotificationId && buttonIndex == 0){
-                    chrome.notifications.clear(currentNotificationId, function(){
-                        snooze(contest);
+
+                !function outer(contest){
+                    chrome.notifications.create(opt, function(currentNotificationId){
+                        chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex){
+                            chrome.notifications.clear(notificationId, function(){
+                                if(notificationId == currentNotificationId && buttonIndex == 0){
+                                    snooze(contest);
+                                }
+                            });
+                        });
                     });
-                  }else if(notificationId == currentNotificationId && buttonIndex == 1){
-                    chrome.notifications.clear(currentNotificationId, function(){});
-                  }
-                });
+                }(contest)
+
                 servicedRequests = servicedRequests + 1;
             }else if(servisableStatus == "ignore"){
                 servicedRequests = servicedRequests + 1;
@@ -108,17 +106,21 @@ var serviceQueue = function (){
 }
 
 var addAlert = function(contest){
-    var startTime = Date.parse(contest.StartTime);
-    var alertBefore = Settings.getAlertBeforeTime();
-    var alertTime = startTime - alertBefore;
-    saveToQueue(contest, alertTime);
+    Settings.getAlertBeforeTime(function(response){
+        var alertBefore = response['ALERT_BEFORE_TIME'];
+        var startTime = Date.parse(contest.StartTime);
+        var alertTime = startTime - alertBefore;
+        saveToQueue(contest, alertTime);
+    });
 }
 
 var snooze = function(contest){
-    var curTime = getCurTime();
-    var snoozeTime = Settings.getSnoozeTime();
-    var alertTime = curTime + snoozeTime;
-    saveToQueue(contest, alertTime);
+    Settings.getSnoozeInterval(function(response){
+        var snoozeTime = response['SNOOZE_INTERVAL'];
+        var curTime = getCurTime();
+        var alertTime = curTime + snoozeTime;
+        saveToQueue(contest, alertTime);
+    });
 }
 
 

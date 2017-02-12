@@ -30,6 +30,18 @@ var initialize = function(){
             chrome.storage.local.set({"NOTIFICATIONQueue": []}, function(){});
         }
     });
+
+    chrome.storage.local.getBytesInUse("ALERT_BEFORE_TIME", function(bytes){
+        if(bytes == 0){
+            chrome.storage.local.set({"ALERT_BEFORE_TIME": (30 * 60 * 1000)}, function(){});
+        }
+    });
+
+    chrome.storage.local.getBytesInUse("SNOOZE_INTERVAL", function(bytes){
+        if(bytes == 0){
+            chrome.storage.local.set({"SNOOZE_INTERVAL": (5 * 60 * 1000)}, function(){});
+        }
+    });
 }
 
 var isPaid = function(){
@@ -39,12 +51,12 @@ var isPaid = function(){
     return true;
 }
 
-var getAlertBeforeTime = function(){
-    return 30 * 60 * 1000;
+var getAlertBeforeTime = function(callback){
+    chrome.storage.local.get("ALERT_BEFORE_TIME", callback);
 }
 
-var getSnoozeTime = function(){
-    return 5 * 60 * 1000;
+var getSnoozeInterval = function(callback){
+    chrome.storage.local.get("SNOOZE_INTERVAL", callback);
 }
 
 module.exports = {
@@ -53,5 +65,5 @@ module.exports = {
     isPaid: isPaid,
     toggleSubscription: toggleSubscription,
     getAlertBeforeTime: getAlertBeforeTime,
-    getSnoozeTime: getSnoozeTime
+    getSnoozeInterval: getSnoozeInterval
 };
