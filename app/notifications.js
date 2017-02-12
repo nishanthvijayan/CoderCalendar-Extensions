@@ -3,12 +3,20 @@ var moment = require('moment');
 var Util = require('./util');
 var Settings = require('./settings');
 
-var isDuplicate = function(){
-    return false;
-}
+var haveNoAlerts = function(contest, success_callback, failure_callback){
+    if(failure_callback == undefined)
+        failure_callback = function(){};
 
-var isValidAlertData = function(){
-    return true;
+    chrome.storage.local.get("NOTIFICATIONQueue", function(response){
+        var notificationQueue = response.NOTIFICATIONQueue;
+        for (var i = 0; i <= notificationQueue.length - 1; i++) {
+            if(contest.Name == notificationQueue[i].contest.Name && contest.EndTime == notificationQueue[i].contest.EndTime){
+                failure_callback();
+                return;
+            }
+        }
+        success_callback();
+    });
 }
 
 var getCurTime = function (){
@@ -20,7 +28,7 @@ var getCurTime = function (){
 /*
     yes - alert is scheduled to be within a minute
     no - alert is scheduled to be after a minute
-    ignore - alert time is already over
+    ignore - alert time is already over TODO: & contest has already started
 */
 var isServisable = function(notification){
     var curTime = getCurTime();
@@ -51,11 +59,11 @@ var saveToQueue = function (contest, alertTime){
         var alertTime = curTime + (1000 * 60 * 2);
         // 
 
-        if(isValidAlertData(contest, alertTime) && !isDuplicate(contest, alertTime)){
+        haveNoAlerts(contest, function(){
             notificationQueue.push({"alertTime": alertTime, "contest": contest});
             notificationQueue.sort(sortByAlertTime);
             chrome.storage.local.set({"NOTIFICATIONQueue": notificationQueue}, function(){});
-        }
+        });
     });
 }
 
@@ -123,8 +131,22 @@ var snooze = function(contest){
     });
 }
 
+var removeAlert = function(contest){
+    chrome.storage.local.get("NOTIFICATIONQueue", function(response){
+        var notificationQueue = response.NOTIFICATIONQueue;
+        for (var i = 0; i <= notificationQueue.length - 1; i++) {
+            if(contest.Name == notificationQueue[i].contest.Name && contest.EndTime == notificationQueue[i].contest.EndTime){
+                notificationQueue.splice(i, 1);
+                break;
+            }
+        }
+        chrome.storage.local.set({"NOTIFICATIONQueue": notificationQueue}, function(){});
+    });
+}
 
 module.exports = {
     addAlert: addAlert,
-    serviceQueue: serviceQueue
+    removeAlert: removeAlert,
+    serviceQueue: serviceQueue,
+    haveNoAlerts: haveNoAlerts
 };

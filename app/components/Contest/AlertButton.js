@@ -4,13 +4,24 @@ var Notifications = require('../../notifications');
 var Util = require('../../util')
 
 var AlertButton = React.createClass({
+    getInitialState: function(){
+        return{
+            hasAlert: false
+        }
+    },
     onClickHandler: function(){
       var component = this;
 
       if(Settings.isPaid()){
-        Notifications.addAlert(this.props.details);
-      }
-      else{
+        if(this.state.hasAlert){
+          Notifications.removeAlert(this.props.details);
+          this.setState({hasAlert: false});
+        }else{
+          Notifications.addAlert(this.props.details);
+          this.setState({hasAlert: true});
+        }
+
+      }else{
         var opt = {
           type: "basic",
           title: "Desktop Notification 10 min before contest",
@@ -36,12 +47,30 @@ var AlertButton = React.createClass({
         });
       }
     },
+    alertIcon: function(){
+
+    },
+    componentWillMount: function(){
+      var component = this;
+      Notifications.haveNoAlerts(this.props.details, function(){
+        component.setState({hasAlert: false});
+      },function(){
+        component.setState({hasAlert: true});
+      });
+    },
     render: function(){
+        if(this.state.hasAlert){
+          var icon = "fa-bell-slash";
+          var color = "#FF0000"
+        }else{
+          var icon = "fa-bell-o";
+          var color = "#4caf50";
+        }
         if (this.props.type == 'upcoming'){
             return(
               <i
-                className="fa fa-bell-o fa-lg option-icon"
-                style={{"color": "#000000", "cursor": "pointer"}}
+                className={"fa " + icon + " fa-lg option-icon"}
+                style={{"color": color, "cursor": "pointer"}}
                 onClick={this.onClickHandler}
                 title="Desktop Notification Alert"
               />
