@@ -40,13 +40,13 @@ var Header = React.createClass({
     render: function(){
         return(
             <header>
-                <i className="fa fa-home fa-2x"  onClick={this.props.onClickMain} />
-                <i className="fa fa-shopping-cart fa-2x" onClick={this.onClickBuy} />
-                <i className="fa fa-trash archive-icon fa-2x"  onClick={this.onClickArchive} />
-                <i className="fa fa-question fa-2x" onClick={this.props.onClickHelp} />
-                <i className="fa fa-mobile fa-2x" onClick={this.props.onClickMobile} />
-                <i className="fa fa-gear fa-2x" onClick={this.props.onClickSettings} />
-                <i className={this.refreshButtonSpinState()}  onClick={this.props.onClickRefresh} />
+                <i className="fa fa-home fa-2x"  onClick={this.props.onClickMain} title="Home" />
+                <i className="fa fa-shopping-cart fa-2x" onClick={this.onClickBuy} title="Buy Premium" />
+                <i className="fa fa-trash archive-icon fa-2x"  onClick={this.onClickArchive} title="Hidden Contests" />
+                <i className="fa fa-question fa-2x" onClick={this.props.onClickHelp} title="Help" />
+                <i className="fa fa-mobile fa-2x" onClick={this.props.onClickMobile} title="Mobile App" />
+                <i className="fa fa-gear fa-2x" onClick={this.props.onClickSettings} title="Settings" />
+                <i className={this.refreshButtonSpinState()}  onClick={this.props.onClickRefresh} title="Refresh" />
             </header>
         )
     }

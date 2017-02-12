@@ -62,9 +62,11 @@ var AlertButton = React.createClass({
         if(this.state.hasAlert){
           var icon = "fa-bell-slash";
           var color = "#FF0000"
+          var action = "Remove ";
         }else{
           var icon = "fa-bell-o";
           var color = "#4caf50";
+          var action = "Add ";
         }
         if (this.props.type == 'upcoming'){
             return(
@@ -72,7 +74,7 @@ var AlertButton = React.createClass({
                 className={"fa " + icon + " fa-lg option-icon"}
                 style={{"color": color, "cursor": "pointer"}}
                 onClick={this.onClickHandler}
-                title="Desktop Notification Alert"
+                title={ action + "Desktop Notification Alert"}
               />
             )
         }else{
