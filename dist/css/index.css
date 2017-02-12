@@ -136,12 +136,17 @@ header > h3 {
   max-width: 40px;
 }
 
+
 .platform-setting > i {
   border: 1px solid #cccccc;
   border-radius: 20%;
   padding: 2px;
   float: right;
   margin-right: 30px;
+}
+
+.notification-setting{
+  font-size: 120%;
 }
 
 .red-text {

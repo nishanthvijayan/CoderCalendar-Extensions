@@ -59,11 +59,21 @@ var getSnoozeInterval = function(callback){
     chrome.storage.local.get("SNOOZE_INTERVAL", callback);
 }
 
+var setAlertBeforeTime = function(value){
+    chrome.storage.local.set({"ALERT_BEFORE_TIME": value});
+}
+
+var setSnoozeInterval = function(value){
+    chrome.storage.local.set({"SNOOZE_INTERVAL": value});
+}
+
 module.exports = {
     subscription: subscription,
     initialize: initialize,
     isPaid: isPaid,
     toggleSubscription: toggleSubscription,
     getAlertBeforeTime: getAlertBeforeTime,
-    getSnoozeInterval: getSnoozeInterval
+    getSnoozeInterval: getSnoozeInterval,
+    setAlertBeforeTime: setAlertBeforeTime,
+    setSnoozeInterval: setSnoozeInterval
 };

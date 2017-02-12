@@ -14,9 +14,15 @@ var Help = React.createClass({
 	                
 	                <a><li><h3>
 	                	<br/>
-	                	Click <i className="fa fa-bell-o fa-lg option-icon"/> to recieve Desktop Notification alert 10 minutes before a contest starts!
+	                	Click <i className="fa fa-bell-o fa-lg green-text option-icon"/> to recieve Desktop Notification alert few minutes before a contest starts!
 	                	<br/><br/>
 	                	<b>Note:</b> Chrome should be open to recieve the Notification.
+	                	<br/>
+	                </h3></li></a>
+	                <hr/>
+	                <a><li><h3>
+	                	<br/>
+	                	Click <i className="fa fa-bell-slash fa-lg red-text option-icon"/> to remove Desktop Notification alert
 	                	<br/>
 	                </h3></li></a>
 	                <hr/>
