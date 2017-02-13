@@ -1,5 +1,5 @@
 var React = require('react');
-var Settings = require('../settings');
+var Payment = require('../payment');
 
 var Header = React.createClass({
     propTypes: {
@@ -12,13 +12,29 @@ var Header = React.createClass({
     isLoading:   React.PropTypes.bool
     },
     onClickBuy: function(){
-        // pass
+        var opt = {
+          type: "basic",
+          title: "Coder's Calendar Premium",
+          message: "Coder's Calendar now has a freemium model. Premium users can " +
+          "hide / unhide contests and add desktop notification alerts for upcoming contests",
+          iconUrl: "../img/notification.png",
+          buttons: [{"title": "Upgrade"}]
+        }
+        var currentNotificationId;
+        chrome.notifications.create(opt, function(id){currentNotificationId = id;});
+        chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex){
+            chrome.notifications.clear(notificationId, function(){
+                if(notificationId == currentNotificationId && buttonIndex == 0){
+                    Payment.buyPremium();
+                    console.log("Upgrade Button clicked");
+                }
+            });
+        });
     },
     onClickArchive: function(){
-        if(Settings.isPaid()){
+        Payment.isPremiumUser(function(){
             this.props.onClickArchive();
-        }
-        else{
+        }, function(){
             var opt = {
               type: "basic",
               title: "View Archived Contests - Premium Feature",
@@ -26,8 +42,17 @@ var Header = React.createClass({
               iconUrl: "../img/notification.png",
               buttons: [{"title": "Upgrade"}]
             }
-            chrome.notifications.create(opt);
-        }
+            var currentNotificationId;
+            chrome.notifications.create(opt, function(id){currentNotificationId = id;});
+            chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex){
+                chrome.notifications.clear(notificationId, function(){
+                    if(notificationId == currentNotificationId && buttonIndex == 0){
+                        Payment.buyPremium();
+                        console.log("Upgrade Button clicked");
+                    }
+                });
+            });
+        });
     },
     refreshButtonSpinState: function(){
         if (this.props.isLoading){

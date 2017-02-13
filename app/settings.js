@@ -44,13 +44,6 @@ var initialize = function(){
     });
 }
 
-var isPaid = function(){
-    // paid
-    // free
-    // Something went wrong with a desktop notification
-    return true;
-}
-
 var getAlertBeforeTime = function(callback){
     chrome.storage.local.get("ALERT_BEFORE_TIME", callback);
 }
@@ -70,7 +63,6 @@ var setSnoozeInterval = function(value){
 module.exports = {
     subscription: subscription,
     initialize: initialize,
-    isPaid: isPaid,
     toggleSubscription: toggleSubscription,
     getAlertBeforeTime: getAlertBeforeTime,
     getSnoozeInterval: getSnoozeInterval,

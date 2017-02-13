@@ -7,6 +7,7 @@ var HideContestButton = require('./Contest/HideContestButton');
 var ContestOptionBar = require('./Contest/ContestOptionBar');
 var Settings = require('../settings');
 var Hide = require('../hide');
+var Payment = require('../payment');
 
 var Contest = React.createClass({
     propTypes: {
@@ -34,36 +35,34 @@ var Contest = React.createClass({
         });
     },
     archive: function(){
-        if(Settings.isPaid()){
+        component = this;
+        Payment.isPremiumUser(function(){
             Hide.hideContest(this.props.details);
-            this.setState({visible: false, archived: true});
-        }
-        else{
-            var opt = {
+            component.setState({visible: false, archived: true});
+        }, function(){
+            var currentNotificationId;
+
+            chrome.notifications.create({
                 type: "basic",
                 title: "Archive/Hide Contests - Premium Feature",
                 message: "Upgrade Coder's Calendar to Premium version to use this feature",
                 iconUrl: "../img/notification.png",
                 buttons: [{"title": "Upgrade"}]
-            }
-            chrome.notifications.create(opt);
-        }
+            }, function(id){currentNotificationId = id;});
+
+            chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex){
+                chrome.notifications.clear(notificationId, function(){
+                    if(notificationId == currentNotificationId && buttonIndex == 0){
+                        Payment.buyPremium();
+                        console.log("Upgrade Button clicked");
+                    }
+                });
+            });
+        });
     },
     unArchive: function(){
-        if(Settings.isPaid()){
-            Hide.showContest(this.props.details);
-            this.setState({visible: false, archived: false});
-        }
-        else{
-            var opt = {
-                type: "basic",
-                title: "Archive/Hide Contests - Premium Feature",
-                message: "Upgrade Coder's Calendar to Premium version to use this feature",
-                iconUrl: "../img/notification.png",
-                buttons: [{"title": "Upgrade"}]
-            }
-            chrome.notifications.create(opt);
-        }
+        Hide.showContest(this.props.details);
+        this.setState({visible: false, archived: false});
     },
     hide: function(){
         if(this.state.archived){

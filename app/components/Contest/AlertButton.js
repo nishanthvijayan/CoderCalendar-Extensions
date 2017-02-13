@@ -1,7 +1,9 @@
 var React = require('react');
+var moment = require('moment');
 var Settings = require('../../settings');
 var Notifications = require('../../notifications');
 var Util = require('../../util')
+var Payment = require('../../payment');
 
 var AlertButton = React.createClass({
     getInitialState: function(){
@@ -12,19 +14,18 @@ var AlertButton = React.createClass({
     onClickHandler: function(){
       var component = this;
 
-      if(Settings.isPaid()){
-        if(this.state.hasAlert){
-          Notifications.removeAlert(this.props.details);
-          this.setState({hasAlert: false});
+      Payment.isPremiumUser(function(){
+        if(component.state.hasAlert){
+          Notifications.removeAlert(component.props.details);
+          component.setState({hasAlert: false});
         }else{
-          Notifications.addAlert(this.props.details);
-          this.setState({hasAlert: true});
+          Notifications.addAlert(component.props.details);
+          component.setState({hasAlert: true});
         }
-
-      }else{
+      }, function(){
         var opt = {
           type: "basic",
-          title: "Desktop Notification 10 min before contest",
+          title: "Set Desktop Notification alert few min before contest",
           message: "PERMIUM FEATURE. Upgrade Coder's Calendar to Premium version to use this feature",
           iconUrl: "../img/notification.png",
           buttons: [{"title": "See Example!"}, {"title": "Upgrade"}]
@@ -32,23 +33,28 @@ var AlertButton = React.createClass({
         var currentNotificationId;
         chrome.notifications.create(opt, function(id){currentNotificationId = id;});
         chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex){
-          if(notificationId == currentNotificationId && buttonIndex == 0){
-            var opt = {
-              type: "basic",
-              title: component.props.details.Name,
-              message: "will begin in " + component.props.details.Duration,
-              iconUrl: Util.icon_path(component.props.details.Platform)
-            }
-            chrome.notifications.create(opt);
-          }else if(notificationId == currentNotificationId && buttonIndex == 1){
-            // TODO: Lead to Upgrade path
-            return null
-          }
-        });
-      }
-    },
-    alertIcon: function(){
+          chrome.notifications.clear(notificationId, function(){
+            if(notificationId == currentNotificationId && buttonIndex == 0){
+              var curTime = Util.getCurTime();
+              var startTime = Date.parse(component.props.details.StartTime);
+              var beginInTime = moment.duration(startTime - curTime).humanize();
 
+              var opt = {
+                type: "basic",
+                title: component.props.details.Name,
+                message: "will start in about " + beginInTime + "\nat " + component.props.details.StartTime +
+                "\n\n(This is an example, so snooze won't work.)",
+                iconUrl: Util.icon_path(component.props.details.Platform),
+                buttons: [{"title": "Snooze"}, {"title": "Dismiss"}],
+              }
+              chrome.notifications.create(opt);
+            }else if(notificationId == currentNotificationId && buttonIndex == 1){
+              Payment.buyPremium();
+              console.log("Upgrade Button clicked");
+            }
+          });
+        });
+      });
     },
     componentWillMount: function(){
       var component = this;

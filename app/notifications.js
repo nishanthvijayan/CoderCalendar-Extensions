@@ -19,24 +19,19 @@ var haveNoAlerts = function(contest, success_callback, failure_callback){
     });
 }
 
-var getCurTime = function (){
-    var d = new Date();
-    var offset = -(d.getTimezoneOffset());
-    return (d.getTime() + offset*60000 - 19800000);
-}
-
 /*
     yes - alert is scheduled to be within a minute
     no - alert is scheduled to be after a minute
     ignore - contest has already started
 */
 var isServisable = function(notification){
-    var curTime = getCurTime();
+    // TODO: Both should be in the same timezone
+    var curTime = Util.getCurTime();
     var alertTime = parseInt(notification.alertTime);
 
     if((curTime > Date.parse(notification.contest.StartTime)))
         return "ignore"
-    else if((alertTime - curTime) <= 60000)
+    else if((alertTime - curTime) <= 120000)
         return "yes"
     else
         return "no"
@@ -50,7 +45,7 @@ var saveToQueue = function (contest, alertTime){
     chrome.storage.local.get("NOTIFICATIONQueue", function(response){
         var notificationQueue = response.NOTIFICATIONQueue;
         // TODO: comment out below
-        var curTime = getCurTime();
+        var curTime = Util.getCurTime();
         var alertTime = curTime + (1000 * 60 * 2);
         // 
 
@@ -64,7 +59,6 @@ var saveToQueue = function (contest, alertTime){
 
 var serviceQueue = function (){
     chrome.storage.local.get("NOTIFICATIONQueue", function(response){
-        console.log(response);
         var notificationQueue = response.NOTIFICATIONQueue;
         var servicedRequests = 0;
         for (var i = 0; i <= notificationQueue.length - 1; i++) {
@@ -73,13 +67,13 @@ var serviceQueue = function (){
             var servisableStatus = isServisable(notification);
             if(servisableStatus == "yes"){
 
-                var curTime = getCurTime();
+                var curTime = Util.getCurTime();
                 var startTime = Date.parse(contest.StartTime);
                 var beginInTime = moment.duration(startTime - curTime).humanize();
                 var opt = {
                   type: "basic",
                   title: contest.Name,
-                  message: "will begin in about " + beginInTime,
+                  message: "will start in about " + beginInTime + "\nat " + contest.StartTime,
                   iconUrl: Util.icon_path(contest.Platform),
                   buttons: [{"title": "Snooze"}, {"title": "Dismiss"}],
                 }
@@ -120,7 +114,7 @@ var addAlert = function(contest){
 var snooze = function(contest){
     Settings.getSnoozeInterval(function(response){
         var snoozeTime = response['SNOOZE_INTERVAL'];
-        var curTime = getCurTime();
+        var curTime = Util.getCurTime();
         var alertTime = curTime + snoozeTime;
         saveToQueue(contest, alertTime);
     });
