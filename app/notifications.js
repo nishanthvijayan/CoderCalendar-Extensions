@@ -28,15 +28,15 @@ var getCurTime = function (){
 /*
     yes - alert is scheduled to be within a minute
     no - alert is scheduled to be after a minute
-    ignore - alert time is already over TODO: & contest has already started
+    ignore - contest has already started
 */
 var isServisable = function(notification){
     var curTime = getCurTime();
     var alertTime = parseInt(notification.alertTime);
 
-    if((curTime - alertTime) > 60000)
+    if((curTime > Date.parse(notification.contest.StartTime)))
         return "ignore"
-    else if(Math.abs(alertTime - curTime) <= 60000)
+    else if((alertTime - curTime) <= 60000)
         return "yes"
     else
         return "no"
