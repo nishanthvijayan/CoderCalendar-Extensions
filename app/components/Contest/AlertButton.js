@@ -27,7 +27,7 @@ var AlertButton = React.createClass({
           type: "basic",
           title: "Set Desktop Notification alert few min before contest",
           message: "PERMIUM FEATURE. Upgrade Coder's Calendar to Premium version to use this feature",
-          iconUrl: "../img/notification.png",
+          iconUrl: "../img/icon32.png",
           buttons: [{"title": "See Example!"}, {"title": "Upgrade"}]
         }
         var currentNotificationId;

@@ -17,7 +17,7 @@ var Header = React.createClass({
           title: "Coder's Calendar Premium",
           message: "Coder's Calendar now has a freemium model. Premium users can " +
           "hide / unhide contests and add desktop notification alerts for upcoming contests",
-          iconUrl: "../img/notification.png",
+          iconUrl: "../img/icon32.png",
           buttons: [{"title": "Upgrade"}]
         }
         var currentNotificationId;
@@ -39,7 +39,7 @@ var Header = React.createClass({
               type: "basic",
               title: "View Archived Contests - Premium Feature",
               message: "Upgrade Coder's Calendar to Premium version to use this feature",
-              iconUrl: "../img/notification.png",
+              iconUrl: "../img/icon32.png",
               buttons: [{"title": "Upgrade"}]
             }
             var currentNotificationId;
