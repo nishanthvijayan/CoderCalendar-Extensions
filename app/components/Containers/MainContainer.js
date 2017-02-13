@@ -43,20 +43,10 @@ var Main = React.createClass({
         return filteredContests;
     },
     sortByStartTime: function(a, b){
-        var keyA = Date.parse(a.EndTime),
-            keyB = Date.parse(b.EndTime);
-
-        if(keyA < keyB) return -1;
-        if(keyA > keyB) return 1;
-        return 0;
+        return Date.parse(a.StartTime) - Date.parse(b.StartTime);
     },
     sortByEndTime: function(a, b){
-        var keyA = Date.parse(a.StartTime),
-            keyB = Date.parse(b.StartTime);
-
-        if(keyA < keyB) return -1;
-        if(keyA > keyB) return 1;
-        return 0;
+        return Date.parse(a.EndTime)- Date.parse(b.EndTime);
     },
     processContestList: function(contests){
         var contestsFilteredBySettings =  {

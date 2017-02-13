@@ -43,12 +43,7 @@ var isServisable = function(notification){
 }
 
 var sortByAlertTime = function(a, b){
-    var keyA = a.alertTime,
-        keyB = b.alertTime;
-
-    if(keyA < keyB) return -1;
-    if(keyA > keyB) return 1;
-    return 0;
+    return a.alertTime - b.alertTime;
 }
 
 var saveToQueue = function (contest, alertTime){
