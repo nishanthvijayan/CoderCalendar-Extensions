@@ -32,8 +32,9 @@ var Header = React.createClass({
         });
     },
     onClickArchive: function(){
+        var component = this;
         Payment.isPremiumUser(function(){
-            this.props.onClickArchive();
+            component.props.onClickArchive();
         }, function(){
             var opt = {
               type: "basic",
