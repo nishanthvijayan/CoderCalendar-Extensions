@@ -37,7 +37,7 @@ var Contest = React.createClass({
     archive: function(){
         component = this;
         Payment.isPremiumUser(function(){
-            Hide.hideContest(this.props.details);
+            Hide.hideContest(component.props.details);
             component.setState({visible: false, archived: true});
         }, function(){
             var currentNotificationId;
