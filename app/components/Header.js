@@ -1,5 +1,7 @@
 var React = require('react');
 var Payment = require('../payment');
+var ArchiveIcon = require('./ArchiveIcon');
+var BuyIcon = require('./BuyIcon');
 
 var Header = React.createClass({
     propTypes: {
@@ -31,30 +33,6 @@ var Header = React.createClass({
             });
         });
     },
-    onClickArchive: function(){
-        var component = this;
-        Payment.isPremiumUser(function(){
-            component.props.onClickArchive();
-        }, function(){
-            var opt = {
-              type: "basic",
-              title: "View Archived Contests - Premium Feature",
-              message: "Upgrade Coder's Calendar to Premium version to use this feature",
-              iconUrl: "../img/icon32.png",
-              buttons: [{"title": "Upgrade"}]
-            }
-            var currentNotificationId;
-            chrome.notifications.create(opt, function(id){currentNotificationId = id;});
-            chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex){
-                chrome.notifications.clear(notificationId, function(){
-                    if(notificationId == currentNotificationId && buttonIndex == 0){
-                        Payment.buyPremium();
-                        console.log("Upgrade Button clicked");
-                    }
-                });
-            });
-        });
-    },
     refreshButtonSpinState: function(){
         if (this.props.isLoading){
             return 'fa fa-refresh fa-2x fa-spin'
@@ -67,8 +45,8 @@ var Header = React.createClass({
         return(
             <header>
                 <i className="fa fa-home fa-2x"  onClick={this.props.onClickMain} title="Home" />
-                <i className="fa fa-shopping-cart fa-2x" onClick={this.onClickBuy} title="Buy Premium" />
-                <i className="fa fa-trash archive-icon fa-2x"  onClick={this.onClickArchive} title="Hidden Contests" />
+                <ArchiveIcon onClickArchive={this.props.onClickArchive} />
+                <BuyIcon />
                 <i className="fa fa-question fa-2x" onClick={this.props.onClickHelp} title="Help" />
                 <i className="fa fa-mobile fa-2x" onClick={this.props.onClickMobile} title="Mobile App" />
                 <i className="fa fa-gear fa-2x" onClick={this.props.onClickSettings} title="Settings" />

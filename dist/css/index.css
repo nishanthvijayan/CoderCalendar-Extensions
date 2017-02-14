@@ -30,28 +30,32 @@ header {
   margin-top: 15px;
 }
 
-.fa-refresh {
-  left: 90%;
-}
-
-.fa-gear {
-  left: 25%;
-}
-
 .fa-home {
   left: 5%;
 }
+
+.fa-gear {
+  left: 15%;
+}
+
+.fa-question{
+  left: 25%;
+}
+
+.fa-mobile{
+  left: 35%;
+}
+
+.fa-trash {
+  left: 80%;
+}
+
 .fa-shopping-cart {
   left: 80%;
 }
-.fa-trash {
-  left: 15%;
-}
-.fa-question{
-  left: 35%;
-}
-.fa-mobile{
-  left: 45%;
+
+.fa-refresh {
+  left: 90%;
 }
 
 .title {
