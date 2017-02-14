@@ -17,8 +17,10 @@ var ContestOptionBar = React.createClass({
                   <AlertButton type={this.props.type} details={this.props.details}/>
                 </div>
             )
-        }else{
+        }else if(this.props.type == 'upcoming'){
             return <br/>
+        }else{
+            return null;
         }
       }
 });

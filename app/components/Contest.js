@@ -83,7 +83,8 @@ var Contest = React.createClass({
                     <div className='details-container'>
                         <h2 className="contest-title"  onClick={this.onClickContestTitle}>{this.props.details.Name}</h2>
                         <HideContestButton visible={this.state.isSelected} details={this.props.details} hideHandler={this.hide} />
-                        <ContestTime type={this.props.type} details={this.props.details} /> <br/>
+                        <br/>
+                        <ContestTime type={this.props.type} details={this.props.details} />
                         <ContestDuration type={this.props.type} details={this.props.details} /> <br/>
                         <ContestOptionBar
                             visible={this.state.isSelected}
