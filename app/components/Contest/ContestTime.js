@@ -1,20 +1,18 @@
 var React = require('react');
-var UtilHelpers = require('../../util');
 var moment = require('moment');
 
 var ContestTime = React.createClass({
        render: function(){
             if (this.props.type == 'live'){
-                var time = Date.parse(this.props.details.EndTime);
+                var time = this.props.details.EndTime.slice(0,21);
                 var timeText = 'End';
             } else{
-                var time = Date.parse(this.props.details.StartTime);
+                var time = this.props.details.StartTime.slice(0,21);
                 var timeText = 'Start';
             }
-            var timezoneCorrectedTime  = UtilHelpers.convertToBrowzerTimezone(time).toString().slice(0,21);
-            var humanReadableTime = moment(timezoneCorrectedTime).fromNow();
+            var humanReadableTime = moment(time).fromNow();
 
-            return (<h4>{timeText}: {timezoneCorrectedTime} ({humanReadableTime})</h4>)
+            return (<h4>{timeText}: {time} ({humanReadableTime})</h4>)
         }
 });
 

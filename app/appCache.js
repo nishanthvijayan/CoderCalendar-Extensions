@@ -1,5 +1,18 @@
+var Util = require("./util");
+
 var appCache = {
     store: function(contests){
+        contests.ongoing = contests.ongoing.map(function(contest){
+            contest.EndTime = Util.convertToBrowzerTimezone(contest.EndTime).toString();
+            return contest;
+        });
+
+        contests.upcoming = contests.upcoming.map(function(contest){
+            contest.StartTime = Util.convertToBrowzerTimezone(contest.StartTime).toString();
+            contest.EndTime = Util.convertToBrowzerTimezone(contest.EndTime).toString();
+            return contest;
+        });
+
         var now = (new Date()).getTime()/1000;
         localStorage.CACHED_DATA  = JSON.stringify(contests);
         localStorage.CACHED_TIME = now;

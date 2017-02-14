@@ -35,14 +35,15 @@ var AlertButton = React.createClass({
         chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex){
           chrome.notifications.clear(notificationId, function(){
             if(notificationId == currentNotificationId && buttonIndex == 0){
-              var curTime = Util.getCurTime();
+              var curTime = new Date().getTime();
               var startTime = Date.parse(component.props.details.StartTime);
               var beginInTime = moment.duration(startTime - curTime).humanize();
 
               var opt = {
                 type: "basic",
                 title: component.props.details.Name,
-                message: "will start in about " + beginInTime + "\nat " + component.props.details.StartTime +
+                message: "will start in about " + beginInTime +
+                "\nat " + component.props.details.StartTime.slice(0,21) +
                 "\n\n(This is an example, so snooze won't work.)",
                 iconUrl: Util.icon_path(component.props.details.Platform),
                 buttons: [{"title": "Snooze"}, {"title": "Dismiss"}],

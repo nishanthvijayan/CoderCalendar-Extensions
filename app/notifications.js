@@ -25,8 +25,7 @@ var haveNoAlerts = function(contest, success_callback, failure_callback){
     ignore - contest has already started
 */
 var isServisable = function(notification){
-    // TODO: Both should be in the same timezone
-    var curTime = Util.getCurTime();
+    var curTime = new Date().getTime();
     var alertTime = parseInt(notification.alertTime);
 
     if((curTime > Date.parse(notification.contest.StartTime)))
@@ -45,7 +44,7 @@ var saveToQueue = function (contest, alertTime){
     chrome.storage.local.get("NOTIFICATIONQueue", function(response){
         var notificationQueue = response.NOTIFICATIONQueue;
         // TODO: comment out below
-        var curTime = Util.getCurTime();
+        var curTime = new Date().getTime();
         var alertTime = curTime + (1000 * 60 * 2);
         // 
 
@@ -67,13 +66,13 @@ var serviceQueue = function (){
             var servisableStatus = isServisable(notification);
             if(servisableStatus == "yes"){
 
-                var curTime = Util.getCurTime();
+                var curTime = new Date().getTime();
                 var startTime = Date.parse(contest.StartTime);
                 var beginInTime = moment.duration(startTime - curTime).humanize();
                 var opt = {
                   type: "basic",
                   title: contest.Name,
-                  message: "will start in about " + beginInTime + "\nat " + contest.StartTime,
+                  message: "will start in about " + beginInTime + "\nat " + contest.StartTime.slice(0,21),
                   iconUrl: Util.icon_path(contest.Platform),
                   buttons: [{"title": "Snooze"}, {"title": "Dismiss"}],
                 }
@@ -114,7 +113,7 @@ var addAlert = function(contest){
 var snooze = function(contest){
     Settings.getSnoozeInterval(function(response){
         var snoozeTime = response['SNOOZE_INTERVAL'];
-        var curTime = Util.getCurTime();
+        var curTime = new Date().getTime();
         var alertTime = curTime + snoozeTime;
         saveToQueue(contest, alertTime);
     });

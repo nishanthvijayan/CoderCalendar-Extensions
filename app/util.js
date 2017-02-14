@@ -7,12 +7,6 @@ var convertToBrowzerTimezone = function (date){
     return newDate;
 }
 
-var getCurTime = function (){
-    var d = new Date();
-    var offset = -(d.getTimezoneOffset());
-    return (d.getTime() + offset*60000 - 19800000);
-}
-
 var getVersion = function () {
     var details = chrome.app.getDetails();
     return details.version;
@@ -52,6 +46,5 @@ var icon_path = function (platform){
 module.exports = {
     convertToBrowzerTimezone: convertToBrowzerTimezone,
     checkIfFirstRun: checkIfFirstRun,
-    icon_path: icon_path,
-    getCurTime: getCurTime
+    icon_path: icon_path
 };
