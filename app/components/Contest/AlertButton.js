@@ -51,7 +51,6 @@ var AlertButton = React.createClass({
               chrome.notifications.create(opt);
             }else if(notificationId == currentNotificationId && buttonIndex == 1){
               Payment.buyPremium();
-              console.log("Upgrade Button clicked");
             }
           });
         });

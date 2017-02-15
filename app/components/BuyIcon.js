@@ -22,7 +22,6 @@ var BuyIcon = React.createClass({
             chrome.notifications.clear(notificationId, function(){
                 if(notificationId == currentNotificationId && buttonIndex == 0){
                     Payment.buyPremium();
-                    console.log("Upgrade Button clicked");
                 }
             });
         });
