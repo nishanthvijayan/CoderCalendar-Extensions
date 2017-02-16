@@ -11,10 +11,15 @@ var buyPremium = function(){
     google.payments.inapp.buy({
       'parameters': {'env': 'prod'},
       'sku': sku,
-      'success': function(){
+      'success': function(response){
             saveLicence('premium');
+            console.log(response);
+            console.log("Payment Successfull");
       },
-      'failure': function(){}
+      'failure': function(response){
+        console.log(response);
+        console.log("Payment Failed");
+      }
     });
 }
 
@@ -28,8 +33,8 @@ var isPremiumUser = function(premiumUserCallback, freeUserCallback){
             google.payments.inapp.getPurchases({
                 'parameters': {'env': 'prod'},
                 'success': function(response){
-                    details = response.response;
-                    if(details.length == 1){
+                    details = response.response.details;
+                    if(details.length > 0){
                         saveLicence('premium');
                         premiumUserCallback();
                     }else{
