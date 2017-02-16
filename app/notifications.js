@@ -96,8 +96,11 @@ var serviceQueue = function (){
                 break;
             }
         }
-        notificationQueue = notificationQueue.slice(servicedRequests);
-        chrome.storage.local.set({"NOTIFICATIONQueue": notificationQueue});
+
+        if(servicedRequests > 0){
+            notificationQueue = notificationQueue.slice(servicedRequests);
+            chrome.storage.local.set({"NOTIFICATIONQueue": notificationQueue});
+        }
     });
 }
 
