@@ -51,7 +51,7 @@ var saveToQueue = function (contest, alertTime){
         haveNoAlerts(contest, function(){
             notificationQueue.push({"alertTime": alertTime, "contest": contest});
             notificationQueue.sort(sortByAlertTime);
-            chrome.storage.local.set({"NOTIFICATIONQueue": notificationQueue}, function(){});
+            chrome.storage.local.set({"NOTIFICATIONQueue": notificationQueue});
         });
     });
 }
@@ -97,7 +97,7 @@ var serviceQueue = function (){
             }
         }
         notificationQueue = notificationQueue.slice(servicedRequests);
-        chrome.storage.local.set({"NOTIFICATIONQueue": notificationQueue}, function(){});
+        chrome.storage.local.set({"NOTIFICATIONQueue": notificationQueue});
     });
 }
 
@@ -128,7 +128,7 @@ var removeAlert = function(contest){
                 break;
             }
         }
-        chrome.storage.local.set({"NOTIFICATIONQueue": notificationQueue}, function(){});
+        chrome.storage.local.set({"NOTIFICATIONQueue": notificationQueue});
     });
 }
 

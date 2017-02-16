@@ -27,19 +27,19 @@ var initialize = function(){
     // Initialize NotificationQueue
     chrome.storage.local.getBytesInUse("NOTIFICATIONQueue", function(bytes){
         if(bytes == 0){
-            chrome.storage.local.set({"NOTIFICATIONQueue": []}, function(){});
+            chrome.storage.local.set({"NOTIFICATIONQueue": []});
         }
     });
 
     chrome.storage.local.getBytesInUse("ALERT_BEFORE_TIME", function(bytes){
         if(bytes == 0){
-            chrome.storage.local.set({"ALERT_BEFORE_TIME": (30 * 60 * 1000)}, function(){});
+            chrome.storage.local.set({"ALERT_BEFORE_TIME": (30 * 60 * 1000)});
         }
     });
 
     chrome.storage.local.getBytesInUse("SNOOZE_INTERVAL", function(bytes){
         if(bytes == 0){
-            chrome.storage.local.set({"SNOOZE_INTERVAL": (5 * 60 * 1000)}, function(){});
+            chrome.storage.local.set({"SNOOZE_INTERVAL": (5 * 60 * 1000)});
         }
     });
 }
