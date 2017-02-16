@@ -12,13 +12,14 @@ var buyPremium = function(){
       'parameters': {'env': 'prod'},
       'sku': sku,
       'success': function(response){
-            saveLicence('premium');
             console.log(response);
             console.log("Payment Successfull");
+            chrome.storage.sync.remove("5646265949");
       },
       'failure': function(response){
-        console.log(response);
-        console.log("Payment Failed");
+            console.log(response);
+            console.log("Payment Failed");
+            chrome.storage.sync.remove("5646265949");
       }
     });
 }
