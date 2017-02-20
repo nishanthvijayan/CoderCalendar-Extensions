@@ -8,21 +8,23 @@ var BuyIcon = React.createClass({
         });
     },
     onClickBuy: function(){
-        var opt = {
-          type: "basic",
-          title: "Coder's Calendar Premium",
-          message: "Coder's Calendar now has a freemium model. Premium users can " +
-          "hide / unhide contests and add desktop notification alerts for upcoming contests",
-          iconUrl: "../img/icon32.png",
-          buttons: [{"title": "Upgrade"}]
-        }
-        var currentNotificationId;
-        chrome.notifications.create(opt, function(id){currentNotificationId = id;});
-        chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex){
-            chrome.notifications.clear(notificationId, function(){
-                if(notificationId == currentNotificationId && buttonIndex == 0){
-                    Payment.buyPremium();
-                }
+        Payment.isPremiumUser(function(){}, function(){
+            var opt = {
+              type: "basic",
+              title: "Coder's Calendar Premium",
+              message: "Coder's Calendar now has a freemium model. Premium users can " +
+              "hide / unhide contests and add desktop notification alerts for upcoming contests",
+              iconUrl: "../img/icon32.png",
+              buttons: [{"title": "Upgrade"}]
+            }
+            var currentNotificationId;
+            chrome.notifications.create(opt, function(id){currentNotificationId = id;});
+            chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex){
+                chrome.notifications.clear(notificationId, function(){
+                    if(notificationId == currentNotificationId && buttonIndex == 0){
+                        Payment.buyPremium();
+                    }
+                });
             });
         });
     },
