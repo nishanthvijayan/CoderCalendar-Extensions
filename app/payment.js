@@ -1,3 +1,5 @@
+var Feedback = require('./feedback');
+
 var saveLicence = function(type){
     if(type == 'free'){
         chrome.storage.sync.set({'5646265949': "8791325632"});
@@ -38,6 +40,7 @@ var isPremiumUser = function(premiumUserCallback, freeUserCallback){
                     if(details.length > 0){
                         saveLicence('premium');
                         premiumUserCallback();
+                        Feedback.init();
                     }else{
                         saveLicence('free');
                         freeUserCallback();
