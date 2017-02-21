@@ -14,7 +14,6 @@ $(document).ready(function(){
         chrome.runtime.sendMessage({request: "askForFeedback"});
     }
 
-    UtilHelpers.checkIfFirstRun();
     ReactDOM.render(<App />, document.getElementById('ui-content'));
 
     addEventListener('scroll', function(){
