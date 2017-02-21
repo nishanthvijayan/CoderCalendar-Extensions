@@ -14,6 +14,7 @@ var Mobile = React.createClass({
                     <img
                         height="80px" width="180px" alt="Get it on Google Play"
                         src="img/google_play.png"
+                        style={{"cursor": "pointer"}}
                         onClick={this.onClickAndroid}
                     />
                 </div>
