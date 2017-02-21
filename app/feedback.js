@@ -4,7 +4,7 @@ var askForRatings = function(){
         title: "How about a rating on the Extension Store?",
         message: "  ",
         iconUrl: "../img/icon32.png",
-        buttons: [{"title": "Ok, sure"}, {"title": "No, thanks"}]
+        buttons: [{"title": "Ok, Sure"}, {"title": "Nope"}]
     }
 
     var currentNotificationId;
@@ -21,10 +21,10 @@ var askForRatings = function(){
 var askForFeedback = function(){
     var opt = {
         type: "basic",
-        title: "Would you mind giving us some feedback?",
-        message: "  ",
+        title: "Help us improve",
+        message: "Would you mind giving us some Feedback?",
         iconUrl: "../img/icon32.png",
-        buttons: [{"title": "Ok, sure"}, {"title": "No, thanks"}]
+        buttons: [{"title": "Ok, Sure"}, {"title": "Nope"}]
     }
 
     var currentNotificationId;
@@ -41,7 +41,7 @@ var askForFeedback = function(){
 var init = function(){
     var opt = {
         type: "basic",
-        title: "Are you enjoing Coder's Calendar?",
+        title: "Are you enjoying Coder's Calendar?",
         message: "",
         iconUrl: "../img/icon32.png",
         buttons: [{"title": "Yes!"}, {"title": "Not Really"}]
