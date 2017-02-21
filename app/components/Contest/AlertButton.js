@@ -25,10 +25,11 @@ var AlertButton = React.createClass({
       }, function(){
         var opt = {
           type: "basic",
-          title: "Set Desktop Notification alert few min before contest",
-          message: "PERMIUM FEATURE. Upgrade Coder's Calendar to Premium version to use this feature",
+          title: "Set Desktop Notification Alerts - Premium Feature",
+          message: "Alerts you a set number of minutes before contest start time." +
+          "\nUpgrade to use this feature.",
           iconUrl: "../img/icon32.png",
-          buttons: [{"title": "See Example!"}, {"title": "Upgrade"}]
+          buttons: [{"title": "See how it would look like!"}, {"title": "Upgrade"}]
         }
         var currentNotificationId;
         chrome.notifications.create(opt, function(id){currentNotificationId = id;});

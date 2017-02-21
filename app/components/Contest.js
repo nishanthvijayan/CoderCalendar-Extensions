@@ -51,7 +51,7 @@ var Contest = React.createClass({
 
             chrome.notifications.create({
                 type: "basic",
-                title: "Archive/Hide Contests - Premium Feature",
+                title: "View Hidden Contests - Premium Feature",
                 message: "Upgrade Coder's Calendar to Premium version to use this feature",
                 iconUrl: "../img/icon32.png",
                 buttons: [{"title": "Upgrade"}]

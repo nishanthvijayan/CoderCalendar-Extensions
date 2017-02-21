@@ -6,9 +6,10 @@ var BuyIcon = React.createClass({
         Payment.isPremiumUser(function(){}, function(){
             var opt = {
               type: "basic",
-              title: "Coder's Calendar Premium",
-              message: "Coder's Calendar now has a freemium model. Premium users can " +
-              "hide / unhide contests and add desktop notification alerts for upcoming contests",
+              title: "Buy Premium Features",
+              message: "Premium Features:" +
+              "\n - Hide / unhide contests"+
+              "\n - Add Desktop Notification Alerts for upcoming contests",
               iconUrl: "../img/icon32.png",
               buttons: [{"title": "Upgrade"}]
             }
