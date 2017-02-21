@@ -34,6 +34,13 @@ var Contest = React.createClass({
             isSelected: false
         });
     },
+    onMouseMoveHandler: function(){
+        if(!this.state.isSelected){
+            this.setState({
+                isSelected: true
+            });
+        }
+    },
     archive: function(){
         component = this;
         Payment.isPremiumUser(function(){
@@ -77,7 +84,7 @@ var Contest = React.createClass({
 
         return(
             <a>
-                <li onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
+                <li onMouseMove={this.onMouseMoveHandler} onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
                     <ContestImage platform={this.props.details.Platform} />
                     <div className='details-container'>
                         <h2 className="contest-title"  onClick={this.onClickContestTitle}>{this.props.details.Name}</h2>
