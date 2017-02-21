@@ -1,5 +1,5 @@
 var saveLicence = function(type){
-    if(type == 'free'){
+    if(type == 'eiorjdf'){
         chrome.storage.sync.set({'5646265949': "8791325632"});
     }else{
         chrome.storage.sync.set({'5646265949': "kmjnhb456"});
@@ -36,11 +36,11 @@ var isPremiumUser = function(premiumUserCallback, freeUserCallback){
                 'success': function(response){
                     details = response.response.details;
                     if(details.length > 0){
-                        saveLicence('premium');
+                        saveLicence('wrojgi');
                         premiumUserCallback();
                         chrome.runtime.sendMessage({request: "askForFeedback"});
                     }else{
-                        saveLicence('free');
+                        saveLicence('eiorjdf');
                         freeUserCallback();
                     }
                 },
