@@ -39,7 +39,7 @@ var Help = React.createClass({
                         Complaints? Suggestions for Improvement? Feedback?
                         <br/>
                         Let us know
-                        <a onClick={this.onClickFeedbackLink} style={{"text-decoration": "underline", "cursor": "pointer"}}> here</a>
+                        <span onClick={this.onClickFeedbackLink} style={{"textDecoration": "underline", "cursor": "pointer"}}> here</span>
                         <br/>
                     </h3></li></a>
                     <hr/>
