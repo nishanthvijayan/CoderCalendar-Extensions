@@ -1,10 +1,10 @@
 {
 "manifest_version": 2,
 
-  "name": "Coder's Calendar Test",
-  "short_name": "Coder's Calendar Test",
+  "name": "Coder's Calendar",
+  "short_name": "Coder's Calendar",
   "description": "Never miss a Coding contest again! Displays live and upcoming Programming Contests happening on a variety of popular platforms.",
-  "version": "1.1.0",
+  "version": "1.0.0",
 
   "permissions": [
     "http://contesttrackerapi.herokuapp.com/",
