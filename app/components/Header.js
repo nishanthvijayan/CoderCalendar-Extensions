@@ -13,6 +13,11 @@ var Header = React.createClass({
     onClickMobile:      React.PropTypes.func,
     isLoading:   React.PropTypes.bool
     },
+    getInitialState: function(){
+        return ({
+            isPremiumUser: false
+        });
+    },
     refreshButtonSpinState: function(){
         if (this.props.isLoading){
             return 'fa fa-refresh fa-2x fa-spin'
@@ -21,12 +26,26 @@ var Header = React.createClass({
             return 'fa fa-refresh fa-2x'
         }
     },
+    renderArchiveOrPaymentIcon: function(){
+        if(this.state.isPremiumUser){
+            return (<ArchiveIcon onClickArchive={this.props.onClickArchive} />)
+        }else{
+            return (<BuyIcon />)
+        }
+    },
+    componentWillMount: function(){
+        var component = this;
+        Payment.isPremiumUser(function(){
+            component.setState({isPremiumUser: true});
+        }, function(){
+            component.setState({isPremiumUser: false});
+        });
+    },
     render: function(){
         return(
             <header>
                 <i className="fa fa-home fa-2x"  onClick={this.props.onClickMain} title="Home" />
-                <ArchiveIcon onClickArchive={this.props.onClickArchive} />
-                <BuyIcon />
+                {this.renderArchiveOrPaymentIcon()}
                 <i className="fa fa-question fa-2x" onClick={this.props.onClickHelp} title="Help" />
                 <i className="fa fa-mobile fa-2x" onClick={this.props.onClickMobile} title="Mobile App" />
                 <i className="fa fa-gear fa-2x" onClick={this.props.onClickSettings} title="Settings" />
