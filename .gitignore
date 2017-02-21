@@ -1,3 +1,4 @@
 dist/js/index.js
 dist/js/notifier_service.js
+dist/js/event_listeners.js
 node_modules/

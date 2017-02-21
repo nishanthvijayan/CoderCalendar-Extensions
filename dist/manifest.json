@@ -22,6 +22,6 @@
     "default_popup": "index.html"
   },
   "background": {
-    "scripts": ["js/buy.js", "js/notifier_service.js"]
+    "scripts": ["js/buy.js", "js/notifier_service.js", "js/event_listeners.js"]
   }
 }

@@ -1,7 +1,8 @@
 module.exports = {
 	entry: {
 		"index" : "./app/index.js",
-		"notifier_service": "./app/notifier_service.js"
+		"notifier_service": "./app/notifier_service.js",
+		"event_listeners": "./app/event_listeners.js"
 
 	},
 	output:{

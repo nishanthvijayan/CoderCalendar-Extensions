@@ -5,7 +5,8 @@ var UtilHelpers = require('./util');
 var Feedback = require('./feedback');
 
 $(document).ready(function(){
-    Feedback.init();
+    chrome.runtime.sendMessage({request: "askForFeedback"});
+
     UtilHelpers.checkIfFirstRun();
     ReactDOM.render(<App />, document.getElementById('ui-content'));
 
