@@ -44,8 +44,8 @@ var saveToQueue = function (contest, alertTime){
     chrome.storage.local.get("NOTIFICATIONQueue", function(response){
         var notificationQueue = response.NOTIFICATIONQueue;
         // TODO: comment out below
-        var curTime = new Date().getTime();
-        var alertTime = curTime + (1000 * 60 * 2);
+        // var curTime = new Date().getTime();
+        // var alertTime = curTime + (1000 * 60 * 2);
         // 
 
         haveNoAlerts(contest, function(){
