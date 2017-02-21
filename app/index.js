@@ -5,7 +5,14 @@ var UtilHelpers = require('./util');
 var Feedback = require('./feedback');
 
 $(document).ready(function(){
-    chrome.runtime.sendMessage({request: "askForFeedback"});
+
+    if(isNaN(parseInt(localStorage.OPENCOUNT))){
+        localStorage.OPENCOUNT = "0";
+    }
+    localStorage.OPENCOUNT = (parseInt(localStorage.OPENCOUNT) + 1).toString();
+    if(parseInt(localStorage.OPENCOUNT) > 0 && parseInt(localStorage.OPENCOUNT)%30 == 0){
+        chrome.runtime.sendMessage({request: "askForFeedback"});
+    }
 
     UtilHelpers.checkIfFirstRun();
     ReactDOM.render(<App />, document.getElementById('ui-content'));
