@@ -7,3 +7,5 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
         }, 3000);
     }
 });
+
+chrome.runtime.setUninstallURL("https://goo.gl/forms/j9iP6qA9IuWbLimj1");
