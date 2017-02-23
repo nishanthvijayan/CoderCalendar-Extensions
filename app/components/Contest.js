@@ -42,29 +42,8 @@ var Contest = React.createClass({
         }
     },
     archive: function(){
-        component = this;
-        Payment.isPremiumUser(function(){
-            Hide.hideContest(component.props.details);
-            component.setState({visible: false, archived: true});
-        }, function(){
-            var currentNotificationId;
-
-            chrome.notifications.create({
-                type: "basic",
-                title: "View Hidden Contests - Premium Feature",
-                message: "Upgrade Coder's Calendar to Premium version to use this feature",
-                iconUrl: "../img/icon32.png",
-                buttons: [{"title": "Upgrade"}]
-            }, function(id){currentNotificationId = id;});
-
-            chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex){
-                chrome.notifications.clear(notificationId, function(){
-                    if(notificationId == currentNotificationId && buttonIndex == 0){
-                        Payment.buyPremium();
-                    }
-                });
-            });
-        });
+        Hide.hideContest(this.props.details);
+        this.setState({visible: false, archived: true});
     },
     unArchive: function(){
         Hide.showContest(this.props.details);

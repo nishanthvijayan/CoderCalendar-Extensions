@@ -8,7 +8,6 @@ var BuyIcon = React.createClass({
               type: "basic",
               title: "Buy Premium Features",
               message: "Premium Features:" +
-              "\n - Hide / unhide contests"+
               "\n - Add Desktop Notification Alerts for upcoming contests",
               iconUrl: "../img/icon32.png",
               buttons: [{"title": "Upgrade"}]

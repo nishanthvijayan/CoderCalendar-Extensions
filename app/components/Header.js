@@ -28,7 +28,7 @@ var Header = React.createClass({
     },
     renderArchiveOrPaymentIcon: function(){
         if(this.state.isPremiumUser){
-            return (<ArchiveIcon onClickArchive={this.props.onClickArchive} />)
+            return (null)
         }else{
             return (<BuyIcon />)
         }
@@ -45,6 +45,7 @@ var Header = React.createClass({
         return(
             <header>
                 <i className="fa fa-home fa-2x"  onClick={this.props.onClickMain} title="Home" />
+                <ArchiveIcon onClickArchive={this.props.onClickArchive} />
                 {this.renderArchiveOrPaymentIcon()}
                 <i className="fa fa-question fa-2x" onClick={this.props.onClickHelp} title="Help" />
                 <i className="fa fa-mobile fa-2x" onClick={this.props.onClickMobile} title="Mobile App" />
