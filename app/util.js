@@ -16,11 +16,22 @@ var getVersion = function () {
 // Opens settings page on first run after install/upgrade
 var checkIfFirstRun = function (){
     var currVersion = getVersion();
-    var prevVersion = localStorage['version']
-    if (currVersion != prevVersion) {
+    var prevVersion = localStorage['version'];
+    console.log(currVersion);
+    console.log(prevVersion)
+    if(prevVersion == undefined){
         chrome.tabs.create({ url: "http://nishanthvijayan.github.io/CoderCalendar" });
-        localStorage['version'] = currVersion;
     }
+    else if (currVersion != prevVersion) {
+        var opt = {
+          type: "basic",
+          title: "Coder's Calendar Updated",
+          message: "Hiding contests is now a free feature.\n",
+          iconUrl: "../img/icon32.png",
+        }
+        chrome.notifications.create(opt, function(id){});
+    }
+    localStorage['version'] = currVersion;
 }
 
 var icon_path = function (platform){
