@@ -3,6 +3,7 @@ var Payment = require('../payment');
 
 var BuyIcon = React.createClass({
     onClickBuy: function(){
+        ga('send', 'event', "Buy Icon");
         Payment.isPremiumUser(function(){}, function(){
             var opt = {
               type: "basic",

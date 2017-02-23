@@ -12,6 +12,8 @@ var AlertButton = React.createClass({
         }
     },
     onClickHandler: function(){
+      ga('send', 'event', "Add Desktop Notification");
+
       var component = this;
 
       Payment.isPremiumUser(function(){

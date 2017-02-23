@@ -14,6 +14,8 @@ var App = React.createClass({
         }
     },
     getContestList: function(){
+        ga('send', 'event', "Refresh");
+
         this.setState({
             isLoading: true
         });
@@ -36,18 +38,22 @@ var App = React.createClass({
     },
 
     onClickSettingsHandler: function(){
+        ga('send', 'pageview', '/settings.html');
         this.setState({route: 'settings'});
     },
     onClickArchiveHandler: function(){
+        ga('send', 'pageview', '/archive.html');
         this.setState({route: 'archive'});
     },
     onClickMainHandler: function(){
         this.setState({route: 'main'});
     },
     onClickHelpHandler: function(){
+        ga('send', 'pageview', '/help.html');
         this.setState({route: 'help'});
     },
     onClickMobileHandler: function(){
+        ga('send', 'pageview', '/mobile.html');
         this.setState({route: 'mobile'});
     },
 

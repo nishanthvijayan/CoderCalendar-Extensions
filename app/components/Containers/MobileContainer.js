@@ -2,6 +2,7 @@ var React = require('react');
 
 var Mobile = React.createClass({
     onClickAndroid: function(){
+        ga('send', 'event', "Play Store link");
         chrome.tabs.create({ url: "https://play.google.com/store/apps/details?id=com.corphots.coderscalendar" });
     },
     render: function(){

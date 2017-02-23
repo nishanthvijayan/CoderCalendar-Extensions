@@ -9,8 +9,10 @@ var subscription = function (platform){
 
 var toggleSubscription = function(platform){
     if(subscription(platform)){
+        ga('send', 'event', "Platform Setting", "UnCheck", platform);
         localStorage.setItem(platform, 'false');
     }else{
+        ga('send', 'event', "Platform Setting", "Check", platform);
         localStorage.setItem(platform, 'true');
     }
 }

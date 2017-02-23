@@ -12,6 +12,7 @@ var AddToCalendarButton = React.createClass({
                    "&dates="+calendarTime+"&location="+contest.url+"&pli=1&uid=&sf=true&output=xml#eventpage_6";
     },
     onClickAddToCalendarButton: function(){
+        ga('send', 'event', "Add to Calendar");
         chrome.tabs.create({url: this.state.url});
     },
     componentDidMount: function(){

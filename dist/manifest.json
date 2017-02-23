@@ -23,5 +23,6 @@
   },
   "background": {
     "scripts": ["js/buy.js", "js/notifier_service.js", "js/event_listeners.js"]
-  }
+  },
+  "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'"
 }

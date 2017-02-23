@@ -22,7 +22,8 @@ var Contest = React.createClass({
         }
     },
     onClickContestTitle: function(){
-         chrome.tabs.create({url: this.props.details.url});
+        ga('send', 'event', "Open Contest");
+        chrome.tabs.create({url: this.props.details.url});
     },
     onMouseEnterHandler: function(){
         this.setState({
@@ -42,10 +43,12 @@ var Contest = React.createClass({
         }
     },
     archive: function(){
+        ga('send', 'event', "Hide");
         Hide.hideContest(this.props.details);
         this.setState({visible: false, archived: true});
     },
     unArchive: function(){
+        ga('send', 'event', "Unhide");
         Hide.showContest(this.props.details);
         this.setState({visible: false, archived: false});
     },
