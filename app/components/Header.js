@@ -25,7 +25,7 @@ var Header = React.createClass({
             return 'fa fa-refresh fa-2x'
         }
     },
-    renderArchiveOrPaymentIcon: function(){
+    shouldRenderBuyIcon: function(){
         if(this.state.isPremiumUser){
             return (null)
         }else{
@@ -45,7 +45,7 @@ var Header = React.createClass({
             <header>
                 <i className="fa fa-home fa-2x"  onClick={this.props.onClickMain} title="Home" />
                 <ArchiveIcon onClickArchive={this.props.onClickArchive} />
-                {this.renderArchiveOrPaymentIcon()}
+                {this.shouldRenderBuyIcon()}
                 <i className="fa fa-question fa-2x" onClick={this.props.onClickHelp} title="Help" />
                 <i className="fa fa-gear fa-2x" onClick={this.props.onClickSettings} title="Settings" />
                 <i className={this.refreshButtonSpinState()}  onClick={this.props.onClickRefresh} title="Refresh" />
