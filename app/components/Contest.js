@@ -7,7 +7,6 @@ var HideContestButton = require('./Contest/HideContestButton');
 var ContestOptionBar = require('./Contest/ContestOptionBar');
 var Settings = require('../settings');
 var Hide = require('../hide');
-var Payment = require('../payment');
 
 var Contest = React.createClass({
     propTypes: {
