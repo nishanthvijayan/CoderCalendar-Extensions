@@ -26,7 +26,7 @@ var checkIfFirstRun = function (){
         var opt = {
           type: "basic",
           title: "Coder's Calendar Updated",
-          message: "Hiding contests is now a free feature.\n",
+          message: "Desktop notifications is now free!\n",
           iconUrl: "../img/icon32.png",
         }
         chrome.notifications.create(opt, function(id){});

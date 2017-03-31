@@ -3,7 +3,6 @@ var moment = require('moment');
 var Settings = require('../../settings');
 var Notifications = require('../../notifications');
 var Util = require('../../util')
-var Payment = require('../../payment');
 
 var AlertButton = React.createClass({
     getInitialState: function(){
@@ -12,52 +11,16 @@ var AlertButton = React.createClass({
         }
     },
     onClickHandler: function(){
-      ga('send', 'event', "Add Desktop Notification");
-
       var component = this;
-
-      Payment.isPremiumUser(function(){
-        if(component.state.hasAlert){
-          Notifications.removeAlert(component.props.details);
-          component.setState({hasAlert: false});
-        }else{
-          Notifications.addAlert(component.props.details);
-          component.setState({hasAlert: true});
-        }
-      }, function(){
-        var opt = {
-          type: "basic",
-          title: "Set Desktop Notification Alerts - Premium Feature",
-          message: "Alerts you a set number of minutes before contest start time." +
-          "\nUpgrade to use this feature.",
-          iconUrl: "../img/icon32.png",
-          buttons: [{"title": "See how it would look like!"}, {"title": "Upgrade"}]
-        }
-        var currentNotificationId;
-        chrome.notifications.create(opt, function(id){currentNotificationId = id;});
-        chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex){
-          chrome.notifications.clear(notificationId, function(){
-            if(notificationId == currentNotificationId && buttonIndex == 0){
-              var curTime = new Date().getTime();
-              var startTime = Date.parse(component.props.details.StartTime);
-              var beginInTime = moment.duration(startTime - curTime).humanize();
-
-              var opt = {
-                type: "basic",
-                title: component.props.details.Name,
-                message: "will start in about " + beginInTime +
-                "\nat " + component.props.details.StartTime.slice(0,21) +
-                "\n\n(This is an example, so snooze won't work.)",
-                iconUrl: Util.icon_path(component.props.details.Platform),
-                buttons: [{"title": "Snooze"}, {"title": "Dismiss"}],
-              }
-              chrome.notifications.create(opt);
-            }else if(notificationId == currentNotificationId && buttonIndex == 1){
-              Payment.buyPremium();
-            }
-          });
-        });
-      });
+      if(component.state.hasAlert){
+        ga('send', 'event', "Remove Desktop Notification");
+        Notifications.removeAlert(component.props.details);
+        component.setState({hasAlert: false});
+      }else{
+        ga('send', 'event', "Add Desktop Notification");
+        Notifications.addAlert(component.props.details);
+        component.setState({hasAlert: true});
+      }
     },
     componentWillMount: function(){
       var component = this;
