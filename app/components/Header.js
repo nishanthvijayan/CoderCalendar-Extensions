@@ -10,7 +10,6 @@ var Header = React.createClass({
     onClickArchive:      React.PropTypes.func,
     onClickSettings:      React.PropTypes.func,
     onClickHelp:      React.PropTypes.func,
-    onClickMobile:      React.PropTypes.func,
     isLoading:   React.PropTypes.bool
     },
     getInitialState: function(){
@@ -48,7 +47,6 @@ var Header = React.createClass({
                 <ArchiveIcon onClickArchive={this.props.onClickArchive} />
                 {this.renderArchiveOrPaymentIcon()}
                 <i className="fa fa-question fa-2x" onClick={this.props.onClickHelp} title="Help" />
-                <i className="fa fa-mobile fa-2x" onClick={this.props.onClickMobile} title="Mobile App" />
                 <i className="fa fa-gear fa-2x" onClick={this.props.onClickSettings} title="Settings" />
                 <i className={this.refreshButtonSpinState()}  onClick={this.props.onClickRefresh} title="Refresh" />
             </header>

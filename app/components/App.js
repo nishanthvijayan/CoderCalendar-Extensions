@@ -52,10 +52,6 @@ var App = React.createClass({
         ga('send', 'pageview', '/help.html');
         this.setState({route: 'help'});
     },
-    onClickMobileHandler: function(){
-        ga('send', 'pageview', '/mobile.html');
-        this.setState({route: 'mobile'});
-    },
 
     componentDidMount: function(){
         Settings.initialize();
@@ -72,7 +68,6 @@ var App = React.createClass({
                     onClickArchive = {this.onClickArchiveHandler}
                     onClickMain = {this.onClickMainHandler}
                     onClickHelp = {this.onClickHelpHandler}
-                    onClickMobile = {this.onClickMobileHandler}
                     isLoading = {this.state.isLoading}
                 />
                 <Router route={this.state.route} />
