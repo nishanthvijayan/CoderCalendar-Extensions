@@ -8,7 +8,6 @@
     },
     "globals": {
         "ga": true,
-        "google": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
