@@ -1,7 +1,5 @@
 var React = require("react");
-// var Payment = require('../payment');
 var ArchiveIcon = require("./ArchiveIcon");
-// var BuyIcon = require('./BuyIcon');
 
 var Header = React.createClass({
     propTypes: {
@@ -25,21 +23,6 @@ var Header = React.createClass({
             return "fa fa-refresh fa-2x";
         }
     },
-    // shouldRenderBuyIcon: function(){
-    //     if(this.state.isPremiumUser){
-    //         return (null)
-    //     }else{
-    //         return (<BuyIcon />)
-    //     }
-    // },
-    // componentWillMount: function(){
-    //     var component = this;
-    //     Payment.isPremiumUser(function(){
-    //         component.setState({isPremiumUser: true});
-    //     }, function(){
-    //         component.setState({isPremiumUser: false});
-    //     });
-    // },
     render: function(){
         return(
             <header>
