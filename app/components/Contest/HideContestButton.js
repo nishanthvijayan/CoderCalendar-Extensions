@@ -3,6 +3,7 @@ var Hide = require("../../hide");
 
 var HideContestButton = React.createClass({
     render: function(){
+        var style, icon, action;
         if(Hide.isHidden(this.props.details)){
             style = {"color": "#4caf50", "cursor": "pointer", "float": "right"};
             icon = "fa-check";

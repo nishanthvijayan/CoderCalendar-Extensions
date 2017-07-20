@@ -1,11 +1,9 @@
 var React = require("react");
-var UtilHelpers = require("../util");
 var ContestTime = require("./Contest/ContestTime");
 var ContestImage = require("./Contest/ContestImage");
 var ContestDuration = require("./Contest/ContestDuration");
 var HideContestButton = require("./Contest/HideContestButton");
 var ContestOptionBar = require("./Contest/ContestOptionBar");
-var Settings = require("../settings");
 var Hide = require("../hide");
 
 var Contest = React.createClass({

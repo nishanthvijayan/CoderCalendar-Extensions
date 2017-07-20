@@ -1,6 +1,5 @@
 var React = require("react");
 var AddToCalendarButton = require("./AddToCalendarButton");
-var HideContestButton = require("./HideContestButton");
 var AlertButton = require("./AlertButton");
 
 var ContestOptionBar = React.createClass({

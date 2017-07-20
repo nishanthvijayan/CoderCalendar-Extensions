@@ -3,7 +3,7 @@ var Util = require("./util");
 
 Util.checkIfFirstRun();
 
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function(message) {
     if (message.request == "askForFeedback") {
         setTimeout(function(){
             Feedback.init();

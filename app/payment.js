@@ -11,14 +11,10 @@ var buyPremium = function(){
     google.payments.inapp.buy({
         "parameters": {"env": "prod"},
         "sku": sku,
-        "success": function(response){
-            console.log(response);
-            console.log("Payment Successfull");
+        "success": function(){
             chrome.storage.sync.remove("5646265949");
         },
-        "failure": function(response){
-            console.log(response);
-            console.log("Payment Failed");
+        "failure": function(){
             chrome.storage.sync.remove("5646265949");
         }
     });
@@ -34,7 +30,7 @@ var isPremiumUser = function(premiumUserCallback, freeUserCallback){
             google.payments.inapp.getPurchases({
                 "parameters": {"env": "prod"},
                 "success": function(response){
-                    details = response.response.details;
+                    var details = response.response.details;
                     if(details.length > 0){
                         saveLicence("wrojgi");
                         premiumUserCallback();
@@ -44,7 +40,7 @@ var isPremiumUser = function(premiumUserCallback, freeUserCallback){
                         freeUserCallback();
                     }
                 },
-                "failure": function(response){
+                "failure": function(){
                     freeUserCallback();
                 }
             });

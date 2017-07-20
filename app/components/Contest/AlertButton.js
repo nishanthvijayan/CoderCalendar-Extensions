@@ -1,8 +1,5 @@
 var React = require("react");
-var moment = require("moment");
-var Settings = require("../../settings");
 var Notifications = require("../../notifications");
-var Util = require("../../util");
 
 var AlertButton = React.createClass({
     getInitialState: function(){
@@ -31,14 +28,15 @@ var AlertButton = React.createClass({
         });
     },
     render: function(){
+        var icon, color, action;
         if(this.state.hasAlert){
-            var icon = "fa-bell-slash";
-            var color = "#FF0000";
-            var action = "Remove ";
+            icon = "fa-bell-slash";
+            color = "#FF0000";
+            action = "Remove ";
         }else{
-            var icon = "fa-bell-o";
-            var color = "#4caf50";
-            var action = "Add ";
+            icon = "fa-bell-o";
+            color = "#4caf50";
+            action = "Add ";
         }
         if (this.props.type == "upcoming"){
             return(

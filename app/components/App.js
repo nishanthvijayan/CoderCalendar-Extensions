@@ -4,7 +4,6 @@ var Router = require("./Router");
 var Header = require("./Header");
 var Cache = require("../appCache");
 var Settings = require("../settings");
-var Hide = require("../hide");
 
 var App = React.createClass({
     getInitialState: function(){
@@ -21,7 +20,7 @@ var App = React.createClass({
         });
 
         var component = this;
-        $.when( $.ajax( "https://contesttrackerapi.herokuapp.com/" )).then(function(data, textStatus, jqXHR){
+        $.when( $.ajax( "https://contesttrackerapi.herokuapp.com/" )).then(function(data){
 
             var contests = data.result;
 
@@ -30,7 +29,7 @@ var App = React.createClass({
             component.setState({
                 isLoading: false
             });
-        }, function(data, textStatus, jqXHR){
+        }, function(){
             component.setState({
                 isLoading: false
             });

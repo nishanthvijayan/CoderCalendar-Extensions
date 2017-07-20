@@ -3,12 +3,13 @@ var moment = require("moment");
 
 var ContestTime = React.createClass({
     render: function(){
+        var time, timeText;
         if (this.props.type == "live"){
-            var time = this.props.details.EndTime.slice(0,21);
-            var timeText = "End";
+            time = this.props.details.EndTime.slice(0,21);
+            timeText = "End";
         } else{
-            var time = this.props.details.StartTime.slice(0,21);
-            var timeText = "Start";
+            time = this.props.details.StartTime.slice(0,21);
+            timeText = "Start";
         }
         var humanReadableTime = moment(time).fromNow();
 

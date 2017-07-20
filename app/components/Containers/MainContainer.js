@@ -61,7 +61,7 @@ var Main = React.createClass({
         };
     },
     render: function(){
-        contests = this.processContestList(Cache.fetch().data);
+        var contests = this.processContestList(Cache.fetch().data);
         return(
             <div className = 'main-container'>
                 <div id='ongoing' className="top-title">

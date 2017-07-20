@@ -17,8 +17,7 @@ var getVersion = function () {
 var checkIfFirstRun = function (){
     var currVersion = getVersion();
     var prevVersion = localStorage["version"];
-    console.log(currVersion);
-    console.log(prevVersion);
+
     if(prevVersion == undefined){
         chrome.tabs.create({ url: "http://nishanthvijayan.github.io/CoderCalendar" });
     }
@@ -29,7 +28,7 @@ var checkIfFirstRun = function (){
             message: "Desktop notifications is now free!\n",
             iconUrl: "../img/icon32.png",
         };
-        chrome.notifications.create(opt, function(id){});
+        chrome.notifications.create(opt, function(){});
     }
     localStorage["version"] = currVersion;
 };

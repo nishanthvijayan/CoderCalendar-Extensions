@@ -8,11 +8,8 @@ ga("create", "UA-64496539-2", "auto");
 ga("set", "checkProtocolTask", function(){}); // Removes failing protocol check. @see: http://stackoverflow.com/a/22152353/1958200
 ga("send", "pageview", "/index.html");
 
-var React = require("react");
 var ReactDOM = require("react-dom");
 var App = require("./components/App");
-var UtilHelpers = require("./util");
-var Feedback = require("./feedback");
 
 $(document).ready(function(){
 
