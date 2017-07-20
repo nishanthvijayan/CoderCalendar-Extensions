@@ -1,20 +1,20 @@
-var React = require('react');
+var React = require("react");
 
-var Router = require('./Router');
-var Header = require('./Header');
-var Cache = require('../appCache');
-var Settings = require('../settings');
-var Hide = require('../hide');
+var Router = require("./Router");
+var Header = require("./Header");
+var Cache = require("../appCache");
+var Settings = require("../settings");
+var Hide = require("../hide");
 
 var App = React.createClass({
     getInitialState: function(){
         return{
             isLoading: false,
-            route: 'main'
-        }
+            route: "main"
+        };
     },
     getContestList: function(){
-        ga('send', 'event', "Refresh");
+        ga("send", "event", "Refresh");
 
         this.setState({
             isLoading: true
@@ -38,19 +38,19 @@ var App = React.createClass({
     },
 
     onClickSettingsHandler: function(){
-        ga('send', 'pageview', '/settings.html');
-        this.setState({route: 'settings'});
+        ga("send", "pageview", "/settings.html");
+        this.setState({route: "settings"});
     },
     onClickArchiveHandler: function(){
-        ga('send', 'pageview', '/archive.html');
-        this.setState({route: 'archive'});
+        ga("send", "pageview", "/archive.html");
+        this.setState({route: "archive"});
     },
     onClickMainHandler: function(){
-        this.setState({route: 'main'});
+        this.setState({route: "main"});
     },
     onClickHelpHandler: function(){
-        ga('send', 'pageview', '/help.html');
-        this.setState({route: 'help'});
+        ga("send", "pageview", "/help.html");
+        this.setState({route: "help"});
     },
 
     componentDidMount: function(){
@@ -72,7 +72,7 @@ var App = React.createClass({
                 />
                 <Router route={this.state.route} />
             </div>
-        )
+        );
     }
 });
 

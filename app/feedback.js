@@ -5,7 +5,7 @@ var askForRatings = function(){
         message: "  ",
         iconUrl: "../img/icon32.png",
         buttons: [{"title": "Ok, Sure"}, {"title": "Nope"}]
-    }
+    };
 
     var currentNotificationId;
     chrome.notifications.create(opt, function(id){currentNotificationId = id;});
@@ -16,7 +16,7 @@ var askForRatings = function(){
             }
         });
     });    
-}
+};
 
 var askForFeedback = function(){
     var opt = {
@@ -25,7 +25,7 @@ var askForFeedback = function(){
         message: "Would you mind giving us some Feedback?",
         iconUrl: "../img/icon32.png",
         buttons: [{"title": "Ok, Sure"}, {"title": "Nope"}]
-    }
+    };
 
     var currentNotificationId;
     chrome.notifications.create(opt, function(id){currentNotificationId = id;});
@@ -36,7 +36,7 @@ var askForFeedback = function(){
             }
         });
     });    
-}
+};
 
 var init = function(){
     var opt = {
@@ -45,7 +45,7 @@ var init = function(){
         message: "",
         iconUrl: "../img/icon32.png",
         buttons: [{"title": "Yes!"}, {"title": "Not Really"}]
-    }
+    };
 
     var currentNotificationId;
     chrome.notifications.create(opt, function(id){currentNotificationId = id;});
@@ -58,7 +58,7 @@ var init = function(){
             }
         });
     });
-}
+};
 
 module.exports = {
     init: init

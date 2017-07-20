@@ -1,25 +1,25 @@
-var React = require('react');
-var Settings = require('../settings');
-var Util = require('../util');
+var React = require("react");
+var Settings = require("../settings");
+var Util = require("../util");
 
 var PlatformSettings = React.createClass({
     getInitialState: function(){
         return{
             checked: Settings.subscription(this.props.platform)
-        }
+        };
     },
     onClickHandler: function(){
         Settings.toggleSubscription(this.props.platform);
-        this.setState({checked: Settings.subscription(this.props.platform)})
+        this.setState({checked: Settings.subscription(this.props.platform)});
 
     },
     render: function(){
         var icon_and_color = function(platform){
             if(Settings.subscription(platform))
-                return "fa-check green-text"
+                return "fa-check green-text";
             else
-                return "fa-times red-text"
-        }
+                return "fa-times red-text";
+        };
         return(
             <li className="platform-setting">
                 <img  src={Util.icon_path(this.props.platform)}/>
@@ -29,7 +29,7 @@ var PlatformSettings = React.createClass({
                     onClick={this.onClickHandler}
                 ></i>
             </li>
-        )
+        );
     }
 });
 

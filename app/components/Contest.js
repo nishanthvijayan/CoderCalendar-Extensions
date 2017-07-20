@@ -1,12 +1,12 @@
-var React = require('react');
-var UtilHelpers = require('../util');
-var ContestTime = require('./Contest/ContestTime');
-var ContestImage = require('./Contest/ContestImage');
-var ContestDuration = require('./Contest/ContestDuration');
-var HideContestButton = require('./Contest/HideContestButton');
-var ContestOptionBar = require('./Contest/ContestOptionBar');
-var Settings = require('../settings');
-var Hide = require('../hide');
+var React = require("react");
+var UtilHelpers = require("../util");
+var ContestTime = require("./Contest/ContestTime");
+var ContestImage = require("./Contest/ContestImage");
+var ContestDuration = require("./Contest/ContestDuration");
+var HideContestButton = require("./Contest/HideContestButton");
+var ContestOptionBar = require("./Contest/ContestOptionBar");
+var Settings = require("../settings");
+var Hide = require("../hide");
 
 var Contest = React.createClass({
     propTypes: {
@@ -18,10 +18,10 @@ var Contest = React.createClass({
             isSelected: false,
             visible: true,
             archived: Hide.isHidden(this.props.details) 
-        }
+        };
     },
     onClickContestTitle: function(){
-        ga('send', 'event', "Open Contest");
+        ga("send", "event", "Open Contest");
         chrome.tabs.create({url: this.props.details.url});
     },
     onMouseEnterHandler: function(){
@@ -42,12 +42,12 @@ var Contest = React.createClass({
         }
     },
     archive: function(){
-        ga('send', 'event', "Hide");
+        ga("send", "event", "Hide");
         Hide.hideContest(this.props.details);
         this.setState({visible: false, archived: true});
     },
     unArchive: function(){
-        ga('send', 'event', "Unhide");
+        ga("send", "event", "Unhide");
         Hide.showContest(this.props.details);
         this.setState({visible: false, archived: false});
     },
@@ -60,7 +60,7 @@ var Contest = React.createClass({
     },
     render: function(){
         if(!this.state.visible){
-            return null
+            return null;
         }
 
         return(
@@ -82,7 +82,7 @@ var Contest = React.createClass({
                 </li>
                 <hr/>
             </a>
-        )
+        );
     }
 });
 

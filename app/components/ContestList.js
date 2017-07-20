@@ -1,5 +1,5 @@
-var React = require('react');
-var Contest = require('./Contest');
+var React = require("react");
+var Contest = require("./Contest");
 
 var ContestList = React.createClass({
     propTypes: {
@@ -17,10 +17,10 @@ var ContestList = React.createClass({
                             type={component.props.type}
                             key={contest.Name + contest.EndTime}
                         />
-                    )
+                    );
                 })}
             </div>
-        )
+        );
     }
 });
 

@@ -1,7 +1,7 @@
-var moment = require('moment');
+var moment = require("moment");
 
-var Util = require('./util');
-var Settings = require('./settings');
+var Util = require("./util");
+var Settings = require("./settings");
 
 var haveNoAlerts = function(contest, success_callback, failure_callback){
     if(failure_callback == undefined)
@@ -17,7 +17,7 @@ var haveNoAlerts = function(contest, success_callback, failure_callback){
         }
         success_callback();
     });
-}
+};
 
 /*
     yes - alert is scheduled to be within a minute
@@ -29,16 +29,16 @@ var isServisable = function(notification){
     var alertTime = parseInt(notification.alertTime);
 
     if((curTime > Date.parse(notification.contest.StartTime)))
-        return "ignore"
+        return "ignore";
     else if((alertTime - curTime) <= 120000)
-        return "yes"
+        return "yes";
     else
-        return "no"
-}
+        return "no";
+};
 
 var sortByAlertTime = function(a, b){
     return a.alertTime - b.alertTime;
-}
+};
 
 var saveToQueue = function (contest, alertTime){
     chrome.storage.local.get("NOTIFICATIONQueue", function(response){
@@ -54,7 +54,7 @@ var saveToQueue = function (contest, alertTime){
             chrome.storage.local.set({"NOTIFICATIONQueue": notificationQueue});
         });
     });
-}
+};
 
 var serviceQueue = function (){
     chrome.storage.local.get("NOTIFICATIONQueue", function(response){
@@ -70,12 +70,12 @@ var serviceQueue = function (){
                 var startTime = Date.parse(contest.StartTime);
                 var beginInTime = moment.duration(startTime - curTime).humanize();
                 var opt = {
-                  type: "basic",
-                  title: contest.Name,
-                  message: "will start in about " + beginInTime + "\nat " + contest.StartTime.slice(0,21),
-                  iconUrl: Util.icon_path(contest.Platform),
-                  buttons: [{"title": "Snooze"}, {"title": "Dismiss"}],
-                }
+                    type: "basic",
+                    title: contest.Name,
+                    message: "will start in about " + beginInTime + "\nat " + contest.StartTime.slice(0,21),
+                    iconUrl: Util.icon_path(contest.Platform),
+                    buttons: [{"title": "Snooze"}, {"title": "Dismiss"}],
+                };
 
                 !function outer(contest){
                     chrome.notifications.create(opt, function(currentNotificationId){
@@ -87,7 +87,7 @@ var serviceQueue = function (){
                             });
                         });
                     });
-                }(contest)
+                }(contest);
 
                 servicedRequests = servicedRequests + 1;
             }else if(servisableStatus == "ignore"){
@@ -102,25 +102,25 @@ var serviceQueue = function (){
             chrome.storage.local.set({"NOTIFICATIONQueue": notificationQueue});
         }
     });
-}
+};
 
 var addAlert = function(contest){
     Settings.getAlertBeforeTime(function(response){
-        var alertBefore = response['ALERT_BEFORE_TIME'];
+        var alertBefore = response["ALERT_BEFORE_TIME"];
         var startTime = Date.parse(contest.StartTime);
         var alertTime = startTime - alertBefore;
         saveToQueue(contest, alertTime);
     });
-}
+};
 
 var snooze = function(contest){
     Settings.getSnoozeInterval(function(response){
-        var snoozeTime = response['SNOOZE_INTERVAL'];
+        var snoozeTime = response["SNOOZE_INTERVAL"];
         var curTime = new Date().getTime();
         var alertTime = curTime + snoozeTime;
         saveToQueue(contest, alertTime);
     });
-}
+};
 
 var removeAlert = function(contest){
     chrome.storage.local.get("NOTIFICATIONQueue", function(response){
@@ -133,7 +133,7 @@ var removeAlert = function(contest){
         }
         chrome.storage.local.set({"NOTIFICATIONQueue": notificationQueue});
     });
-}
+};
 
 module.exports = {
     addAlert: addAlert,

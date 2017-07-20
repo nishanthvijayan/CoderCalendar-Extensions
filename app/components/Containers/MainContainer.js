@@ -1,9 +1,9 @@
-var React = require('react');
-var ContestTypeHeader = require('../ContestTypeHeader');
-var ContestList = require('../ContestList');
-var Cache = require('../../appCache');
-var Settings = require('../../settings');
-var Hide = require('../../hide');
+var React = require("react");
+var ContestTypeHeader = require("../ContestTypeHeader");
+var ContestList = require("../ContestList");
+var Cache = require("../../appCache");
+var Settings = require("../../settings");
+var Hide = require("../../hide");
 
 var Main = React.createClass({
     filterContestsBySettings: function(contests){
@@ -16,7 +16,7 @@ var Main = React.createClass({
     },
     filterContestsByTime: function(allContests){
         var currentTime  = new Date().getTime();
-        var filteredContests = {}
+        var filteredContests = {};
 
         // Remove contests that are already over from ongoing contests list
         filteredContests.ongoing = allContests.ongoing.filter(function(contest){
@@ -29,7 +29,7 @@ var Main = React.createClass({
             var startTime = Date.parse(contest.StartTime);
             var endTime   = Date.parse(contest.EndTime);
             if(startTime < currentTime && endTime > currentTime){
-                filteredContests.ongoing.push(contest)
+                filteredContests.ongoing.push(contest);
             }
         });
 
@@ -58,7 +58,7 @@ var Main = React.createClass({
         return {
             ongoing: contestsFilteredBySettings.ongoing.sort(this.sortByEndTime),
             upcoming: contestsFilteredBySettings.upcoming.sort(this.sortByStartTime)
-        }
+        };
     },
     render: function(){
         contests = this.processContestList(Cache.fetch().data);
@@ -73,7 +73,7 @@ var Main = React.createClass({
                     <ContestList contests={contests.upcoming} type='upcoming' />
                 </div>
             </div>
-        )
+        );
     }
 });
 

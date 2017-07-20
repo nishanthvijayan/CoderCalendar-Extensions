@@ -6,7 +6,8 @@
   "scripts": {
     "production": "webpack -p",
     "start": "./node_modules/.bin/webpack-dev-server --content-base dist --inline --hot",
-    "compile": "webpack"
+    "compile": "webpack",
+    "lint": "./node_modules/.bin/eslint ./app"
   },
   "author": "Nishanth Vijayan",
   "license": "ISC",
@@ -19,6 +20,8 @@
     "babel-core": "^6.10.4",
     "babel-loader": "^6.2.4",
     "babel-preset-react": "^6.5.0",
+    "eslint": "^4.2.0",
+    "eslint-plugin-react": "^7.1.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   }

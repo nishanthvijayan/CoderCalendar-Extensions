@@ -1,5 +1,5 @@
-var Feedback = require('./feedback');
-var Util = require('./util');
+var Feedback = require("./feedback");
+var Util = require("./util");
 
 Util.checkIfFirstRun();
 

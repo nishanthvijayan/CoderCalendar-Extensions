@@ -1,15 +1,15 @@
-var React = require('react');
-var ContestTypeHeader = require('./../ContestTypeHeader');
-var ContestList = require('./../ContestList');
-var Cache = require('../../appCache');
-var Hide = require('../../hide')
+var React = require("react");
+var ContestTypeHeader = require("./../ContestTypeHeader");
+var ContestList = require("./../ContestList");
+var Cache = require("../../appCache");
+var Hide = require("../../hide");
 
 var Archive = React.createClass({
     render: function(){
         var hiddenContests = {
             ongoing: Cache.fetch().data.ongoing.filter(function(contest){return Hide.isHidden(contest);}),
             upcoming: Cache.fetch().data.upcoming.filter(function(contest){return Hide.isHidden(contest);})
-        }
+        };
 
         if((hiddenContests.ongoing.length + hiddenContests.upcoming.length) > 0){
             return(
@@ -23,7 +23,7 @@ var Archive = React.createClass({
                         <ContestList contests={hiddenContests.upcoming} type='upcoming' />
                     </div>
                 </div>
-            )
+            );
         }else{
             return(
                 <div className = 'archive-container'>
@@ -31,7 +31,7 @@ var Archive = React.createClass({
                         <ContestTypeHeader type="No Hidden" />
                     </div>
                 </div>
-            )
+            );
         }
     }
 });

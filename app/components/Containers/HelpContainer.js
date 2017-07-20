@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require("react");
 
 var Help = React.createClass({
     onClickAndroid: function(){
@@ -45,7 +45,7 @@ var Help = React.createClass({
                     <hr/>
                 </div>
             </div>
-        )
+        );
     }
 });
 

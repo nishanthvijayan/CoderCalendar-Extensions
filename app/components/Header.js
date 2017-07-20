@@ -1,16 +1,16 @@
-var React = require('react');
+var React = require("react");
 // var Payment = require('../payment');
-var ArchiveIcon = require('./ArchiveIcon');
+var ArchiveIcon = require("./ArchiveIcon");
 // var BuyIcon = require('./BuyIcon');
 
 var Header = React.createClass({
     propTypes: {
-    onClickRefresh:      React.PropTypes.func,
-    onClickMain:      React.PropTypes.func,
-    onClickArchive:      React.PropTypes.func,
-    onClickSettings:      React.PropTypes.func,
-    onClickHelp:      React.PropTypes.func,
-    isLoading:   React.PropTypes.bool
+        onClickRefresh:      React.PropTypes.func,
+        onClickMain:      React.PropTypes.func,
+        onClickArchive:      React.PropTypes.func,
+        onClickSettings:      React.PropTypes.func,
+        onClickHelp:      React.PropTypes.func,
+        isLoading:   React.PropTypes.bool
     },
     // getInitialState: function(){
     //     return ({
@@ -19,10 +19,10 @@ var Header = React.createClass({
     // },
     refreshButtonSpinState: function(){
         if (this.props.isLoading){
-            return 'fa fa-refresh fa-2x fa-spin'
+            return "fa fa-refresh fa-2x fa-spin";
         }
         else{
-            return 'fa fa-refresh fa-2x'
+            return "fa fa-refresh fa-2x";
         }
     },
     // shouldRenderBuyIcon: function(){
@@ -49,7 +49,7 @@ var Header = React.createClass({
                 <i className="fa fa-gear fa-2x" onClick={this.props.onClickSettings} title="Settings" />
                 <i className={this.refreshButtonSpinState()}  onClick={this.props.onClickRefresh} title="Refresh" />
             </header>
-        )
+        );
     }
 });
 
