@@ -12,7 +12,7 @@ var Donations = React.createClass({
     },
     onClickFeedbackHandler: function(){
         chrome.tabs.create({ url: "https://goo.gl/forms/vgVJOQKwooO2pur13"});
-    }
+    },
     render: function(){
         return(
             <div className = 'donations-container' style={{height: 400}}>
