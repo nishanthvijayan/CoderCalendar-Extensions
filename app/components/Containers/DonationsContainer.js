@@ -2,15 +2,19 @@ var React = require("react");
 
 var Donations = React.createClass({
     onClickBeerDonationHandler: function(){
+        ga("send", "event", "Buy me Beer link");
         chrome.tabs.create({ url: "https://imjo.in/rbNqse2"});
     },
     onClickAnyDonationHandler: function(){
+        ga("send", "event", "Donate any amount link");
         chrome.tabs.create({ url: "https://www.instamojo.com/@nishanthvijayan"});
     },
     onClickImageHandler: function(){
+        ga("send", "event", "Github Profile link");
         chrome.tabs.create({ url: "https://github.com/nishanthvijayan"});
     },
     onClickFeedbackHandler: function(){
+        ga("send", "event", "Feedback link");
         chrome.tabs.create({ url: "https://goo.gl/forms/vgVJOQKwooO2pur13"});
     },
     render: function(){
