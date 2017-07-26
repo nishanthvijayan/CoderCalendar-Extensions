@@ -1,9 +1,6 @@
 var React = require("react");
 
 var Help = React.createClass({
-    onClickAndroid: function(){
-        chrome.tabs.create({ url: "https://play.google.com/store/apps/details?id=com.corphots.coderscalendar"});
-    },
     onClickFeedbackLink: function(){
         chrome.tabs.create({ url: "https://goo.gl/forms/vgVJOQKwooO2pur13"});
     },
