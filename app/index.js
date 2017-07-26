@@ -9,6 +9,8 @@ ga("set", "checkProtocolTask", function(){}); // Removes failing protocol check.
 ga("send", "pageview", "/index.html");
 
 var ReactDOM = require("react-dom");
+var React = require("react");
+
 var App = require("./components/App");
 
 $(document).ready(function(){
