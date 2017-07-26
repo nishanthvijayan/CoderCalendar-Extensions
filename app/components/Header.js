@@ -10,11 +10,6 @@ var Header = React.createClass({
         onClickHelp:      React.PropTypes.func,
         isLoading:   React.PropTypes.bool
     },
-    // getInitialState: function(){
-    //     return ({
-    //         isPremiumUser: false
-    //     });
-    // },
     refreshButtonSpinState: function(){
         if (this.props.isLoading){
             return "fa fa-refresh fa-2x fa-spin";
