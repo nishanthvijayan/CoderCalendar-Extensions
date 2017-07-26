@@ -3,7 +3,7 @@ var React = require("react");
 var Donations = React.createClass({
     onClickBeerDonationHandler: function(){
         ga("send", "event", "Buy me Beer link");
-        chrome.tabs.create({ url: "https://imjo.in/rbNqse2"});
+        chrome.tabs.create({ url: "https://imjo.in/rbNqse"});
     },
     onClickAnyDonationHandler: function(){
         ga("send", "event", "Donate any amount link");
