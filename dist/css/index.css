@@ -24,7 +24,7 @@ header {
   cursor: pointer;
 }
 
-.fa-refresh, .fa-gear, .fa-shopping-cart, .archive-icon, .fa-home, .fa-question {
+.fa-refresh, .fa-gear, .archive-icon, .fa-home, .fa-question, .fa-beer {
   position: fixed;
   margin-top: 15px;
 }
@@ -45,7 +45,7 @@ header {
   left: 35%;
 }
 
-.fa-shopping-cart {
+.fa-beer {
   left: 80%;
 }
 
@@ -165,4 +165,41 @@ header > h3 {
 
 .top-title{
   margin-top: 50px;
+}
+
+/****************************************************/
+/* Donations Container*/
+
+.circle-image{
+  border-radius: 50%;
+  position: relative;
+  left: 40%;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.message{
+  font-weight: 500;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: 15px;
+  font-family: "Open Sans", "Lucida Grande", "Lucida Sans";
+}
+
+.donation-button{
+  background: #75c26a;
+  border: 1px solid #55b148;
+  -webkit-border-radius: 1.5em;
+          border-radius: 1.5em;
+  padding: 0.6em 1em;
+  margin-right: 10%;
+
+  color: #FFF;
+  position: relative;
+}
+
+.donation-button:hover{
+  background: #FFF;
+  color: #75c26a;
+  cursor: pointer;
 }

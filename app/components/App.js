@@ -51,6 +51,10 @@ var App = React.createClass({
         ga("send", "pageview", "/help.html");
         this.setState({route: "help"});
     },
+    onClickDonateHandler: function(){
+        ga("send", "pageview", "/donate.html");
+        this.setState({route: "donate"});
+    },
 
     componentDidMount: function(){
         Settings.initialize();
@@ -67,6 +71,7 @@ var App = React.createClass({
                     onClickArchive = {this.onClickArchiveHandler}
                     onClickMain = {this.onClickMainHandler}
                     onClickHelp = {this.onClickHelpHandler}
+                    onClickDonate = {this.onClickDonateHandler}
                     isLoading = {this.state.isLoading}
                 />
                 <Router route={this.state.route} />
