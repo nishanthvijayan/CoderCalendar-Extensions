@@ -7,7 +7,7 @@
         "webextensions": true
     },
     "globals": {
-        "ga": true,
+        "ga": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
