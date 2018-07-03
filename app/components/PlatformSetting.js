@@ -19,7 +19,7 @@ const PlatformSettings = React.createClass({
     };
     return (
       <li className="platform-setting">
-        <img src={Util.icon_path(this.props.platform)} />
+        <img src={Util.iconPath(this.props.platform)} />
         <i
           className={`fa fa-2x ${icon_and_color(this.props.platform)}`}
           id={this.props.platform}

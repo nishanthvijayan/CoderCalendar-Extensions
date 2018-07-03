@@ -68,7 +68,7 @@ const serviceQueue = function () {
           type: 'basic',
           title: contest.Name,
           message: `will start in about ${beginInTime}\nat ${contest.StartTime.slice(0, 21)}`,
-          iconUrl: Util.icon_path(contest.Platform),
+          iconUrl: Util.iconPath(contest.Platform),
           buttons: [{ title: 'Snooze' }, { title: 'Dismiss' }],
         };
 

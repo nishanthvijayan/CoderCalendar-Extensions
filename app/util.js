@@ -32,7 +32,7 @@ const checkIfFirstRun = function () {
   localStorage.version = currVersion;
 };
 
-const icon_path = function (platform) {
+const iconPath = function (platform) {
   switch (platform) {
     case 'CODECHEF':
       return 'img/codechef.jpg';
@@ -55,5 +55,5 @@ const icon_path = function (platform) {
 module.exports = {
   convertToBrowzerTimezone,
   checkIfFirstRun,
-  icon_path,
+  iconPath,
 };

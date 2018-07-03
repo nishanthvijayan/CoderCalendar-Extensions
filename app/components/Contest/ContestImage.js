@@ -5,7 +5,7 @@ const ContestImage = function ContestImage(props) {
   return (
     <img
       className="contest-image"
-      src={Util.icon_path(props.platform)}
+      src={Util.iconPath(props.platform)}
       title={props.platform}
     />
   );
