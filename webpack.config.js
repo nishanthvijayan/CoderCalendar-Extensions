@@ -5,7 +5,6 @@ module.exports = [
     name: "chrome",
     entry: {
       "index" : "./app/index.js",
-      "notifier_service": "./app/notifier_service.js",
       "event_listeners": "./app/event_listeners.js"
 
     },
@@ -32,7 +31,6 @@ module.exports = [
     name: "firefox",
     entry: {
       "index" : "./app/index.js",
-      "notifier_service": "./app/notifier_service.js",
       "event_listeners": "./app/event_listeners.js"
 
     },

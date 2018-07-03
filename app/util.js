@@ -20,15 +20,8 @@ const checkIfFirstRun = function () {
 
   if (prevVersion == undefined) {
     chrome.tabs.create({ url: 'http://nishanthvijayan.github.io/CoderCalendar' });
-  } else if (currVersion != prevVersion) {
-    const opt = {
-      type: 'basic',
-      title: "Coder's Calendar Updated",
-      message: 'Desktop notifications is now free!\n',
-      iconUrl: '../img/icon32.png',
-    };
-    chrome.notifications.create(opt, () => {});
   }
+
   localStorage.version = currVersion;
 };
 

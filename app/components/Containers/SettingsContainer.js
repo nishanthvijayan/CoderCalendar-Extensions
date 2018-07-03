@@ -3,32 +3,6 @@ const PlatformSetting = require('../PlatformSetting');
 const Settings = require('../../settings');
 
 const SettingsContainer = React.createClass({
-  getInitialState() {
-    return {
-      alertBefore: 30,
-      snoozeInterval: 5,
-    };
-  },
-  onAlertChange(event) {
-    Settings.setAlertBeforeTime(parseInt(event.target.value) * 60000);
-    this.setState({ alertBefore: parseInt(event.target.value) });
-  },
-  onSnoozeChange(event) {
-    Settings.setSnoozeInterval(parseInt(event.target.value) * 60000);
-    this.setState({ snoozeInterval: parseInt(event.target.value) });
-  },
-  componentWillMount() {
-    const component = this;
-    Settings.getAlertBeforeTime((response) => {
-      const alertBefore = response.ALERT_BEFORE_TIME / 60000;
-      component.setState({ alertBefore });
-    });
-
-    Settings.getSnoozeInterval((response) => {
-      const snoozeTime = response.SNOOZE_INTERVAL / 60000;
-      component.setState({ snoozeInterval: snoozeTime });
-    });
-  },
   render() {
     const supportedPlatforms = ['HACKEREARTH', 'HACKERRANK', 'CODECHEF', 'CODEFORCES', 'TOPCODER', 'GOOGLE', 'OTHER'];
 
@@ -47,33 +21,6 @@ Subscribe
                 <hr />
               </div>
             ))}
-          </div>
-        </div>
-        <div id="subscribe">
-          <div className="title">
-            <h3>
-Desktop Notification
-            </h3>
-          </div>
-          <div className="subscribeContent">
-            <li className="notification-setting">
-              <label>
-Show Desktop Notification Alert
-                {' '}
-              </label>
-              <input type="number" name="alertBefore" min="10" max="120" step="10" value={this.state.alertBefore} onChange={this.onAlertChange} />
-                            minutes before start time
-            </li>
-            <hr />
-            <li className="notification-setting">
-              <label>
-Snooze length
-                {' '}
-              </label>
-              <input type="number" name="snoozeInterval" min="5" max="10" step="5" value={this.state.snoozeInterval} onChange={this.onSnoozeChange} />
-              {' '}
-minutes
-            </li>
           </div>
         </div>
       </div>
