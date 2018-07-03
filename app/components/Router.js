@@ -2,7 +2,6 @@ const React = require('react');
 const MainContainer = require('./Containers/MainContainer');
 const ArchiveContainer = require('./Containers/ArchiveContainer');
 const SettingsContainer = require('./Containers/SettingsContainer');
-const HelpContainer = require('./Containers/HelpContainer');
 const DonationsContainer = require('./Containers/DonationsContainer');
 
 const Router = React.createClass({
@@ -14,8 +13,6 @@ const Router = React.createClass({
         return (<ArchiveContainer />);
       case 'settings':
         return (<SettingsContainer />);
-      case 'help':
-        return (<HelpContainer />);
       case 'donate':
         return (<DonationsContainer />);
       default:
