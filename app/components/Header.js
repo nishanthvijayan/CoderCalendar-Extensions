@@ -1,5 +1,4 @@
 const React = require('react');
-const ArchiveIcon = require('./ArchiveIcon');
 
 const Header = React.createClass({
   refreshButtonSpinState() {
@@ -13,7 +12,7 @@ const Header = React.createClass({
     return (
       <header>
         <i className="fa fa-home fa-2x" onClick={this.props.onClickMain} title="Home" />
-        <ArchiveIcon onClickArchive={this.props.onClickArchive} />
+        <i className="fa fa-trash archive-icon fa-2x" onClick={this.props.onClickArchive} title="Hidden Contests" />
         <i className="fa fa-beer fa-2x" onClick={this.props.onClickDonate} title="Buy me a Beer!" />
         <i className="fa fa-gear fa-2x" onClick={this.props.onClickSettings} title="Settings" />
         <i className={this.refreshButtonSpinState()} onClick={this.props.onClickRefresh} title="Refresh" />
