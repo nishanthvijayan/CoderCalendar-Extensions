@@ -10,6 +10,7 @@ ga("send", "pageview", "/index.html");
 
 var ReactDOM = require("react-dom");
 var React = require("react");
+var $ = require("jquery");
 
 var App = require("./components/App");
 

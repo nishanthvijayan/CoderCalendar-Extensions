@@ -1,5 +1,6 @@
 var React = require("react");
 
+var $ = require("jquery");
 var Router = require("./Router");
 var Header = require("./Header");
 var Cache = require("../appCache");

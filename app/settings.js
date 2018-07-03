@@ -19,7 +19,7 @@ var toggleSubscription = function(platform){
 
 var initialize = function(){
     var supportedPlatforms = ["HACKEREARTH", "HACKERRANK", "CODECHEF", "CODEFORCES", "TOPCODER", "GOOGLE", "OTHER"];
-    $.each(supportedPlatforms,function(i, platform){
+    supportedPlatforms.forEach(function(platform) {
         if(!localStorage.getItem(platform)) localStorage.setItem(platform,"true");
     });
     // Initialize Hidden Contest List

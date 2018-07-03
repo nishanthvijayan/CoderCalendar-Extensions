@@ -25,7 +25,7 @@ var Main = React.createClass({
         });
 
         // Move contests that have started, to ongoing events list
-        $.each(allContests.upcoming, function(i, contest){
+        allContests.upcoming.forEach(function(contest){
             var startTime = Date.parse(contest.StartTime);
             var endTime   = Date.parse(contest.EndTime);
             if(startTime < currentTime && endTime > currentTime){
