@@ -10,16 +10,19 @@ const Router = React.createClass({
     route: React.PropTypes.string,
   },
   render() {
-    if (this.props.route == 'main') {
-      return (<MainContainer />);
-    } if (this.props.route == 'archive') {
-      return (<ArchiveContainer />);
-    } if (this.props.route == 'settings') {
-      return (<SettingsContainer />);
-    } if (this.props.route == 'help') {
-      return (<HelpContainer />);
-    } if (this.props.route == 'donate') {
-      return (<DonationsContainer />);
+    switch (this.props.route) {
+      case 'main':
+        return (<MainContainer />);
+      case 'archive':
+        return (<ArchiveContainer />);
+      case 'settings':
+        return (<SettingsContainer />);
+      case 'help':
+        return (<HelpContainer />);
+      case 'donate':
+        return (<DonationsContainer />);
+      default:
+        return (<MainContainer />);
     }
   },
 });
