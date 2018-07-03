@@ -1,0 +1,205 @@
+* {
+  margin: 0;
+  margin: 0;
+}
+
+body {
+  min-width: 450px;
+  background-color: #ffffff;
+}
+
+header {
+  z-index: 3;
+  background-color: #1565c0;
+  height: 50px;
+  color: #ffffff;
+  position: fixed;
+  width: 100%;
+  top: 0%;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.fa{
+  cursor: pointer;
+}
+
+.fa-refresh, .fa-gear, .archive-icon, .fa-home, .fa-question, .fa-beer {
+  position: fixed;
+  margin-top: 15px;
+}
+
+.fa-home {
+  left: 5%;
+}
+
+.fa-gear {
+  left: 15%;
+}
+
+.fa-question{
+  left: 25%;
+}
+
+.fa-trash {
+  left: 35%;
+}
+
+.fa-beer {
+  left: 80%;
+}
+
+.fa-refresh {
+  left: 90%;
+}
+
+.title {
+  text-align: center;
+  padding: 10px;
+  background-color: #1e88e5;
+  color: #ffffff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+li {
+  list-style-type: none;
+  padding: 10px;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+a li:hover {
+  background-color: #e0ebfd;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  color: #e0ebfd;
+  background-color: #e0ebfd;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  font-weight: normal;
+}
+
+h2{font-size: 16px;}
+
+header > h3 {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.option-icon {
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.contest-image {
+  display: inline-block;
+  float: left;
+  margin-left: 15px;
+  padding-top: 10px;
+  max-height: 40px;
+  max-width: 40px;
+}
+
+.details-container{
+  margin-left: 80px;
+}
+
+.contest-title:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Settings panel */
+
+.subscribeContent > li {
+  width: 100%;
+  list-style: none;
+  display: block;
+}
+
+.platform-setting > img{
+  margin-left: 30px;
+  max-height: 40px;
+  max-width: 40px;
+}
+
+
+.platform-setting > i {
+  border: 1px solid #cccccc;
+  border-radius: 20%;
+  padding: 2px;
+  float: right;
+  margin-right: 30px;
+}
+
+.notification-setting{
+  font-size: 120%;
+}
+
+.red-text {
+  color: #f44336;
+}
+
+.green-text {
+  color: #4caf50;
+}
+/*****************************************************/
+
+.circular-border{
+  border: 1px solid #cccccc;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.top-title{
+  margin-top: 50px;
+}
+
+/****************************************************/
+/* Donations Container*/
+
+.circle-image{
+  border-radius: 50%;
+  position: relative;
+  left: 40%;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.message{
+  font-weight: 500;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: 15px;
+  font-family: "Open Sans", "Lucida Grande", "Lucida Sans";
+}
+
+.donation-button{
+  background: #75c26a;
+  border: 1px solid #55b148;
+  -webkit-border-radius: 1.5em;
+          border-radius: 1.5em;
+  padding: 0.6em 1em;
+  margin-right: 10%;
+
+  color: #FFF;
+  position: relative;
+}
+
+.donation-button:hover{
+  background: #FFF;
+  color: #75c26a;
+  cursor: pointer;
+}
