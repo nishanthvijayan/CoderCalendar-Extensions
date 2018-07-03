@@ -5,7 +5,7 @@
   "scripts": {
     "production": "webpack -p",
     "start": "./node_modules/.bin/webpack-dev-server --content-base dist --inline --hot",
-    "compile": "webpack",
+    "build": "webpack",
     "lint": "./node_modules/.bin/eslint ./app"
   },
   "author": "Nishanth Vijayan",
