@@ -8,8 +8,14 @@ const convertToBrowzerTimezone = function (date) {
 };
 
 const getVersion = function () {
-  const details = chrome.app.getDetails();
-  return details.version;
+  if (chrome.app) {
+    return chrome.app.getDetails().version;
+  }
+  if (browser.runtime) {
+    return browser.runtime.getManifest().version;
+  }
+
+  return '1.0.0';
 };
 
 // Checks if the app version has changed
