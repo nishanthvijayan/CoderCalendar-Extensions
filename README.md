@@ -9,8 +9,8 @@ Currently shows updates from Codechef , HackerEarth , Hackerrank, Topcoder and C
   
 ## Download  
 Coder's Calendar is  available for download at:
-- [Chrome Extension] (https://chrome.google.com/webstore/detail/coders-calendar/bageaffklfkikjigoclfgengklfnidll)
-- [Firefox Add-on] (https://addons.mozilla.org/en-US/firefox/addon/coder-calendar/)  
+- [Chrome Extension](https://chrome.google.com/webstore/detail/coders-calendar/bageaffklfkikjigoclfgengklfnidll)
+- [Firefox Add-on](https://addons.mozilla.org/en-US/firefox/addon/coder-calendar/)  
 
 ## Building locally
 To install the dependencies, run
