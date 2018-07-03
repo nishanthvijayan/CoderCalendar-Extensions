@@ -48,6 +48,10 @@ header {
   left: 90%;
 }
 
+.fa-calendar {
+  float: right;
+}
+
 .title {
   text-align: center;
   padding: 10px;
@@ -95,7 +99,7 @@ header > h3 {
 
 .option-icon {
   cursor: pointer;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .contest-image {

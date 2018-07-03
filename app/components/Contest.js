@@ -3,7 +3,7 @@ const ContestTime = require('./Contest/ContestTime');
 const ContestImage = require('./Contest/ContestImage');
 const ContestDuration = require('./Contest/ContestDuration');
 const HideContestButton = require('./Contest/HideContestButton');
-const ContestOptionBar = require('./Contest/ContestOptionBar');
+const AddToCalendarButton = require('./Contest/AddToCalendarButton');
 const Hide = require('../hide');
 
 const Contest = React.createClass({
@@ -66,16 +66,12 @@ const Contest = React.createClass({
               {this.props.details.Name}
             </h2>
             <HideContestButton visible={this.state.isSelected} details={this.props.details} hideHandler={this.hide} />
+            <AddToCalendarButton visible={this.state.isSelected} type={this.props.type} details={this.props.details} />
             <br />
             <ContestTime type={this.props.type} details={this.props.details} />
             <ContestDuration type={this.props.type} details={this.props.details} />
             {' '}
             <br />
-            <ContestOptionBar
-              visible={this.state.isSelected}
-              type={this.props.type}
-              details={this.props.details}
-            />
           </div>
         </li>
         <hr />

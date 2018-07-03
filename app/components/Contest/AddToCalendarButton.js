@@ -25,9 +25,9 @@ const AddToCalendarButton = React.createClass({
     }
   },
   render() {
-    if (this.props.type == 'upcoming') {
+    if (this.props.type == 'upcoming' && this.props.visible) {
       return (
-        <i className="fa fa-calendar fa-lg option-icon" style={{ color: '#4caf50', cursor: 'pointer' }} onClick={this.onClickAddToCalendarButton} title="Add to Google Calendar" />
+        <i className="fa fa-calendar fa-lg option-icon circular-border" style={{ color: '#4caf50', cursor: 'pointer' }} onClick={this.onClickAddToCalendarButton} title="Add to Google Calendar" />
       );
     }
     return null;
