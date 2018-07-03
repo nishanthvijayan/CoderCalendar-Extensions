@@ -2,15 +2,6 @@ const React = require('react');
 const ArchiveIcon = require('./ArchiveIcon');
 
 const Header = React.createClass({
-  propTypes: {
-    onClickRefresh: React.PropTypes.func,
-    onClickMain: React.PropTypes.func,
-    onClickArchive: React.PropTypes.func,
-    onClickSettings: React.PropTypes.func,
-    onClickHelp: React.PropTypes.func,
-    onClickDonate: React.PropTypes.func,
-    isLoading: React.PropTypes.bool,
-  },
   refreshButtonSpinState() {
     if (this.props.isLoading) {
       return 'fa fa-refresh fa-2x fa-spin';

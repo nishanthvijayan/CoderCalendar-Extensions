@@ -14,9 +14,4 @@ Duration:
   },
 });
 
-ContestDuration.propTypes = {
-  type: React.PropTypes.string,
-  details: React.PropTypes.object,
-};
-
 module.exports = ContestDuration;

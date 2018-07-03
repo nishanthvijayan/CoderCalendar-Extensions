@@ -29,9 +29,4 @@ const ContestTime = React.createClass({
   },
 });
 
-ContestTime.propTypes = {
-  type: React.PropTypes.string,
-  details: React.PropTypes.object,
-};
-
 module.exports = ContestTime;

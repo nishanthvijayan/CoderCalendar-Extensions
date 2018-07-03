@@ -12,8 +12,4 @@ Contests
   );
 };
 
-ContestTypeHeader.propTypes = {
-  type: React.PropTypes.string,
-};
-
 module.exports = ContestTypeHeader;

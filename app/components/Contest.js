@@ -7,10 +7,6 @@ const ContestOptionBar = require('./Contest/ContestOptionBar');
 const Hide = require('../hide');
 
 const Contest = React.createClass({
-  propTypes: {
-    details: React.PropTypes.object,
-    type: React.PropTypes.string,
-  },
   getInitialState() {
     return {
       isSelected: false,

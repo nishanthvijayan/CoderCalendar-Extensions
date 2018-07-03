@@ -54,9 +54,4 @@ const AlertButton = React.createClass({
   },
 });
 
-AlertButton.propTypes = {
-  type: React.PropTypes.string,
-  details: React.PropTypes.object,
-};
-
 module.exports = AlertButton;

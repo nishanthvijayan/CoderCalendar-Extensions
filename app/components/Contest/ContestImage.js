@@ -11,8 +11,4 @@ const ContestImage = function ContestImage(props) {
   );
 };
 
-ContestImage.propTypes = {
-  platform: React.PropTypes.string,
-};
-
 module.exports = ContestImage;

@@ -6,9 +6,6 @@ const HelpContainer = require('./Containers/HelpContainer');
 const DonationsContainer = require('./Containers/DonationsContainer');
 
 const Router = React.createClass({
-  propTypes: {
-    route: React.PropTypes.string,
-  },
   render() {
     switch (this.props.route) {
       case 'main':

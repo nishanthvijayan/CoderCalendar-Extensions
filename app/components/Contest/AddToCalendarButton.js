@@ -34,9 +34,4 @@ const AddToCalendarButton = React.createClass({
   },
 });
 
-AddToCalendarButton.propTypes = {
-  type: React.PropTypes.string,
-  details: React.PropTypes.object,
-};
-
 module.exports = AddToCalendarButton;
