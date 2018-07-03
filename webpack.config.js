@@ -1,3 +1,5 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
 module.exports = {
 	entry: {
 		"index" : "./app/index.js",
@@ -6,12 +8,18 @@ module.exports = {
 
 	},
 	output:{
-		path: __dirname + '/dist/js', 
-		filename: '[name].js'
+		path: __dirname + '/dist/', 
+		filename: 'js/[name].js'
 	},
 	module: {
-		loaders: [
-			{ test: /\.js$/, exclude: /node_modules/ , loader: 'babel-loader' }
+		rules: [
+			{ test: /\.js$/, exclude: /node_modules/ , use: 'babel-loader' }
 		]
 	},
+	plugins: [
+		new CopyWebpackPlugin([
+		  { from: 'dist/css/index.css', to: 'css/mozilla.css' },
+		])
+	]
+	  
 }

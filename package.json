@@ -16,12 +16,14 @@
     "moment": "^2.15.1"
   },
   "devDependencies": {
-    "babel-core": "^6.10.4",
-    "babel-loader": "^6.2.4",
-    "babel-preset-react": "^6.5.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-react": "^6.24.1",
+    "copy-webpack-plugin": "^4.5.2",
     "eslint": "^4.2.0",
     "eslint-plugin-react": "^7.1.0",
-    "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^4.14.0",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
   }
 }
