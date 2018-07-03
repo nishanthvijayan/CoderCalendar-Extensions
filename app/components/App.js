@@ -1,84 +1,83 @@
-var React = require("react");
+const React = require('react');
 
-var $ = require("jquery");
-var Router = require("./Router");
-var Header = require("./Header");
-var Cache = require("../appCache");
-var Settings = require("../settings");
+const $ = require('jquery');
+const Router = require('./Router');
+const Header = require('./Header');
+const Cache = require('../appCache');
+const Settings = require('../settings');
 
-var App = React.createClass({
-    getInitialState: function(){
-        return{
-            isLoading: false,
-            route: "main"
-        };
-    },
-    getContestList: function(){
-        ga("send", "event", "Refresh");
+const App = React.createClass({
+  getInitialState() {
+    return {
+      isLoading: false,
+      route: 'main',
+    };
+  },
+  getContestList() {
+    ga('send', 'event', 'Refresh');
 
-        this.setState({
-            isLoading: true
-        });
+    this.setState({
+      isLoading: true,
+    });
 
-        var component = this;
-        $.when( $.ajax( "https://contesttrackerapi.herokuapp.com/" )).then(function(data){
+    const component = this;
+    $.when($.ajax('https://contesttrackerapi.herokuapp.com/')).then((data) => {
+      const contests = data.result;
 
-            var contests = data.result;
+      Cache.store(contests);
 
-            Cache.store(contests);
+      component.setState({
+        isLoading: false,
+      });
+    }, () => {
+      component.setState({
+        isLoading: false,
+      });
+    });
+  },
 
-            component.setState({
-                isLoading: false
-            });
-        }, function(){
-            component.setState({
-                isLoading: false
-            });
-        });
-    },
+  onClickSettingsHandler() {
+    ga('send', 'pageview', '/settings.html');
+    this.setState({ route: 'settings' });
+  },
+  onClickArchiveHandler() {
+    ga('send', 'pageview', '/archive.html');
+    this.setState({ route: 'archive' });
+  },
+  onClickMainHandler() {
+    this.setState({ route: 'main' });
+  },
+  onClickHelpHandler() {
+    ga('send', 'pageview', '/help.html');
+    this.setState({ route: 'help' });
+  },
+  onClickDonateHandler() {
+    ga('send', 'pageview', '/donate.html');
+    this.setState({ route: 'donate' });
+  },
 
-    onClickSettingsHandler: function(){
-        ga("send", "pageview", "/settings.html");
-        this.setState({route: "settings"});
-    },
-    onClickArchiveHandler: function(){
-        ga("send", "pageview", "/archive.html");
-        this.setState({route: "archive"});
-    },
-    onClickMainHandler: function(){
-        this.setState({route: "main"});
-    },
-    onClickHelpHandler: function(){
-        ga("send", "pageview", "/help.html");
-        this.setState({route: "help"});
-    },
-    onClickDonateHandler: function(){
-        ga("send", "pageview", "/donate.html");
-        this.setState({route: "donate"});
-    },
-
-    componentDidMount: function(){
-        Settings.initialize();
-        if (Cache.empty() || Cache.dataOlderThan(5)) {
-            this.getContestList();
-        }
-    },
-    render: function(){
-        return (
-            <div>
-                <Header
-                    onClickRefresh = {this.getContestList}
-                    onClickSettings = {this.onClickSettingsHandler}
-                    onClickArchive = {this.onClickArchiveHandler}
-                    onClickMain = {this.onClickMainHandler}
-                    onClickHelp = {this.onClickHelpHandler}
-                    onClickDonate = {this.onClickDonateHandler}
-                    isLoading = {this.state.isLoading}
-                />
-                <Router route={this.state.route} />
-            </div>
-        );
+  componentDidMount() {
+    Settings.initialize();
+    if (Cache.empty() || Cache.dataOlderThan(5)) {
+      this.getContestList();
     }
+  },
+  render() {
+    return (
+      <div>
+        <Header
+          onClickRefresh={this.getContestList}
+          onClickSettings={this.onClickSettingsHandler}
+          onClickArchive={this.onClickArchiveHandler}
+          onClickMain={this.onClickMainHandler}
+          onClickHelp={this.onClickHelpHandler}
+          onClickDonate={this.onClickDonateHandler}
+          isLoading={this.state.isLoading}
+        />
+        <Router route={this.state.route} />
+      </div>
+    );
+  },
 });
 
 module.exports = App;

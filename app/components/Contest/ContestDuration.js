@@ -1,18 +1,22 @@
-var React = require("react");
+const React = require('react');
 
-var ContestDuration = React.createClass({
-    render: function(){
-        if (this.props.type == "upcoming"){
-            return <h4>Duration: {this.props.details.Duration}</h4>;
-        }else{
-            return null;
-        }
+const ContestDuration = React.createClass({
+  render() {
+    if (this.props.type == 'upcoming') {
+      return (
+        <h4>
+Duration:
+          {this.props.details.Duration}
+        </h4>
+      );
     }
+    return null;
+  },
 });
 
 ContestDuration.propTypes = {
-    type: React.PropTypes.string,
-    details: React.PropTypes.object
+  type: React.PropTypes.string,
+  details: React.PropTypes.object,
 };
 
 module.exports = ContestDuration;

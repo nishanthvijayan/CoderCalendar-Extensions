@@ -1,7 +1,7 @@
-var Notifications = require("./notifications");
+const Notifications = require('./notifications');
 
-var serviceLoop = function(){
-    Notifications.serviceQueue();
+const serviceLoop = function () {
+  Notifications.serviceQueue();
 };
 
-setInterval(function(){serviceLoop();}, 120000);
+setInterval(() => { serviceLoop(); }, 120000);
