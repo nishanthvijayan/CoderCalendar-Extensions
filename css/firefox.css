@@ -1,10 +1,9 @@
 * {
   margin: 0;
-  margin: 0;
 }
 
 body {
-  min-width: 450px;
+  width: 550px;
   background-color: #ffffff;
 }
 
@@ -27,6 +26,7 @@ header {
 .fa-refresh, .fa-gear, .archive-icon, .fa-home, .fa-question, .fa-beer {
   position: fixed;
   margin-top: 15px;
+  font-size: 25px
 }
 
 .fa-home {
@@ -63,12 +63,8 @@ header {
 
 li {
   list-style-type: none;
-  padding: 10px;
+  padding: 13px;
   display: block;
-}
-
-a {
-  text-decoration: none;
 }
 
 a li:hover {
@@ -76,10 +72,10 @@ a li:hover {
 }
 
 hr {
-  border: none;
-  height: 1px;
-  color: #e0ebfd;
-  background-color: #e0ebfd;
+    border: none;
+    height: 1px;
+    color: #e0ebfd;
+    background-color: #e0ebfd;
 }
 
 h2,
@@ -89,7 +85,7 @@ h5 {
   font-weight: normal;
 }
 
-h2{font-size: 16px;}
+h2{font-size: 18px;}
 
 header > h3 {
   margin-top: 15px;
@@ -124,7 +120,6 @@ header > h3 {
 /* Settings panel */
 
 .subscribeContent > li {
-  width: 100%;
   list-style: none;
   display: block;
 }
@@ -192,7 +187,7 @@ header > h3 {
   -webkit-border-radius: 1.5em;
           border-radius: 1.5em;
   padding: 0.6em 1em;
-  margin-right: 10%;
+  margin-right: 5%;
 
   color: #FFF;
   position: relative;
