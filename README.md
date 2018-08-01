@@ -36,11 +36,10 @@ This will compile the react code inside `app/` to `build/chrome` & `build/firefo
  2. Select `Load Temporary Add-on`
  3. Select any file from the `build/firefox` folder
 
+## ScreenShots  
+  
+![Chrome Extension](http://i.imgur.com/DXbGuZz.png?1)  
 
 ## To-Do
- - [x] Process and filter contests based on start/end time on client side
- - [x] Documentation for react setup
- - [x] Fix reload button
- - [x] Save and restore scroll position
- - [x] Handle case where ajax requrest to server fails
  - [ ] Test Suite for the components
+ - [ ] Integrate with V2 API
