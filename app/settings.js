@@ -1,6 +1,6 @@
 const { SUPPORTED_PLATFORMS } = require('constants');
 
-const subscription = function (platform) {
+const subscription = (platform) => {
   if (localStorage.getItem(platform) == 'true') {
     return true;
   } if (!localStorage.getItem(platform)) {
@@ -9,7 +9,7 @@ const subscription = function (platform) {
   return false;
 };
 
-const toggleSubscription = function (platform) {
+const toggleSubscription = (platform) => {
   if (subscription(platform)) {
     ga('send', 'event', 'Platform Setting', 'UnCheck', platform);
     localStorage.setItem(platform, 'false');

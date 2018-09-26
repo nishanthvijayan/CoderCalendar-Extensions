@@ -1,4 +1,4 @@
-const askForRatings = function () {
+const askForRatings = () => {
   const opt = {
     type: 'basic',
     title: 'How about a rating on the Extension Store?',
@@ -18,7 +18,7 @@ const askForRatings = function () {
   });
 };
 
-const askForFeedback = function () {
+const askForFeedback = () => {
   const opt = {
     type: 'basic',
     title: 'Help us improve',
@@ -38,7 +38,7 @@ const askForFeedback = function () {
   });
 };
 
-const init = function () {
+const init = () => {
   const opt = {
     type: 'basic',
     title: "Are you enjoying Coder's Calendar?",

@@ -13,7 +13,7 @@ const PlatformSettings = React.createClass({
     this.setState({ checked: Settings.subscription(this.props.platform) });
   },
   render() {
-    const icon_and_color = function (platform) {
+    const icon_and_color = (platform) => {
       if (Settings.subscription(platform)) return 'fa-check green-text';
       return 'fa-times red-text';
     };

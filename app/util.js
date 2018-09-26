@@ -1,13 +1,13 @@
 // converts the input time(which is Indian Standard Time) to
 // the browser timezone.
-const convertToBrowzerTimezone = function (date) {
+const convertToBrowzerTimezone = (date) => {
   const d = new Date(date);
   const offset = -(d.getTimezoneOffset());
   const newDate = new Date(d.getTime() + offset * 60000 - 19800000);
   return newDate;
 };
 
-const getVersion = function () {
+const getVersion = () => {
   if (chrome.app) {
     return chrome.app.getDetails().version;
   }
@@ -20,7 +20,7 @@ const getVersion = function () {
 
 // Checks if the app version has changed
 // Opens settings page on first run after install/upgrade
-const checkIfFirstRun = function () {
+const checkIfFirstRun = () => {
   const currVersion = getVersion();
   const prevVersion = localStorage.version;
 
@@ -31,7 +31,7 @@ const checkIfFirstRun = function () {
   localStorage.version = currVersion;
 };
 
-const iconPath = function (platform) {
+const iconPath = (platform) => {
   switch (platform) {
     case 'CODECHEF':
       return 'img/codechef.jpg';

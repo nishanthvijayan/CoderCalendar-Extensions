@@ -5,7 +5,6 @@ const { SUPPORTED_PLATFORMS } = require('../../constants');
 
 const SettingsContainer = React.createClass({
   render() {
-
     return (
       <div className="settings-container">
         <div id="subscribe" className="top-title">
