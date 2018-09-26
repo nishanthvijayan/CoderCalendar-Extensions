@@ -1,3 +1,5 @@
+const { SUPPORTED_PLATFORMS } = require('constants');
+
 const subscription = function (platform) {
   if (localStorage.getItem(platform) == 'true') {
     return true;
@@ -17,13 +19,15 @@ const toggleSubscription = function (platform) {
   }
 };
 
-const initialize = function () {
-  const supportedPlatforms = ['HACKEREARTH', 'HACKERRANK', 'CODECHEF', 'CODEFORCES', 'TOPCODER', 'GOOGLE', 'OTHER'];
-  supportedPlatforms.forEach((platform) => {
-    if (!localStorage.getItem(platform)) localStorage.setItem(platform, 'true');
-  });
+const initialize = () => {
+  SUPPORTED_PLATFORMS
+    .filter(p => !localStorage.getItem(p))
+    .forEach(p => localStorage.setItem(p, 'true'));
+
   // Initialize Hidden Contest List
-  if (!localStorage.getItem('HIDDEN_LIST')) localStorage.setItem('HIDDEN_LIST', '{}');
+  if (!localStorage.getItem('HIDDEN_LIST')) {
+    localStorage.setItem('HIDDEN_LIST', '{}');
+  }
 };
 
 module.exports = {

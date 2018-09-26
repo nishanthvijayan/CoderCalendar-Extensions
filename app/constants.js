@@ -1,0 +1,10 @@
+const SUPPORTED_PLATFORMS = [
+  'HACKEREARTH',
+  'HACKERRANK',
+  'CODECHEF',
+  'CODEFORCES',
+  'TOPCODER',
+  'OTHER',
+];
+
+module.exports = { SUPPORTED_PLATFORMS };

@@ -43,8 +43,6 @@ const iconPath = function (platform) {
       return 'img/topcoder.gif';
     case 'HACKERRANK':
       return 'img/hackerrank.png';
-    case 'GOOGLE':
-      return 'img/google.png';
     default:
       return 'img/other.png';
   }

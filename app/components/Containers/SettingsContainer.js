@@ -1,10 +1,10 @@
 const React = require('react');
 const PlatformSetting = require('../PlatformSetting');
 const Settings = require('../../settings');
+const { SUPPORTED_PLATFORMS } = require('../../constants');
 
 const SettingsContainer = React.createClass({
   render() {
-    const supportedPlatforms = ['HACKEREARTH', 'HACKERRANK', 'CODECHEF', 'CODEFORCES', 'TOPCODER', 'GOOGLE', 'OTHER'];
 
     return (
       <div className="settings-container">
@@ -15,7 +15,7 @@ Subscribe
             </h3>
           </div>
           <div className="subscribeContent">
-            {supportedPlatforms.map(platform => (
+            {SUPPORTED_PLATFORMS.map(platform => (
               <div>
                 <PlatformSetting platform={platform} />
                 <hr />
