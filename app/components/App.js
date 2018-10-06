@@ -10,7 +10,7 @@ const App = React.createClass({
   getInitialState() {
     return {
       isLoading: false,
-      route: 'main',
+      route: 'listings',
     };
   },
   getContestList() {
@@ -44,8 +44,8 @@ const App = React.createClass({
     ga('send', 'pageview', '/archive.html');
     this.setState({ route: 'archive' });
   },
-  onClickMainHandler() {
-    this.setState({ route: 'main' });
+  onClickListingsHandler() {
+    this.setState({ route: 'listings' });
   },
   onClickHelpHandler() {
     ga('send', 'pageview', '/help.html');
@@ -57,7 +57,7 @@ const App = React.createClass({
   },
 
   componentDidMount() {
-    Settings.initialize();
+    Settings.initializeSettings();
     if (Cache.empty() || Cache.dataOlderThan(5)) {
       this.getContestList();
     }
@@ -69,7 +69,7 @@ const App = React.createClass({
           onClickRefresh={this.getContestList}
           onClickSettings={this.onClickSettingsHandler}
           onClickArchive={this.onClickArchiveHandler}
-          onClickMain={this.onClickMainHandler}
+          onClickListings={this.onClickListingsHandler}
           onClickHelp={this.onClickHelpHandler}
           onClickDonate={this.onClickDonateHandler}
           isLoading={this.state.isLoading}

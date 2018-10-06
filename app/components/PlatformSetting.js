@@ -5,16 +5,16 @@ const Util = require('../util');
 const PlatformSettings = React.createClass({
   getInitialState() {
     return {
-      checked: Settings.subscription(this.props.platform),
+      checked: Settings.isPlatformEnabled(this.props.platform),
     };
   },
   onClickHandler() {
-    Settings.toggleSubscription(this.props.platform);
-    this.setState({ checked: Settings.subscription(this.props.platform) });
+    Settings.togglePlatform(this.props.platform);
+    this.setState({ checked: Settings.isPlatformEnabled(this.props.platform) });
   },
   render() {
     const icon_and_color = (platform) => {
-      if (Settings.subscription(platform)) return 'fa-check green-text';
+      if (Settings.isPlatformEnabled(platform)) return 'fa-check green-text';
       return 'fa-times red-text';
     };
     return (

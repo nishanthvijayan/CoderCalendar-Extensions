@@ -1,5 +1,5 @@
 const React = require('react');
-const MainContainer = require('./Containers/MainContainer');
+const ListingsContainer = require('./Containers/ListingsContainer');
 const ArchiveContainer = require('./Containers/ArchiveContainer');
 const SettingsContainer = require('./Containers/SettingsContainer');
 const DonationsContainer = require('./Containers/DonationsContainer');
@@ -7,8 +7,8 @@ const DonationsContainer = require('./Containers/DonationsContainer');
 const Router = React.createClass({
   render() {
     switch (this.props.route) {
-      case 'main':
-        return (<MainContainer />);
+      case 'listings':
+        return (<ListingsContainer />);
       case 'archive':
         return (<ArchiveContainer />);
       case 'settings':
@@ -16,7 +16,7 @@ const Router = React.createClass({
       case 'donate':
         return (<DonationsContainer />);
       default:
-        return (<MainContainer />);
+        return (<ListingsContainer />);
     }
   },
 });

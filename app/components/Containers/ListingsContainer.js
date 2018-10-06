@@ -5,11 +5,14 @@ const Cache = require('../../appCache');
 const Settings = require('../../settings');
 const Hide = require('../../hide');
 
-const Main = React.createClass({
+const Listings = React.createClass({
+
   filterContestsBySettings(contests) {
-    const filteredContests = contests.filter(contest => Settings.subscription(contest.Platform)).filter(contest => !Hide.isHidden(contest));
-    return filteredContests;
+    return contests
+      .filter(contest => Settings.isPlatformEnabled(contest.Platform))
+      .filter(contest => !Hide.isHidden(contest));
   },
+
   filterContestsByTime(allContests) {
     const currentTime = new Date().getTime();
     const filteredContests = {};
@@ -38,17 +41,16 @@ const Main = React.createClass({
 
     return filteredContests;
   },
-  sortByStartTime(a, b) {
-    return Date.parse(a.StartTime) - Date.parse(b.StartTime);
-  },
-  sortByEndTime(a, b) {
-    return Date.parse(a.EndTime) - Date.parse(b.EndTime);
-  },
+
+  sortByStartTime: (a, b) => Date.parse(a.StartTime) - Date.parse(b.StartTime),
+  sortByEndTime: (a, b) => Date.parse(a.EndTime) - Date.parse(b.EndTime),
+
   processContestList(contests) {
     let contestsFilteredBySettings = {
       ongoing: this.filterContestsBySettings(contests.ongoing),
       upcoming: this.filterContestsBySettings(contests.upcoming),
     };
+
     contestsFilteredBySettings = this.filterContestsByTime(contestsFilteredBySettings);
 
     return {
@@ -59,7 +61,7 @@ const Main = React.createClass({
   render() {
     const contests = this.processContestList(Cache.fetch().data);
     return (
-      <div className="main-container">
+      <div className="listings-container">
         <div id="ongoing" className="top-title">
           <ContestTypeHeader type="Live" />
           <ContestList contests={contests.ongoing} type="live" />
@@ -73,4 +75,4 @@ const Main = React.createClass({
   },
 });
 
-module.exports = Main;
+module.exports = Listings;
