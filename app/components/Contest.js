@@ -9,8 +9,7 @@ const Contest = React.createClass({
   getInitialState() {
     return {
       isSelected: false,
-      visible: true,
-      archived: this.props.contest.isHidden(),
+      visible: this.props.contest.isHidden(),
     };
   },
   onClickContestTitle() {
@@ -37,24 +36,21 @@ const Contest = React.createClass({
   hide() {
     ga('send', 'event', 'Hide');
     this.props.contest.hide();
-    this.setState({ visible: false, archived: true });
+    this.setState({ visible: true });
   },
   show() {
     ga('send', 'event', 'Unhide');
     this.props.contest.show();
-    this.setState({ visible: false, archived: false });
+    this.setState({ visible: false });
   },
   toggleVisiblity() {
-    if (this.state.archived) {
+    if (this.state.visible) {
       this.hide();
     } else {
       this.show();
     }
   },
   render() {
-    if (!this.state.visible) {
-      return null;
-    }
 
     return (
       <a>
