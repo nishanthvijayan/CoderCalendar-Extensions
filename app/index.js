@@ -16,24 +16,39 @@ const $ = require('jquery');
 
 const App = require('./components/App');
 
-$(document).ready(() => {
-  if (isNaN(parseInt(localStorage.OPENCOUNT))) {
+const resetScrollPosition = () => {
+  const now = (new Date()).getTime() / 1000;
+  if (localStorage.scrollPosition && now - parseInt(localStorage.scrolltime, 10) < 5 * 60) {
+    window.scroll(0, localStorage.scrollPosition);
+  }
+};
+
+const updateScrollPositionStore = () => {
+  localStorage.scrollPosition = window.scrollY;
+  localStorage.scrolltime = (new Date()).getTime() / 1000;
+};
+
+const incrementOpenCount = () => {
+  if (isNaN(parseInt(localStorage.OPENCOUNT, 10))) {
     localStorage.OPENCOUNT = '0';
   }
-  localStorage.OPENCOUNT = (parseInt(localStorage.OPENCOUNT) + 1).toString();
-  if (parseInt(localStorage.OPENCOUNT) > 0 && parseInt(localStorage.OPENCOUNT) % 30 == 0) {
+
+  localStorage.OPENCOUNT = (parseInt(localStorage.OPENCOUNT, 10) + 1).toString();
+};
+
+const askForFeedbackIfNeeded = () => {
+  if (parseInt(localStorage.OPENCOUNT, 10) > 0 && parseInt(localStorage.OPENCOUNT, 10) % 30 == 0) {
     chrome.runtime.sendMessage({ request: 'askForFeedback' });
   }
+};
+
+$(document).ready(() => {
+  incrementOpenCount();
+  askForFeedbackIfNeeded();
 
   ReactDOM.render(<App />, document.getElementById('ui-content'));
 
-  addEventListener('scroll', () => {
-    localStorage.scrollPosition = window.scrollY;
-    localStorage.scrolltime = (new Date()).getTime() / 1000;
-  });
+  addEventListener('scroll', updateScrollPositionStore);
 
-  const now = (new Date()).getTime() / 1000;
-  if (localStorage.scrollPosition && now - parseInt(localStorage.scrolltime) < 5 * 60) {
-    window.scroll(0, localStorage.scrollPosition);
-  }
+  resetScrollPosition();
 });
