@@ -3,8 +3,8 @@ const React = require('react');
 const $ = require('jquery');
 const Router = require('./Router');
 const Header = require('./Header');
-const Cache = require('../appCache');
-const Settings = require('../settings');
+const store = require('../store');
+const { SUPPORTED_PLATFORMS } = require('../constants');
 
 const App = React.createClass({
   getInitialState() {
@@ -24,7 +24,7 @@ const App = React.createClass({
     $.when($.ajax('https://contesttrackerapi.herokuapp.com/')).then((data) => {
       const contests = data.result;
 
-      Cache.store(contests);
+      store.setContests(contests);
 
       component.setState({
         isLoading: false,
@@ -57,8 +57,17 @@ const App = React.createClass({
   },
 
   componentDidMount() {
-    Settings.initializeSettings();
-    if (Cache.empty() || Cache.dataOlderThan(5)) {
+    // Initialize Platform settings
+    SUPPORTED_PLATFORMS
+      .filter(p => !store.isPlatformInitialized(p))
+      .forEach(p => store.enablePlatform(p));
+
+    // Initialize Hidden Contest List
+    if (!store.isHiddenListInitialized()) {
+      store.initializeHiddenList();
+    }
+
+    if (store.isContestsDataEmpty() || store.isContestsDataStale(5)) {
       this.getContestList();
     }
   },

@@ -1,32 +1,31 @@
 const React = require('react');
 const moment = require('moment');
 
-const ContestTime = React.createClass({
-  render() {
-    let time,
-      timeText;
-    if (this.props.type == 'live') {
-      time = this.props.details.EndTime.slice(0, 21);
-      timeText = 'End';
-    } else {
-      time = this.props.details.StartTime.slice(0, 21);
-      timeText = 'Start';
-    }
-    const humanReadableTime = moment(time).fromNow();
+const ContestTime = ({ type, contest }) => {
+  let time;
+  let timeText;
 
-    return (
-      <h4>
-        {timeText}
+  if (type == 'live') {
+    time = contest.EndTime.slice(0, 21);
+    timeText = 'End';
+  } else {
+    time = contest.StartTime.slice(0, 21);
+    timeText = 'Start';
+  }
+  const humanReadableTime = moment(time).fromNow();
+
+  return (
+    <h4>
+      {timeText}
 :
-        {' '}
-        {time}
-        {' '}
+      {' '}
+      {time}
+      {' '}
 (
-        {humanReadableTime}
+      {humanReadableTime}
 )
-      </h4>
-    );
-  },
-});
+    </h4>
+  );
+};
 
 module.exports = ContestTime;

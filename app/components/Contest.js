@@ -4,19 +4,18 @@ const ContestImage = require('./Contest/ContestImage');
 const ContestDuration = require('./Contest/ContestDuration');
 const HideContestButton = require('./Contest/HideContestButton');
 const AddToCalendarButton = require('./Contest/AddToCalendarButton');
-const Hide = require('../hide');
 
 const Contest = React.createClass({
   getInitialState() {
     return {
       isSelected: false,
       visible: true,
-      archived: Hide.isHidden(this.props.details),
+      archived: this.props.contest.isHidden(),
     };
   },
   onClickContestTitle() {
     ga('send', 'event', 'Open Contest');
-    chrome.tabs.create({ url: this.props.details.url });
+    chrome.tabs.create({ url: this.props.contest.url });
   },
   onMouseEnterHandler() {
     this.setState({
@@ -35,21 +34,21 @@ const Contest = React.createClass({
       });
     }
   },
-  archive() {
+  hide() {
     ga('send', 'event', 'Hide');
-    Hide.hideContest(this.props.details);
+    this.props.contest.hide();
     this.setState({ visible: false, archived: true });
   },
-  unArchive() {
+  show() {
     ga('send', 'event', 'Unhide');
-    Hide.showContest(this.props.details);
+    this.props.contest.show();
     this.setState({ visible: false, archived: false });
   },
-  hide() {
+  toggleVisiblity() {
     if (this.state.archived) {
-      this.unArchive();
+      this.hide();
     } else {
-      this.archive();
+      this.show();
     }
   },
   render() {
@@ -59,17 +58,35 @@ const Contest = React.createClass({
 
     return (
       <a>
-        <li onMouseMove={this.onMouseMoveHandler} onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
-          <ContestImage platform={this.props.details.Platform} />
+        <li
+          onMouseMove={this.onMouseMoveHandler}
+          onMouseEnter={this.onMouseEnterHandler}
+          onMouseLeave={this.onMouseLeaveHandler}
+        >
+          <ContestImage platform={this.props.contest.Platform} />
           <div className="details-container">
+
             <h2 className="contest-title" onClick={this.onClickContestTitle}>
-              {this.props.details.Name}
+              {this.props.contest.Name}
             </h2>
-            <HideContestButton visible={this.state.isSelected} details={this.props.details} hideHandler={this.hide} />
-            <AddToCalendarButton visible={this.state.isSelected} type={this.props.type} details={this.props.details} />
+
+            <HideContestButton
+              visible={this.state.isSelected}
+              contest={this.props.contest}
+              hideHandler={this.toggleVisiblity}
+            />
+
+            <AddToCalendarButton
+              visible={this.state.isSelected}
+              type={this.props.type}
+              contest={this.props.contest}
+            />
+
             <br />
-            <ContestTime type={this.props.type} details={this.props.details} />
-            <ContestDuration type={this.props.type} details={this.props.details} />
+
+            <ContestTime type={this.props.type} contest={this.props.contest} />
+
+            <ContestDuration type={this.props.type} contest={this.props.contest} />
             {' '}
             <br />
           </div>

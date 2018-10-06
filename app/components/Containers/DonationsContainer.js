@@ -28,7 +28,13 @@ Buy me a Beer!
           </div>
         </div>
         <div className="message">
-          <img src="https://github.com/nishanthvijayan.png" className="circle-image" style={{ height: 80 }} onClick={this.onClickImageHandler} />
+          <img
+            src="https://github.com/nishanthvijayan.png"
+            className="circle-image"
+            style={{ height: 80 }}
+            alt="nishanth"
+            onClick={this.onClickImageHandler}
+          />
           <br />
           <br />
           <p>

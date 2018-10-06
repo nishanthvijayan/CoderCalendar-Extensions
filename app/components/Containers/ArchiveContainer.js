@@ -1,14 +1,18 @@
 const React = require('react');
 const ContestTypeHeader = require('./../ContestTypeHeader');
 const ContestList = require('./../ContestList');
-const Cache = require('../../appCache');
-const Hide = require('../../hide');
+const store = require('../../store');
+const Contest = require('../../Contest');
 
 const Archive = React.createClass({
   render() {
     const hiddenContests = {
-      ongoing: Cache.fetch().data.ongoing.filter(contest => Hide.isHidden(contest)),
-      upcoming: Cache.fetch().data.upcoming.filter(contest => Hide.isHidden(contest)),
+      ongoing: store.getContests().data.ongoing
+        .map(contestJson => new Contest(contestJson))
+        .filter(contest => contest.isHidden()),
+      upcoming: store.getContests().data.upcoming
+        .map(contestJson => new Contest(contestJson))
+        .filter(contest => contest.isHidden()),
     };
 
     if ((hiddenContests.ongoing.length + hiddenContests.upcoming.length) > 0) {

@@ -1,17 +1,10 @@
 const React = require('react');
 const ContestTypeHeader = require('../ContestTypeHeader');
 const ContestList = require('../ContestList');
-const Cache = require('../../appCache');
-const Settings = require('../../settings');
-const Hide = require('../../hide');
+const store = require('../../store');
+const Contest = require('../../Contest');
 
 const Listings = React.createClass({
-
-  filterContestsBySettings(contests) {
-    return contests
-      .filter(contest => Settings.isPlatformEnabled(contest.Platform))
-      .filter(contest => !Hide.isHidden(contest));
-  },
 
   filterContestsByTime(allContests) {
     const currentTime = new Date().getTime();
@@ -46,20 +39,22 @@ const Listings = React.createClass({
   sortByEndTime: (a, b) => Date.parse(a.EndTime) - Date.parse(b.EndTime),
 
   processContestList(contests) {
-    let contestsFilteredBySettings = {
-      ongoing: this.filterContestsBySettings(contests.ongoing),
-      upcoming: this.filterContestsBySettings(contests.upcoming),
-    };
-
-    contestsFilteredBySettings = this.filterContestsByTime(contestsFilteredBySettings);
+    const contestsFilteredBySettings = this.filterContestsByTime(contests);
 
     return {
-      ongoing: contestsFilteredBySettings.ongoing.sort(this.sortByEndTime),
-      upcoming: contestsFilteredBySettings.upcoming.sort(this.sortByStartTime),
+      ongoing: contestsFilteredBySettings.ongoing
+        .map(contestJson => new Contest(contestJson))
+        .filter(contest => contest.shouldBeDisplayed())
+        .sort(this.sortByEndTime),
+
+      upcoming: contestsFilteredBySettings.upcoming
+        .map(contestJson => new Contest(contestJson))
+        .filter(contest => contest.shouldBeDisplayed())
+        .sort(this.sortByStartTime),
     };
   },
   render() {
-    const contests = this.processContestList(Cache.fetch().data);
+    const contests = this.processContestList(store.getContests().data);
     return (
       <div className="listings-container">
         <div id="ongoing" className="top-title">
