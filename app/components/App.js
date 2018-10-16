@@ -1,6 +1,6 @@
 const React = require('react');
 
-const $ = require('jquery');
+const axios = require('axios');
 const Router = require('./Router');
 const Header = require('./Header');
 const store = require('../store');
@@ -19,10 +19,10 @@ const App = React.createClass({
     });
 
     const component = this;
-    $.when($.ajax('https://contesttrackerapi.herokuapp.com/'))
+    axios.get('https://contesttrackerapi.herokuapp.com/')
       .then(({ result: contests }) => store.setContests(contests))
-      .catch(() => console.log('Error accessing API'))
-      .always(() => {
+      .catch(error => console.log(`Error accessing API: ${error}`))
+      .then(() => {
         component.setState({
           isLoading: false,
         });

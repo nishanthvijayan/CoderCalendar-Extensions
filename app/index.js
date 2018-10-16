@@ -12,7 +12,6 @@ ga('send', 'pageview', '/index.html');
 
 const ReactDOM = require('react-dom');
 const React = require('react');
-const $ = require('jquery');
 const store = require('./store');
 const App = require('./components/App');
 
@@ -31,7 +30,7 @@ const askForFeedbackIfNeeded = () => {
   }
 };
 
-$(document).ready(() => {
+document.addEventListener('DOMContentLoaded', () => {
   store.incrementOpenCount();
   askForFeedbackIfNeeded();
 
@@ -40,4 +39,4 @@ $(document).ready(() => {
   addEventListener('scroll', updateScrollPositionStore);
 
   resetScrollPosition();
-});
+}, false);
