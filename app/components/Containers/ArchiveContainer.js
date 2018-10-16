@@ -29,6 +29,7 @@ const Archive = () => {
       </div>
     );
   }
+
   return (
     <div className="archive-container">
       <div id="ongoing" className="top-title">
