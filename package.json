@@ -6,7 +6,7 @@
     "production": "webpack -p",
     "start": "./node_modules/.bin/webpack-dev-server --content-base dist --inline --hot",
     "build": "webpack",
-    "lint": "./node_modules/.bin/eslint ./app"
+    "lint": "./node_modules/.bin/eslint ./app --fix"
   },
   "author": "Nishanth Vijayan",
   "license": "ISC",
