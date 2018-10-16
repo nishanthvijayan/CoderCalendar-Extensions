@@ -19,13 +19,14 @@ const App = React.createClass({
     });
 
     const component = this;
-    $.when($.ajax('https://contesttrackerapi.herokuapp.com/')).then(({ result: contests }) => {
-      store.setContests(contests);
-    }).always(() => {
-      component.setState({
-        isLoading: false,
+    $.when($.ajax('https://contesttrackerapi.herokuapp.com/'))
+      .then(({ result: contests }) => store.setContests(contests))
+      .catch(() => console.log('Error accessing API'))
+      .always(() => {
+        component.setState({
+          isLoading: false,
+        });
       });
-    });
   },
 
   onClickSettingsHandler() {
