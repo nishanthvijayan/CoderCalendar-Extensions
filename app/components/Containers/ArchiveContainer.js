@@ -15,16 +15,11 @@ const Archive = () => {
       .filter(contest => contest.isHidden()),
   };
 
-  if ((hiddenContests.ongoing.length + hiddenContests.upcoming.length) > 0) {
+  if ((hiddenContests.ongoing.length + hiddenContests.upcoming.length) == 0) {
     return (
       <div className="archive-container">
         <div id="ongoing" className="top-title">
-          <ContestTypeHeader type="Hidden Live" />
-          <ContestList contests={hiddenContests.ongoing} type="live" route="archive" />
-        </div>
-        <div id="upcoming">
-          <ContestTypeHeader type="Hidden Upcoming" />
-          <ContestList contests={hiddenContests.upcoming} type="upcoming" route="archive" />
+          <ContestTypeHeader type="No Hidden" />
         </div>
       </div>
     );
@@ -33,7 +28,12 @@ const Archive = () => {
   return (
     <div className="archive-container">
       <div id="ongoing" className="top-title">
-        <ContestTypeHeader type="No Hidden" />
+        <ContestTypeHeader type="Hidden Live" />
+        <ContestList contests={hiddenContests.ongoing} type="live" route="archive" />
+      </div>
+      <div id="upcoming">
+        <ContestTypeHeader type="Hidden Upcoming" />
+        <ContestList contests={hiddenContests.upcoming} type="upcoming" route="archive" />
       </div>
     </div>
   );
