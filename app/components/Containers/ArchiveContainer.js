@@ -6,11 +6,12 @@ const Contest = require('../../Contest');
 
 const Archive = React.createClass({
   render() {
+    const { ongoing: ongoingContests, upcoming: upcomingContests } = store.getContests().data;
     const hiddenContests = {
-      ongoing: store.getContests().data.ongoing
+      ongoing: ongoingContests
         .map(contestJson => new Contest(contestJson))
         .filter(contest => contest.isHidden()),
-      upcoming: store.getContests().data.upcoming
+      upcoming: upcomingContests
         .map(contestJson => new Contest(contestJson))
         .filter(contest => contest.isHidden()),
     };
@@ -20,11 +21,11 @@ const Archive = React.createClass({
         <div className="archive-container">
           <div id="ongoing" className="top-title">
             <ContestTypeHeader type="Hidden Live" />
-            <ContestList contests={hiddenContests.ongoing} type="live" />
+            <ContestList contests={hiddenContests.ongoing} type="live" route="archive" />
           </div>
           <div id="upcoming">
             <ContestTypeHeader type="Hidden Upcoming" />
-            <ContestList contests={hiddenContests.upcoming} type="upcoming" />
+            <ContestList contests={hiddenContests.upcoming} type="upcoming" route="archive" />
           </div>
         </div>
       );

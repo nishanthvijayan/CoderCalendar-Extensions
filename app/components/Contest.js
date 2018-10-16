@@ -5,12 +5,20 @@ const ContestDuration = require('./Contest/ContestDuration');
 const HideContestButton = require('./Contest/HideContestButton');
 const AddToCalendarButton = require('./Contest/AddToCalendarButton');
 
+// state.isArchived refers to whether the contest is archived or not
+// state.isVisible refers to whether the contest is
 const Contest = React.createClass({
   getInitialState() {
     return {
       isSelected: false,
-      visible: this.props.contest.isHidden(),
+      isArchived: this.props.contest.isHidden(),
     };
+  },
+  isVisible() {
+    if (this.props.route === 'listings') {
+      return !this.state.isArchived;
+    }
+    return this.state.isArchived;
   },
   onClickContestTitle() {
     ga('send', 'event', 'Open Contest');
@@ -33,24 +41,31 @@ const Contest = React.createClass({
       });
     }
   },
-  hide() {
+  archive() {
     ga('send', 'event', 'Hide');
     this.props.contest.hide();
-    this.setState({ visible: true });
+    this.setState({
+      isArchived: true,
+    });
   },
-  show() {
+  unArchive() {
     ga('send', 'event', 'Unhide');
     this.props.contest.show();
-    this.setState({ visible: false });
+    this.setState({
+      isArchived: false,
+    });
   },
-  toggleVisiblity() {
-    if (this.state.visible) {
-      this.hide();
+  toggleArchive() {
+    if (this.state.isArchived) {
+      this.unArchive();
     } else {
-      this.show();
+      this.archive();
     }
   },
   render() {
+    if (!this.isVisible()) {
+      return null;
+    }
 
     return (
       <a>
@@ -69,7 +84,7 @@ const Contest = React.createClass({
             <HideContestButton
               visible={this.state.isSelected}
               contest={this.props.contest}
-              hideHandler={this.toggleVisiblity}
+              hideHandler={this.toggleArchive}
             />
 
             <AddToCalendarButton

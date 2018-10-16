@@ -14,22 +14,14 @@ const App = React.createClass({
     };
   },
   getContestList() {
-    ga('send', 'event', 'Refresh');
-
     this.setState({
       isLoading: true,
     });
 
     const component = this;
-    $.when($.ajax('https://contesttrackerapi.herokuapp.com/')).then((data) => {
-      const contests = data.result;
-
+    $.when($.ajax('https://contesttrackerapi.herokuapp.com/')).then(({ result: contests }) => {
       store.setContests(contests);
-
-      component.setState({
-        isLoading: false,
-      });
-    }, () => {
+    }).always(() => {
       component.setState({
         isLoading: false,
       });
@@ -55,6 +47,10 @@ const App = React.createClass({
     ga('send', 'pageview', '/donate.html');
     this.setState({ route: 'donate' });
   },
+  onClickRefreshHandler() {
+    ga('send', 'event', 'Refresh');
+    this.getContestList();
+  },
 
   componentDidMount() {
     // Initialize Platform settings
@@ -72,18 +68,20 @@ const App = React.createClass({
     }
   },
   render() {
+    const { isLoading, route } = this.state;
+
     return (
       <div>
         <Header
-          onClickRefresh={this.getContestList}
+          onClickRefresh={this.onClickRefreshHandler}
           onClickSettings={this.onClickSettingsHandler}
           onClickArchive={this.onClickArchiveHandler}
           onClickListings={this.onClickListingsHandler}
           onClickHelp={this.onClickHelpHandler}
           onClickDonate={this.onClickDonateHandler}
-          isLoading={this.state.isLoading}
+          isLoading={isLoading}
         />
-        <Router route={this.state.route} />
+        <Router route={route} />
       </div>
     );
   },

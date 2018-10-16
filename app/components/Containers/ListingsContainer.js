@@ -59,11 +59,11 @@ const Listings = React.createClass({
       <div className="listings-container">
         <div id="ongoing" className="top-title">
           <ContestTypeHeader type="Live" />
-          <ContestList contests={contests.ongoing} type="live" />
+          <ContestList contests={contests.ongoing} type="live" route="listings" />
         </div>
         <div id="upcoming">
           <ContestTypeHeader type="Upcoming" />
-          <ContestList contests={contests.upcoming} type="upcoming" />
+          <ContestList contests={contests.upcoming} type="upcoming" route="listings" />
         </div>
       </div>
     );
