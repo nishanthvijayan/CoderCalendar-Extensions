@@ -6,9 +6,10 @@ const AddToCalendarButton = (contest, type, visible) => {
     chrome.tabs.create({ url: contest.createGoogleAddToCalendarUrl() });
   };
 
-  if (!visible || type != 'upcoming') {
+  if (!visible || type !== 'upcoming') {
     return null;
   }
+
   return (
     <i
       className="fa fa-calendar fa-lg option-icon circular-border"

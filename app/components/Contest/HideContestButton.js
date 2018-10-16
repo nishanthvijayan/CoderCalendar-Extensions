@@ -1,6 +1,10 @@
 const React = require('react');
 
 const HideContestButton = ({ contest, hideHandler, visible }) => {
+  if (!visible) {
+    return null;
+  }
+
   let style;
   let icon;
   let action;
@@ -15,17 +19,13 @@ const HideContestButton = ({ contest, hideHandler, visible }) => {
     action = 'Hide';
   }
 
-  if (visible) {
-    return (
-      <i
-        className={`fa ${icon} fa-lg circular-border option-icon`}
-        style={style}
-        onClick={hideHandler}
-        title={`${action} this Contest`}
-      />);
-  }
-
-  return null;
+  return (
+    <i
+      className={`fa ${icon} fa-lg circular-border option-icon`}
+      style={style}
+      onClick={hideHandler}
+      title={`${action} this Contest`}
+    />);
 };
 
 module.exports = HideContestButton;
