@@ -12,8 +12,8 @@ const filterContestsByTime = (allContests) => {
   filteredContests.ongoing = allContests.ongoing.filter(({ endTime }) => (endTime > currentTime));
 
   // Move contests that have started, to ongoing events list
-  allContests.upcoming.forEach(({ startTime, endTime }) => {
-    if (startTime < currentTime && endTime > currentTime) {
+  allContests.upcoming.forEach((contest) => {
+    if (contest.startTime < currentTime && contest.endTime > currentTime) {
       filteredContests.ongoing.push(contest);
     }
   });
