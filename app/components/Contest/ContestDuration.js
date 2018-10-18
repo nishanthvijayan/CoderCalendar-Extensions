@@ -9,7 +9,7 @@ const ContestDuration = ({ type, contest }) => {
     <h4>
       {' '}
 Duration:
-      {contest.Duration}
+      {contest.getDuration()}
     </h4>
   );
 };

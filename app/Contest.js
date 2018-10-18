@@ -2,18 +2,21 @@ const store = require('./store');
 
 class Contest {
   constructor({
-    Name, StartTime, EndTime, Platform, url, Duration,
+    name, startTime, endTime, platform, url,
   }) {
-    this.Name = Name;
-    this.StartTime = StartTime;
-    this.EndTime = EndTime;
-    this.Platform = Platform;
+    this.name = name;
+    this.startTime = startTime;
+    this.endTime = endTime;
+    this.platform = platform;
     this.url = url;
-    this.Duration = Duration;
   }
 
   getID() {
-    return this.Name + this.EndTime;
+    return this.name + this.endTime;
+  }
+
+  getDuration() {
+    return '2h';
   }
 
   isHidden() {
@@ -22,7 +25,7 @@ class Contest {
 
   shouldBeDisplayed() {
     return !store.isHidden(this.getID())
-        && store.isPlatformEnabled(this.Platform);
+        && store.isPlatformEnabled(this.platform);
   }
 
   hide() {
@@ -35,8 +38,8 @@ class Contest {
 
   createGoogleAddToCalendarUrl() {
     const curTime = new Date();
-    const startTime = Date.parse(this.StartTime);
-    const endTime = Date.parse(this.EndTime);
+    const startTime = new Date(this.startTime);
+    const endTime = new Date(this.endTime);
 
     const s = new Date(startTime - ((curTime).getTimezoneOffset() * 60000)).toISOString().slice(0, 19).replace(/-/g, '')
       .replace(/:/g, '');
@@ -44,7 +47,7 @@ class Contest {
       .replace(/:/g, '');
     const calendarTime = `${s}/${e}`;
 
-    return `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(this.Name)
+    return `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(this.name)
     }&dates=${calendarTime}&location=${this.url}&pli=1&uid=&sf=true&output=xml#eventpage_6`;
   }
 }

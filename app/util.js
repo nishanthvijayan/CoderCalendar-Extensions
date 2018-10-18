@@ -1,9 +1,8 @@
-// converts the input time(which is Indian Standard Time) to
-// the browser timezone.
-const convertToBrowzerTimezone = (date) => {
-  const d = new Date(date);
+// converts input dateTime (which is UTC) to browser timezone.
+const convertToBrowzerTimezone = (dateTime) => {
+  const d = new Date(dateTime);
   const offset = -(d.getTimezoneOffset());
-  const newDate = new Date(d.getTime() + offset * 60000 - 19800000);
+  const newDate = new Date(d.getTime() + offset * 60000);
   return newDate;
 };
 
@@ -33,15 +32,15 @@ const checkIfFirstRun = () => {
 
 const iconPath = (platform) => {
   switch (platform) {
-    case 'CODECHEF':
+    case 'codechef':
       return 'img/codechef.jpg';
-    case 'HACKEREARTH':
+    case 'hackerearth':
       return 'img/hackerearth.png';
-    case 'CODEFORCES':
+    case 'codeforces':
       return 'img/codeforces.png';
-    case 'TOPCODER':
+    case 'topcoder':
       return 'img/topcoder.gif';
-    case 'HACKERRANK':
+    case 'hackerrank':
       return 'img/hackerrank.png';
     default:
       return 'img/other.png';

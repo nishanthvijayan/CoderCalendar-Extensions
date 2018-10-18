@@ -5,47 +5,38 @@ const store = require('../../store');
 const Contest = require('../../Contest');
 
 const filterContestsByTime = (allContests) => {
-  const currentTime = new Date().getTime();
+  const currentTime = new Date().getTime() / 1000;
   const filteredContests = {};
 
   // Remove contests that are already over from ongoing contests list
-  filteredContests.ongoing = allContests.ongoing.filter((contest) => {
-    const endTime = Date.parse(contest.EndTime);
-    return (endTime > currentTime);
-  });
+  filteredContests.ongoing = allContests.ongoing.filter(({ endTime }) => (endTime > currentTime));
 
   // Move contests that have started, to ongoing events list
-  allContests.upcoming.forEach((contest) => {
-    const startTime = Date.parse(contest.StartTime);
-    const endTime = Date.parse(contest.EndTime);
+  allContests.upcoming.forEach(({ startTime, endTime }) => {
     if (startTime < currentTime && endTime > currentTime) {
       filteredContests.ongoing.push(contest);
     }
   });
 
   //  Remove contests that have started/ended from upcoming contests list
-  filteredContests.upcoming = allContests.upcoming.filter((contest) => {
-    const startTime = Date.parse(contest.StartTime);
-    const endTime = Date.parse(contest.EndTime);
-    return (startTime > currentTime && endTime > currentTime);
-  });
+  filteredContests.upcoming = allContests.upcoming.filter(({ startTime, endTime }) => (startTime > currentTime && endTime > currentTime));
 
   return filteredContests;
 };
 
-const sortByStartTime = (a, b) => Date.parse(a.StartTime) - Date.parse(b.StartTime);
-const sortByEndTime = (a, b) => Date.parse(a.EndTime) - Date.parse(b.EndTime);
+const sortByStartTime = (a, b) => a.startTime - b.startTime;
+const sortByEndTime = (a, b) => a.endTime - b.endTime;
 
 const processContestList = (contests) => {
-  const contestsFilteredBySettings = filterContestsByTime(contests);
+  const contestsFilteredByTime = filterContestsByTime(contests);
 
   return {
-    ongoing: contestsFilteredBySettings.ongoing
+    ongoing: contestsFilteredByTime.ongoing
       .map(contestJson => new Contest(contestJson))
       .filter(contest => contest.shouldBeDisplayed())
       .sort(sortByEndTime),
 
-    upcoming: contestsFilteredBySettings.upcoming
+    upcoming: contestsFilteredByTime.upcoming
       .map(contestJson => new Contest(contestJson))
       .filter(contest => contest.shouldBeDisplayed())
       .sort(sortByStartTime),

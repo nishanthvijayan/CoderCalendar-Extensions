@@ -2,18 +2,7 @@ const Util = require('./util');
 
 const contestsStore = {
   setContests(contests) {
-    localStorage.CACHED_DATA = JSON.stringify({
-      ongoing: contests.ongoing.map(contest => ({
-        ...contest,
-        EndTime: Util.convertToBrowzerTimezone(contest.EndTime).toString(),
-      })),
-
-      upcoming: contests.upcoming.map(contest => ({
-        ...contest,
-        StartTime: Util.convertToBrowzerTimezone(contest.StartTime).toString(),
-        EndTime: Util.convertToBrowzerTimezone(contest.EndTime).toString(),
-      })),
-    });
+    localStorage.CACHED_DATA = JSON.stringify(contests);
 
     const now = (new Date()).getTime() / 1000;
     localStorage.CACHED_TIME = now;

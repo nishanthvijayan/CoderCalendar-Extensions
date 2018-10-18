@@ -4,7 +4,7 @@ const axios = require('axios');
 const Router = require('./Router');
 const Header = require('./Header');
 const store = require('../store');
-const { SUPPORTED_PLATFORMS } = require('../constants');
+const { SUPPORTED_PLATFORMS, API_URL } = require('../constants');
 
 const App = React.createClass({
   getInitialState() {
@@ -19,8 +19,8 @@ const App = React.createClass({
     });
 
     const component = this;
-    axios.get('https://contesttrackerapi.herokuapp.com/')
-      .then(({ result: contests }) => store.setContests(contests))
+    axios.get(API_URL)
+      .then(({ data: { results } }) => store.setContests(results))
       .catch(error => console.log(`Error accessing API: ${error}`))
       .then(() => {
         component.setState({

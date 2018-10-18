@@ -74,11 +74,11 @@ const Contest = React.createClass({
           onMouseEnter={this.onMouseEnterHandler}
           onMouseLeave={this.onMouseLeaveHandler}
         >
-          <ContestImage platform={this.props.contest.Platform} />
+          <ContestImage platform={this.props.contest.platform} />
           <div className="details-container">
 
             <h2 className="contest-title" onClick={this.onClickContestTitle}>
-              {this.props.contest.Name}
+              {this.props.contest.name}
             </h2>
 
             <HideContestButton

@@ -1,10 +1,12 @@
 const SUPPORTED_PLATFORMS = [
-  'HACKEREARTH',
-  'HACKERRANK',
-  'CODECHEF',
-  'CODEFORCES',
-  'TOPCODER',
-  'OTHER',
+  'hackerearth',
+  'hackerrank',
+  'codechef',
+  'codeforces',
+  'topcoder',
+  'other',
 ];
 
-module.exports = { SUPPORTED_PLATFORMS };
+const API_URL = 'http://codercarlendar-env.ztqaxa6pnc.us-east-1.elasticbeanstalk.com/';
+
+module.exports = { SUPPORTED_PLATFORMS, API_URL };

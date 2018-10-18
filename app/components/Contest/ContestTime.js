@@ -6,10 +6,10 @@ const ContestTime = ({ type, contest }) => {
   let timeText;
 
   if (type == 'live') {
-    time = contest.EndTime.slice(0, 21);
+    time = new Date(contest.endTime * 1000).toString().slice(0, 21);
     timeText = 'End';
   } else {
-    time = contest.StartTime.slice(0, 21);
+    time = new Date(contest.startTime * 1000).toString().slice(0, 21);
     timeText = 'Start';
   }
   const humanReadableTime = moment(time).fromNow();
