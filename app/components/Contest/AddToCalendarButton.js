@@ -1,6 +1,6 @@
 const React = require('react');
 
-const AddToCalendarButton = (contest, type, visible) => {
+const AddToCalendarButton = ({contest, type, visible}) => {
   const onClickAddToCalendarButton = () => {
     ga('send', 'event', 'Add to Calendar');
     chrome.tabs.create({ url: contest.createGoogleAddToCalendarUrl() });
