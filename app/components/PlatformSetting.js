@@ -25,7 +25,7 @@ const PlatformSettings = React.createClass({
       return 'fa-times red-text';
     };
 
-    const {onClickHandler, platform} = this.props;
+    const { platform } = this.props;
 
     return (
       <li className="platform-setting">
@@ -36,7 +36,7 @@ const PlatformSettings = React.createClass({
         <i
           className={`fa fa-2x ${iconAndColor(platform)}`}
           id={platform}
-          onClick={onClickHandler}
+          onClick={this.onClickHandler}
         />
       </li>
     );
