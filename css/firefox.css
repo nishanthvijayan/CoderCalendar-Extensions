@@ -125,7 +125,6 @@ header > h3 {
 }
 
 .platform-name {
-  text-transform: capitalize;
   font-size: x-large;
   margin-left: 20%;
 }

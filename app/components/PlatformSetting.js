@@ -1,5 +1,5 @@
 const React = require('react');
-const Util = require('../util');
+const { capitalize, iconPath } = require('../util');
 const store = require('../store');
 
 const PlatformSettings = React.createClass({
@@ -29,9 +29,9 @@ const PlatformSettings = React.createClass({
 
     return (
       <li className="platform-setting">
-        <img src={Util.iconPath(platform)} alt={platform} title={platform} />
+        <img src={iconPath(platform)} alt={platform} title={platform} />
         <span className="platform-name">
-          {platform}
+          {capitalize(platform)}
         </span>
         <i
           className={`fa fa-2x ${iconAndColor(platform)}`}
