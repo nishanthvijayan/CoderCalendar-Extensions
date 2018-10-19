@@ -1,5 +1,9 @@
 const store = require('./store');
 
+const SECONDS_IN_A_DAY = 24 * 60 * 60;
+const SECONDS_IN_AN_HOUR = 60 * 60;
+const SECONDS_IN_A_MINUTE = 60;
+
 class Contest {
   constructor({
     name, startTime, endTime, platform, url,
@@ -16,7 +20,32 @@ class Contest {
   }
 
   getDuration() {
-    return '2h';
+    let durationInSeconds = this.endTime - this.startTime;
+
+    const days = parseInt(durationInSeconds / SECONDS_IN_A_DAY);
+    durationInSeconds %= SECONDS_IN_A_DAY;
+
+    const hours = parseInt(durationInSeconds / SECONDS_IN_AN_HOUR);
+    durationInSeconds %= SECONDS_IN_AN_HOUR;
+
+    const minutes = parseInt(durationInSeconds / SECONDS_IN_A_MINUTE);
+
+    let durationStr = '';
+    if (days === 1) {
+      durationStr += `${days} day `;
+    } else if (days !== 0) {
+      durationStr += `${days} days `;
+    }
+
+    if (hours !== 0) {
+      durationStr += `${hours}h `;
+    }
+
+    if (minutes !== 0) {
+      durationStr += `${minutes}m`;
+    }
+
+    return durationStr;
   }
 
   isHidden() {
