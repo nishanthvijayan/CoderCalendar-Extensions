@@ -41,18 +41,6 @@ const scrollPositionStore = {
 
 };
 
-const openCountStore = {
-  incrementOpenCount() {
-    if (isNaN(parseInt(localStorage.OPENCOUNT, 10))) {
-      localStorage.OPENCOUNT = '0';
-    }
-
-    localStorage.OPENCOUNT = (parseInt(localStorage.OPENCOUNT, 10) + 1).toString();
-  },
-
-  getOpenCount: () => parseInt(localStorage.OPENCOUNT, 10),
-};
-
 const platformSettingsStore = {
   enablePlatform: platform => localStorage.setItem(platform, 'true'),
 
@@ -112,7 +100,6 @@ const store = {
   ...scrollPositionStore,
   ...hiddenContestsStore,
   ...platformSettingsStore,
-  ...openCountStore,
 };
 
 module.exports = store;

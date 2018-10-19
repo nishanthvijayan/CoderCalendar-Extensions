@@ -25,17 +25,17 @@ const getVersion = () => {
   return '1.0.0';
 };
 
-// Checks if the app version has changed
-// Opens settings page on first run after install/upgrade
-const checkIfFirstRun = () => {
+// Returns true if the app is being launched for the first time after installion/update
+const isFirstLaunch = () => {
   const currVersion = getVersion();
   const prevVersion = localStorage.version;
+  localStorage.version = currVersion;
 
-  if (prevVersion == undefined) {
-    chrome.tabs.create({ url: 'http://nishanthvijayan.github.io/CoderCalendar' });
+  if (prevVersion == undefined || prevVersion != currVersion) {
+    return true;
   }
 
-  localStorage.version = currVersion;
+  return false;
 };
 
 const iconPath = (platform) => {
@@ -73,7 +73,7 @@ const capitalize = (str) => {
 
 module.exports = {
   convertToBrowzerTimezone,
-  checkIfFirstRun,
+  isFirstLaunch,
   iconPath,
   capitalize,
 };

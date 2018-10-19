@@ -23,17 +23,7 @@ const resetScrollPosition = () => {
 
 const updateScrollPositionStore = () => store.setScrollPosition(window.scrollY);
 
-const askForFeedbackIfNeeded = () => {
-  const openCount = store.getOpenCount();
-  if (openCount > 0 && openCount % 30 == 0) {
-    chrome.runtime.sendMessage({ request: 'askForFeedback' });
-  }
-};
-
 document.addEventListener('DOMContentLoaded', () => {
-  store.incrementOpenCount();
-  askForFeedbackIfNeeded();
-
   ReactDOM.render(<App />, document.getElementById('ui-content'));
 
   addEventListener('scroll', updateScrollPositionStore);
