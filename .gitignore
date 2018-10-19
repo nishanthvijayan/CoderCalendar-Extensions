@@ -4,3 +4,4 @@ dist/js/event_listeners.js
 node_modules/
 package-lock.json
 build
+.DS_Store
