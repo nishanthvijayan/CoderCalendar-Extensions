@@ -1,3 +1,11 @@
+const {
+  CODECHEF,
+  CODEFORCES,
+  HACKEREARTH,
+  HACKERRANK,
+  TOPCODER, LEETCODE, KAGGLE, CSACADEMY, ATCODER,
+} = require('./constants');
+
 // converts input dateTime (which is UTC) to browser timezone.
 const convertToBrowzerTimezone = (dateTime) => {
   const d = new Date(dateTime);
@@ -32,21 +40,28 @@ const checkIfFirstRun = () => {
 
 const iconPath = (platform) => {
   switch (platform) {
-    case 'codechef':
+    case CODECHEF:
       return 'img/codechef.jpg';
-    case 'hackerearth':
+    case HACKEREARTH:
       return 'img/hackerearth.png';
-    case 'codeforces':
+    case CODEFORCES:
       return 'img/codeforces.png';
-    case 'topcoder':
+    case TOPCODER:
       return 'img/topcoder.gif';
-    case 'hackerrank':
+    case HACKERRANK:
       return 'img/hackerrank.png';
+    case LEETCODE:
+      return 'img/leetcode.png';
+    case CSACADEMY:
+      return 'img/csacademy.png';
+    case KAGGLE:
+      return 'img/kaggle.png';
+    case ATCODER:
+      return 'img/atcoder.png';
     default:
       return 'img/other.png';
   }
 };
-
 
 module.exports = {
   convertToBrowzerTimezone,
