@@ -207,3 +207,7 @@ header > h3 {
   color: #75c26a;
   cursor: pointer;
 }
+
+.no-decoration {
+  color: inherit;
+}

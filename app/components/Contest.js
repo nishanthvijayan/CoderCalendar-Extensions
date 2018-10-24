@@ -78,7 +78,9 @@ const Contest = React.createClass({
           <div className="details-container">
 
             <h2 className="contest-title" onClick={this.onClickContestTitle}>
-              {this.props.contest.name}
+              <a className="no-decoration" href={this.props.contest.url} target="_blank">
+                {this.props.contest.name}
+              </a>
             </h2>
 
             <HideContestButton

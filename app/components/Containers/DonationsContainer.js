@@ -1,23 +1,26 @@
 const React = require('react');
+const {
+  DONATE_BEER_URL, DONATE_ANY_AMOUNT_URL, GITHUB_PROFILE_URL, FEEDBACK_FORM_URL,
+} = require('../../constants');
 
 const onClickBeerDonationHandler = () => {
   ga('send', 'event', 'Buy me Beer link');
-  chrome.tabs.create({ url: 'https://imjo.in/rbNqse' });
+  chrome.tabs.create({ url: { DONATE_BEER_URL } });
 };
 
 const onClickAnyDonationHandler = () => {
   ga('send', 'event', 'Donate any amount link');
-  chrome.tabs.create({ url: 'https://www.instamojo.com/@nishanthvijayan' });
+  chrome.tabs.create({ url: { DONATE_ANY_AMOUNT_URL } });
 };
 
 const onClickImageHandler = () => {
   ga('send', 'event', 'Github Profile link');
-  chrome.tabs.create({ url: 'https://github.com/nishanthvijayan' });
+  chrome.tabs.create({ url: GITHUB_PROFILE_URL });
 };
 
 const onClickFeedbackHandler = () => {
   ga('send', 'event', 'Feedback link');
-  chrome.tabs.create({ url: 'https://goo.gl/forms/vgVJOQKwooO2pur13' });
+  chrome.tabs.create({ url: FEEDBACK_FORM_URL });
 };
 
 const Donations = () => (
@@ -46,10 +49,10 @@ Buy me a Beer!
       </p>
       <br />
       <br />
-      <a className="donation-button" onClick={onClickBeerDonationHandler}>
+      <a className="donation-button" onClick={onClickBeerDonationHandler} href={DONATE_BEER_URL} target="_blank">
 Buy me a Beer! (₹200)
       </a>
-      <a className="donation-button" onClick={onClickAnyDonationHandler}>
+      <a className="donation-button" onClick={onClickAnyDonationHandler} href={DONATE_ANY_AMOUNT_URL} target="_blank">
 Donate any amount
       </a>
     </div>
