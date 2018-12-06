@@ -66,13 +66,13 @@ class Contest {
   }
 
   createGoogleAddToCalendarUrl() {
-    const curTime = new Date();
-    const startTime = new Date(this.startTime);
-    const endTime = new Date(this.endTime);
+    const startTimeInMs = new Date(this.startTime).getTime() * 1000;
+    const endTimeInMs = new Date(this.endTime).getTime() * 1000;
+    const zoneOffsetInMs =  new Date().getTimezoneOffset() * 60000;
 
-    const s = new Date(startTime - ((curTime).getTimezoneOffset() * 60000)).toISOString().slice(0, 19).replace(/-/g, '')
+    const s = new Date(startTimeInMs - zoneOffsetInMs).toISOString().slice(0, 19).replace(/-/g, '')
       .replace(/:/g, '');
-    const e = new Date(endTime - ((curTime).getTimezoneOffset() * 60000)).toISOString().slice(0, 19).replace(/-/g, '')
+    const e = new Date(endTimeInMs - zoneOffsetInMs).toISOString().slice(0, 19).replace(/-/g, '')
       .replace(/:/g, '');
     const calendarTime = `${s}/${e}`;
 
