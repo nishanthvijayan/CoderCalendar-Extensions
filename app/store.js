@@ -52,7 +52,7 @@ const platformSettingsStore = {
     if (localStorage.getItem(platform) == 'true') {
       return true;
     } if (!localStorage.getItem(platform)) {
-      return true;
+      return false;
     }
     return false;
   },
