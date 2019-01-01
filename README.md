@@ -5,12 +5,13 @@ Browser extensions for competitive programming enthusiasts.
 Shows a list of live & upcoming coding contests taking place in various popular competitive programming websites with the facility to add them to your google calender.
 Currently shows updates from Codechef , HackerEarth , Hackerrank, Topcoder and Codeforces.
 
+## ScreenShots  
   
+![Home Screen](screenshots/cc-home.png) ![Settings Screen](screenshots/cc-settings.png)  
   
 ## Download  
 Coder's Calendar is  available for download at:
-- [Chrome Extension](https://chrome.google.com/webstore/detail/coders-calendar/bageaffklfkikjigoclfgengklfnidll)
-- [Firefox Add-on](https://addons.mozilla.org/en-US/firefox/addon/coder-calendar/)  
+- [Chrome Extension](https://chrome.google.com/webstore/detail/coders-calendar/bageaffklfkikjigoclfgengklfnidll). 
 
 ## Building locally
 To install the dependencies, run
@@ -36,10 +37,5 @@ This will compile the react code inside `app/` to `build/chrome` & `build/firefo
  2. Select `Load Temporary Add-on`
  3. Select any file from the `build/firefox` folder
 
-## ScreenShots  
-  
-![Chrome Extension](http://i.imgur.com/DXbGuZz.png?1)  
-
 ## To-Do
  - [ ] Test Suite for the components
- - [ ] Integrate with V2 API
