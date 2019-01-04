@@ -1,13 +1,10 @@
 # Coder's Calendar
-![Coder's Calendar](http://i.imgur.com/PK58rhe.png)  
+  
+![Home Screen](screenshots/cc-home.png) ![Settings Screen](screenshots/cc-settings.png)  
   
 Browser extensions for competitive programming enthusiasts.
 Shows a list of live & upcoming coding contests taking place in various popular competitive programming websites with the facility to add them to your google calender.
-Currently shows updates from Codechef , HackerEarth , Hackerrank, Topcoder and Codeforces.
-
-## ScreenShots  
-  
-![Home Screen](screenshots/cc-home.png) ![Settings Screen](screenshots/cc-settings.png)  
+Currently shows updates from Codechef , HackerEarth , Hackerrank, Topcoder and Codeforces.  
   
 ## Download  
 Coder's Calendar is  available for download at:
