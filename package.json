@@ -39,6 +39,9 @@
     "github": {
       "release": true,
       "assets": ["dist/*.zip"]
+    },
+    "npm": {
+      "publish": false
     }
   }
 }
