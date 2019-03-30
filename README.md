@@ -11,7 +11,7 @@ Coder's Calendar is  available for download at:
 - [Chrome Extension](https://chrome.google.com/webstore/detail/coders-calendar/bageaffklfkikjigoclfgengklfnidll). 
   
 ### FIREFOX 
-If you're a Firefox user, you can download Coder Calendar's latest Firefox release zip file from [here](https://github.com/nishanthvijayan/CoderCalendar-Extensions/releases/latest). To install it, following these instuctions:
+If you're a Firefox user, you can download Coder Calendar's latest Firefox release zip file from [here](https://github.com/nishanthvijayan/CoderCalendar-Extensions/releases/latest). To install it, follow these instuctions:
   
 
  1. Open `about:debugging` in a new tab
