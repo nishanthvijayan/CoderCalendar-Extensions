@@ -1,4 +1,8 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const ZipPlugin = require('zip-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+const { version } = require('./package.json');
 
 module.exports = [
 	{
@@ -18,13 +22,18 @@ module.exports = [
       ]
     },
     plugins: [
+      new CleanWebpackPlugin(),
       new CopyWebpackPlugin([
         { from: 'css/chrome.css', to: 'css/index.css' },
         { from: 'index.html', to: 'index.html' },
         { from: 'manifest.json', to: 'manifest.json' },
         { from: 'img', to: 'img' },
         { from: 'font-awesome', to: 'font-awesome' }
-      ])
+      ]),
+      new ZipPlugin({
+        filename: `CoderCalendar_v${version}_Chrome`,
+        path: '../'
+      })
     ]
   },
   {
@@ -44,13 +53,18 @@ module.exports = [
       ]
     },
     plugins: [
+      new CleanWebpackPlugin(),
       new CopyWebpackPlugin([
         { from: 'css/firefox.css', to: 'css/index.css' },
         { from: 'index.html', to: 'index.html' },
         { from: 'manifest.json', to: 'manifest.json' },
         { from: 'img', to: 'img' },
         { from: 'font-awesome', to: 'font-awesome' }
-      ])
+      ]),
+      new ZipPlugin({
+        filename: `CoderCalendar_v${version}_Firefox`,
+        path: '../'
+      })
     ]
 	}
 ]
