@@ -1,6 +1,7 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ZipPlugin = require('zip-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require('path');
 
 const { version } = require('./package.json');
 
@@ -22,7 +23,11 @@ module.exports = [
       ]
     },
     plugins: [
-      new CleanWebpackPlugin(),
+      new CleanWebpackPlugin({
+        dry: false,
+        cleanOnceBeforeBuildPatterns: ['**\/*', path.join(process.cwd(), 'build/*_Chrome.zip')],
+        dangerouslyAllowCleanPatternsOutsideProject: true
+      }),
       new CopyWebpackPlugin([
         { from: 'css/chrome.css', to: 'css/index.css' },
         { from: 'index.html', to: 'index.html' },
@@ -53,7 +58,11 @@ module.exports = [
       ]
     },
     plugins: [
-      new CleanWebpackPlugin(),
+      new CleanWebpackPlugin({
+        dry: false,
+        cleanOnceBeforeBuildPatterns: ['**\/*', path.join(process.cwd(), 'build/*_Firefox.zip')],
+        dangerouslyAllowCleanPatternsOutsideProject: true
+      }),
       new CopyWebpackPlugin([
         { from: 'css/firefox.css', to: 'css/index.css' },
         { from: 'index.html', to: 'index.html' },
