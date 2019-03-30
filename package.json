@@ -39,7 +39,7 @@
     "github": {
       "release": true,
       "assets": [
-        "dist/*.zip"
+        "build/*.zip"
       ]
     },
     "npm": {
