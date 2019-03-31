@@ -26,6 +26,7 @@ const API_URL = 'http://api.codercalendar.io/';
 const DONATE_BEER_URL = 'https://imjo.in/rbNqse';
 const DONATE_ANY_AMOUNT_URL = 'https://www.instamojo.com/@nishanthvijayan';
 const GITHUB_PROFILE_URL = 'https://github.com/nishanthvijayan';
+const GITHUB_PROJECT_URL = 'https://github.com/nishanthvijayan/CoderCalendar-Extensions';
 const FEEDBACK_FORM_URL = 'https://goo.gl/forms/vgVJOQKwooO2pur13';
 
 module.exports = {
@@ -34,6 +35,7 @@ module.exports = {
   DONATE_BEER_URL,
   DONATE_ANY_AMOUNT_URL,
   GITHUB_PROFILE_URL,
+  GITHUB_PROJECT_URL,
   FEEDBACK_FORM_URL,
   HACKEREARTH,
   HACKERRANK,

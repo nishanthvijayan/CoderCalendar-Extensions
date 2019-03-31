@@ -23,7 +23,7 @@ header {
   cursor: pointer;
 }
 
-.fa-refresh, .fa-gear, .archive-icon, .fa-home, .fa-question, .fa-beer {
+.fa-refresh, .fa-gear, .archive-icon, .fa-home, .fa-question, .fa-beer, .fa-github-alt {
   position: fixed;
   margin-top: 15px;
   font-size: 25px
@@ -39,6 +39,10 @@ header {
 
 .fa-trash {
   left: 25%;
+}
+
+.fa-github-alt {
+  left: 35%;
 }
 
 .fa-beer {
