@@ -18,7 +18,7 @@ const Header = ({
       <i className="fa fa-trash archive-icon fa-2x" onClick={onClickArchive} title="Hidden Contests" />
       {/* <i className="fa fa-beer fa-2x" onClick={onClickDonate} title="Buy me a Beer!" /> */}
       <i className="fa fa-gear fa-2x" onClick={onClickSettings} title="Settings" />
-      <i className="fa fa-github-alt fa-2x" onClick={onClickGitHub} title="Star us on GitHub"/>
+      <i className="fa fa-github-alt fa-2x" onClick={onClickGitHub} title="Star us on GitHub" />
       <i className={refreshButtonSpinState()} onClick={onClickRefresh} title="Refresh" />
     </header>
   );
