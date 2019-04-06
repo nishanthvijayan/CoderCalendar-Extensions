@@ -1,8 +1,10 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ZipPlugin = require('zip-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CreateFileWebpack = require('create-file-webpack')
 const path = require('path');
 
+const manifest = require("./manifest");
 const { version } = require('./package.json');
 
 module.exports = [
@@ -28,10 +30,14 @@ module.exports = [
         cleanOnceBeforeBuildPatterns: ['**\/*', path.join(process.cwd(), 'build/*_Chrome.zip')],
         dangerouslyAllowCleanPatternsOutsideProject: true
       }),
+      new CreateFileWebpack({
+        fileName: 'manifest.json',
+        path: __dirname + '/build/chrome',
+        content: JSON.stringify(manifest)
+      }),
       new CopyWebpackPlugin([
         { from: 'css/chrome.css', to: 'css/index.css' },
         { from: 'index.html', to: 'index.html' },
-        { from: 'manifest.json', to: 'manifest.json' },
         { from: 'img', to: 'img' },
         { from: 'font-awesome', to: 'font-awesome' }
       ]),
@@ -63,10 +69,14 @@ module.exports = [
         cleanOnceBeforeBuildPatterns: ['**\/*', path.join(process.cwd(), 'build/*_Firefox.zip')],
         dangerouslyAllowCleanPatternsOutsideProject: true
       }),
+      new CreateFileWebpack({
+        fileName: 'manifest.json',
+        path: __dirname + '/build/firefox',
+        content: JSON.stringify(manifest)
+      }),
       new CopyWebpackPlugin([
         { from: 'css/firefox.css', to: 'css/index.css' },
         { from: 'index.html', to: 'index.html' },
-        { from: 'manifest.json', to: 'manifest.json' },
         { from: 'img', to: 'img' },
         { from: 'font-awesome', to: 'font-awesome' }
       ]),

@@ -1,10 +1,12 @@
-{
-"manifest_version": 2,
+const { version } = require("./package.json");
+
+const manifest = {
+  "manifest_version": 2,
 
   "name": "Coder's Calendar",
   "short_name": "Coder's Calendar",
   "description": "Never miss a Coding contest again! Displays live and upcoming Programming Contests happening on a variety of popular platforms.",
-  "version": "1.5.0",
+  "version": version,
 
   "permissions": [
     "http://contesttrackerapi.herokuapp.com/",
@@ -25,4 +27,6 @@
     "scripts": ["js/event_listeners.js"]
   },
   "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'"
-}
+};
+
+module.exports = manifest
