@@ -1,6 +1,6 @@
 {
   "name": "coder-calendar",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "Never miss a Coding contest again! Displays live and upcoming Programming Contests happening on a variety of popular platforms.",
   "scripts": {
     "production": "webpack -p",
