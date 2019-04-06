@@ -11,14 +11,12 @@ const AddToCalendarButton = ({ contest, type, visible }) => {
   }
 
   return (
-    <a href={contest.createGoogleAddToCalendarUrl()} target="_blank">
-      <i
-        className="fa fa-calendar fa-lg option-icon circular-border"
-        style={{ color: '#4caf50', cursor: 'pointer' }}
-        onClick={onClickAddToCalendarButton}
-        title="Add to Google Calendar"
-      />
-    </a>
+    <i
+      className="fa fa-calendar fa-lg option-icon circular-border"
+      style={{ color: '#4caf50', cursor: 'pointer' }}
+      onClick={onClickAddToCalendarButton}
+      title="Add to Google Calendar"
+    />
   );
 };
 

@@ -49,10 +49,10 @@ Buy me a Beer!
       </p>
       <br />
       <br />
-      <a className="donation-button" onClick={onClickBeerDonationHandler} href={DONATE_BEER_URL} target="_blank">
+      <a className="donation-button" onClick={onClickBeerDonationHandler}>
 Buy me a Beer! (₹200)
       </a>
-      <a className="donation-button" onClick={onClickAnyDonationHandler} href={DONATE_ANY_AMOUNT_URL} target="_blank">
+      <a className="donation-button" onClick={onClickAnyDonationHandler}>
 Donate any amount
       </a>
     </div>
