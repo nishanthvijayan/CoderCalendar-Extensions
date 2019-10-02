@@ -163,6 +163,16 @@ header > h3 {
 .green-text {
   color: #4caf50;
 }
+
+.button-unsubscribe {
+  background-color: #f44336;
+}
+
+.unsubscribe-text {
+  color: #ffff;
+  font-size: x-large;
+  margin: 20%;
+}
 /*****************************************************/
 
 .circular-border{

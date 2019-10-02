@@ -20,8 +20,8 @@ const AllPlatformsSettings = React.createClass({
                         <hr />
                     </div>
                 ))}
-                <li className="platform-setting" onClick={this.onClickHandler}>
-                    <span className="platform-name">
+                <li className="platform-setting button-unsubscribe" onClick={this.onClickHandler}>
+                    <span className="unsubscribe-text">
                     Unsubscribe from All
                     </span>
                 </li>
