@@ -166,6 +166,7 @@ header > h3 {
 
 .button-unsubscribe {
   background-color: #f44336;
+  cursor: pointer;
 }
 
 .unsubscribe-text {

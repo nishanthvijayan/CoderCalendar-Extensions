@@ -9,7 +9,7 @@ const AllPlatformsSettings = React.createClass({
             store.disablePlatform(platform);
             ga('send', 'event', 'Platform Setting', 'UnCheck', platform);
         });
-        this.forceUpdate();s
+        this.forceUpdate();
     },
     render() {
         return (
