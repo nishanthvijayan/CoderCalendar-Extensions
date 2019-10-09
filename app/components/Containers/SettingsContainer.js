@@ -1,6 +1,5 @@
 const React = require('react');
-const PlatformSetting = require('../PlatformSetting');
-const { SUPPORTED_PLATFORMS } = require('../../constants');
+const AllPlatformsSettings = require('../AllPlatformsSettings.js');
 
 const SettingsContainer = () => (
   <div className="settings-container">
@@ -11,12 +10,7 @@ Subscribe
         </h3>
       </div>
       <div className="subscribeContent">
-        {SUPPORTED_PLATFORMS.map(platform => (
-          <div>
-            <PlatformSetting platform={platform} />
-            <hr />
-          </div>
-        ))}
+      <AllPlatformsSettings />
       </div>
     </div>
   </div>
