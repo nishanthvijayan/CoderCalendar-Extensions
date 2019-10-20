@@ -7,6 +7,7 @@ const LEETCODE = 'leetcode';
 const CSACADEMY = 'csacademy';
 const ATCODER = 'atcoder';
 const KAGGLE = 'kaggle';
+const CODINGNINJAS = 'codingninjas';
 const OTHER = 'other';
 
 const SUPPORTED_PLATFORMS = [
@@ -19,6 +20,7 @@ const SUPPORTED_PLATFORMS = [
   KAGGLE,
   CSACADEMY,
   ATCODER,
+  CODINGNINJAS,
   OTHER,
 ];
 
@@ -46,5 +48,6 @@ module.exports = {
   KAGGLE,
   CSACADEMY,
   ATCODER,
+  CODINGNINJAS,
   OTHER,
 };

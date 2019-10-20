@@ -3,7 +3,7 @@ const {
   CODEFORCES,
   HACKEREARTH,
   HACKERRANK,
-  TOPCODER, LEETCODE, KAGGLE, CSACADEMY, ATCODER,
+  TOPCODER, LEETCODE, KAGGLE, CSACADEMY, ATCODER, CODINGNINJAS
 } = require('./constants');
 
 // converts input dateTime (which is UTC) to browser timezone.
@@ -58,6 +58,8 @@ const iconPath = (platform) => {
       return 'img/kaggle.png';
     case ATCODER:
       return 'img/atcoder.png';
+    case CODINGNINJAS:
+      return 'img/codingninjas.jpg';
     default:
       return 'img/other.png';
   }
