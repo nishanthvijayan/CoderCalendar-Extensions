@@ -12,7 +12,11 @@ class Contest {
     this.startTime = startTime;
     this.endTime = endTime;
     this.platform = platform;
-    this.url = url;
+    if (platform === 'atcoder') {
+      this.url = 'https://atcoder.jp' + url;
+    } else {
+      this.url = url;
+    }
   }
 
   getID() {
